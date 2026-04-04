@@ -71,6 +71,13 @@ transition: background 0.2s;
 }
 .nav-cta:hover { background: var(--navy-mid); }
 
+/* Mobile-only and desktop-only */
+.mobile-only { display: none; pointer-events: none; }
+
+@media (hover: none) and (pointer: coarse) {
+  .mobile-only { display: inline-block; pointer-events: auto; }
+}
+
 /* ── HERO ── */
 .hero {
 min-height: 100vh;
