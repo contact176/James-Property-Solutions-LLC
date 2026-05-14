@@ -1,3 +1,5 @@
+Copy/paste this as your entire homepage/index.html.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -322,8 +324,7 @@ a {
 .quote-card,
 .proof-box,
 .price-card,
-.service-card,
-.visual-panel {
+.service-card {
   background: var(--paper);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -407,20 +408,13 @@ a {
 }
 .service-card p,
 .proof-box p,
-.price-card p,
-.split p {
+.price-card p {
   color: var(--muted);
 }
-.split-section,
+.cleanout-section,
 .how,
 .area {
   background: var(--paper);
-}
-.split {
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: 44px;
-  align-items: center;
 }
 .check-list {
   list-style: none;
@@ -436,22 +430,6 @@ a {
   content: "✓";
   color: var(--clay);
   margin-right: 10px;
-  font-weight: 900;
-}
-.visual-panel {
-  border-radius: 34px;
-  padding: 18px;
-}
-.photo-placeholder {
-  min-height: 340px;
-  border: 2px dashed rgba(25, 61, 52, 0.25);
-  border-radius: 24px;
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  text-align: center;
-  padding: 26px;
-  background: linear-gradient(135deg, #EEF2EC, #FFFDF8);
   font-weight: 900;
 }
 .center {
@@ -493,6 +471,12 @@ a {
 .about {
   background: var(--forest);
   color: var(--white);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 44px;
+  align-items: center;
 }
 .about .section-label {
   color: var(--sage);
@@ -544,6 +528,12 @@ a {
 }
 .warning {
   background: var(--stone);
+}
+.warning-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 34px;
+  align-items: center;
 }
 .chips {
   display: flex;
@@ -642,7 +632,8 @@ a {
     font-size: 0.65rem;
   }
   .hero-grid,
-  .split {
+  .about-grid,
+  .warning-grid {
     grid-template-columns: 1fr;
   }
   .card-grid,
@@ -793,25 +784,43 @@ a {
     </div>
   </div>
 </section>
-<section class="section split-section" id="cleanouts">
-  <div class="wrap split">
-    <div>
-      <p class="section-label">For Property Managers & Investors</p>
-      <h2>Turnover help without the corporate-service feel.</h2>
-      <p>
-        Vacancy costs money. James Property Solutions helps clear leftover junk, remove bulky items, clean up exterior messes, and prepare properties for the next showing, tenant, repair crew, or listing photos.
-      </p>
-      <ul class="check-list">
-        <li>Rental cleanouts</li>
-        <li>Move-out trash outs</li>
-        <li>Garage and basement clearing</li>
-        <li>Exterior junk and yard debris</li>
-        <li>Pressure washing add-ons</li>
-      </ul>
-    </div>
-    <div class="visual-panel">
-      <div class="photo-placeholder">
-        Add a real before/after property photo here.
+<section class="section cleanout-section" id="cleanouts">
+  <div class="wrap">
+    <p class="section-label">For Property Managers & Investors</p>
+    <h2>Turnover help without the corporate-service feel.</h2>
+    <p class="section-intro">
+      Vacancy costs money. James Property Solutions helps clear leftover junk, remove bulky items, clean up exterior messes, and prepare properties for the next showing, tenant, repair crew, or listing photos.
+    </p>
+    <div class="card-grid">
+      <div class="service-card">
+        <span>01</span>
+        <h3>Rental Cleanouts</h3>
+        <p>Leftover tenant items, trash piles, bulky furniture, and general move-out debris removed quickly.</p>
+      </div>
+      <div class="service-card">
+        <span>02</span>
+        <h3>Trash Outs</h3>
+        <p>Garage, basement, apartment, storage, and property trash outs for landlords and investors.</p>
+      </div>
+      <div class="service-card">
+        <span>03</span>
+        <h3>Property Prep</h3>
+        <p>Clear the clutter so cleaners, repair crews, photographers, or new tenants can move forward.</p>
+      </div>
+      <div class="service-card">
+        <span>04</span>
+        <h3>Furniture Removal</h3>
+        <p>Couches, mattresses, desks, dressers, tables, chairs, and bulky items hauled away.</p>
+      </div>
+      <div class="service-card">
+        <span>05</span>
+        <h3>Exterior Cleanup</h3>
+        <p>Yard debris, brush, outdoor junk, storm debris, and curbside clutter removed from the property.</p>
+      </div>
+      <div class="service-card">
+        <span>06</span>
+        <h3>Pressure Washing Add-Ons</h3>
+        <p>Driveways, sidewalks, patios, entryways, and exterior surfaces cleaned for better curb appeal.</p>
       </div>
     </div>
   </div>
@@ -840,7 +849,7 @@ a {
   </div>
 </section>
 <section class="section about">
-  <div class="wrap split">
+  <div class="wrap about-grid">
     <div>
       <p class="section-label">About</p>
       <h2>Veteran-owned. Local. Direct.</h2>
@@ -893,7 +902,7 @@ a {
   </div>
 </section>
 <section class="section warning">
-  <div class="wrap split">
+  <div class="wrap warning-grid">
     <div>
       <p class="section-label">Before You Book</p>
       <h2>What we can and cannot take.</h2>
