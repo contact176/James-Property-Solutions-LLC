@@ -1,23 +1,20 @@
+Replace the entire current homepage code with this exact index.html:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Indianapolis Junk Removal & Property Cleanouts | James Property Solutions LLC</title>
 <meta name="description" content="Veteran-owned Indianapolis junk removal and property cleanout services. Text a photo for an upfront quote. Furniture, appliances, yard debris, garage cleanouts, and pressure washing.">
 <link rel="canonical" href="https://jamespropertysolution.com/">
-
 <meta property="og:title" content="Indianapolis Junk Removal & Property Cleanouts | James Property Solutions LLC">
 <meta property="og:description" content="Text a photo. Get a clear quote. We show up, load it, and leave the space clean. Veteran-owned and Indianapolis-based.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jamespropertysolution.com/">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650;9..144,800;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650;9..144,800;9..144,900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -61,7 +58,6 @@
       {
         "@type": "Offer",
         "name": "Indianapolis Junk Removal",
-        "url": "https://jamespropertysolution.com/junk-removal-indianapolis/",
         "itemOffered": {
           "@type": "Service",
           "name": "Junk Removal",
@@ -71,7 +67,6 @@
       {
         "@type": "Offer",
         "name": "Property Cleanouts",
-        "url": "https://jamespropertysolution.com/property-cleanouts-indianapolis/",
         "itemOffered": {
           "@type": "Service",
           "name": "Property Cleanouts",
@@ -81,7 +76,6 @@
       {
         "@type": "Offer",
         "name": "Furniture Removal",
-        "url": "https://jamespropertysolution.com/furniture-removal-indianapolis/",
         "itemOffered": {
           "@type": "Service",
           "name": "Furniture Removal",
@@ -91,7 +85,6 @@
       {
         "@type": "Offer",
         "name": "Appliance Removal",
-        "url": "https://jamespropertysolution.com/appliance-removal-indianapolis/",
         "itemOffered": {
           "@type": "Service",
           "name": "Appliance Removal",
@@ -101,7 +94,6 @@
       {
         "@type": "Offer",
         "name": "Yard Debris Removal",
-        "url": "https://jamespropertysolution.com/yard-debris-removal-indianapolis/",
         "itemOffered": {
           "@type": "Service",
           "name": "Yard Debris Removal",
@@ -111,7 +103,6 @@
       {
         "@type": "Offer",
         "name": "Pressure Washing",
-        "url": "https://jamespropertysolution.com/pressure-washing-indianapolis/",
         "itemOffered": {
           "@type": "Service",
           "name": "Pressure Washing",
@@ -122,14 +113,597 @@
   }
 }
 </script>
+<style>
+:root {
+  --ink: #12231E;
+  --forest: #193D34;
+  --forest-dark: #0D211C;
+  --moss: #5F8068;
+  --sage: #DDE7DC;
+  --stone: #F6F1E8;
+  --paper: #FFFDF8;
+  --clay: #C36A3D;
+  --clay-dark: #A95531;
+  --line: #E4D8C8;
+  --muted: #63706A;
+  --white: #FFFFFF;
+  --shadow: 0 20px 60px rgba(18, 35, 30, 0.14);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--stone);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.wrap {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+.topbar {
+  background: var(--forest-dark);
+  color: var(--sage);
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 10px 16px;
+}
+.topbar a {
+  color: var(--white);
+  text-decoration: underline;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 253, 248, 0.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+.nav {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--forest), var(--moss));
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  box-shadow: 0 8px 24px rgba(25, 61, 52, 0.22);
+}
+.brand strong {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.18rem;
+  line-height: 1.1;
+}
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.73rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--forest);
+}
+.nav-links a:hover {
+  color: var(--clay);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 13px 22px;
+  font-weight: 900;
+  font-size: 0.94rem;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--clay);
+  color: var(--white);
+  box-shadow: 0 10px 30px rgba(195, 106, 61, 0.25);
+}
+.btn-primary:hover {
+  background: var(--clay-dark);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  border-color: rgba(255, 255, 255, 0.34);
+  color: var(--white);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn-dark {
+  background: var(--forest);
+  color: var(--white);
+}
+.full {
+  width: 100%;
+  margin-top: 10px;
+}
+.hero {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(195, 106, 61, 0.20), transparent 35%),
+    linear-gradient(135deg, var(--forest-dark), var(--forest));
+  color: var(--white);
+  padding: 92px 0;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 420px;
+  gap: 56px;
+  align-items: center;
+}
+.eyebrow,
+.section-label {
+  color: var(--clay);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.hero h1,
+.section h2,
+.final-cta h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  max-width: 780px;
+}
+.hero-text {
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 650px;
+  font-size: 1.16rem;
+  margin-top: 24px;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+.trust-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.trust-row span {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+.quote-card,
+.proof-box,
+.price-card,
+.service-card,
+.visual-panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.quote-card {
+  color: var(--ink);
+  border-radius: 30px;
+  padding: 34px;
+}
+.quote-card h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.85rem;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.quote-card p {
+  color: var(--muted);
+  margin: 10px 0 24px;
+}
+.quote-steps {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.quote-steps li {
+  background: var(--stone);
+  border-radius: 18px;
+  padding: 16px;
+}
+.quote-steps strong {
+  display: block;
+  color: var(--ink);
+}
+.quote-steps span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.section {
+  padding: 84px 0;
+}
+.section h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  max-width: 850px;
+}
+.section-intro {
+  color: var(--muted);
+  max-width: 700px;
+  font-size: 1.08rem;
+  margin: 18px 0 34px;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+.service-card {
+  border-radius: 26px;
+  padding: 28px;
+  transition: 0.2s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(195, 106, 61, 0.5);
+}
+.service-card span {
+  color: var(--clay);
+  font-weight: 900;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+}
+.service-card h3,
+.proof-box h3,
+.price-card h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  margin: 12px 0 10px;
+}
+.service-card p,
+.proof-box p,
+.price-card p,
+.split p {
+  color: var(--muted);
+}
+.split-section,
+.how,
+.area {
+  background: var(--paper);
+}
+.split {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 44px;
+  align-items: center;
+}
+.check-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+.check-list li {
+  color: var(--ink);
+  font-weight: 900;
+}
+.check-list li::before {
+  content: "✓";
+  color: var(--clay);
+  margin-right: 10px;
+  font-weight: 900;
+}
+.visual-panel {
+  border-radius: 34px;
+  padding: 18px;
+}
+.photo-placeholder {
+  min-height: 340px;
+  border: 2px dashed rgba(25, 61, 52, 0.25);
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  text-align: center;
+  padding: 26px;
+  background: linear-gradient(135deg, #EEF2EC, #FFFDF8);
+  font-weight: 900;
+}
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 34px;
+}
+.steps div {
+  background: var(--stone);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 30px;
+  text-align: center;
+}
+.steps span {
+  width: 54px;
+  height: 54px;
+  background: var(--forest);
+  color: var(--white);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  font-weight: 900;
+}
+.steps h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+.steps p {
+  color: var(--muted);
+}
+.about {
+  background: var(--forest);
+  color: var(--white);
+}
+.about .section-label {
+  color: var(--sage);
+}
+.about p,
+.about .check-list li {
+  color: rgba(255, 255, 255, 0.75);
+}
+.proof-box {
+  border-radius: 30px;
+  padding: 32px;
+}
+.about .proof-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+.about .proof-box h3 {
+  color: var(--white);
+}
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+.price-card {
+  border-radius: 28px;
+  padding: 30px;
+}
+.price-card strong {
+  display: block;
+  color: var(--forest);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2rem;
+  margin: 8px 0;
+}
+.price-card.featured {
+  border-color: var(--clay);
+}
+.pricing-note {
+  margin-top: 22px;
+  background: var(--paper);
+  border-left: 5px solid var(--clay);
+  padding: 18px 20px;
+  border-radius: 16px;
+  color: var(--muted);
+  font-weight: 800;
+}
+.warning {
+  background: var(--stone);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+.chips span {
+  background: var(--stone);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 900;
+  color: var(--forest);
+}
+.final-cta {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(195, 106, 61, 0.18), transparent 30%),
+    linear-gradient(135deg, var(--forest-dark), var(--forest));
+  color: var(--white);
+  text-align: center;
+  padding: 86px 0;
+}
+.final-cta h2 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+}
+.final-cta p {
+  color: rgba(255, 255, 255, 0.74);
+  margin: 14px auto 28px;
+  max-width: 620px;
+}
+.final-cta .btn {
+  margin: 5px;
+}
+.footer {
+  background: var(--forest-dark);
+  color: rgba(255, 255, 255, 0.68);
+  padding: 48px 0 28px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 34px;
+}
+.footer strong {
+  display: block;
+  color: var(--white);
+  margin-bottom: 12px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.15rem;
+}
+.footer a {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 7px 0;
+}
+.footer a:hover {
+  color: var(--white);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 28px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+}
+.mobile-sticky {
+  display: none;
+}
+@media (max-width: 900px) {
+  body {
+    padding-bottom: 78px;
+  }
+  .wrap {
+    width: min(100% - 28px, 1120px);
+  }
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+  .nav {
+    min-height: 72px;
+  }
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+  .brand strong {
+    font-size: 1rem;
+  }
+  .brand small {
+    font-size: 0.65rem;
+  }
+  .hero-grid,
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .card-grid,
+  .steps,
+  .price-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding: 58px 0;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 15vw, 4.2rem);
+  }
+  .hero-text {
+    font-size: 1rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .quote-card {
+    border-radius: 24px;
+    padding: 26px;
+  }
+  .section {
+    padding: 62px 0;
+  }
+  .mobile-sticky {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--forest-dark);
+    padding: 10px 12px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.24);
+  }
+  .mobile-sticky a {
+    background: var(--clay);
+    color: var(--white);
+    text-align: center;
+    border-radius: 999px;
+    padding: 13px 10px;
+    font-weight: 900;
+  }
+  .mobile-sticky a:last-child {
+    background: var(--white);
+    color: var(--forest);
+  }
+}
+</style>
 </head>
-
 <body>
-
 <div class="topbar">
   Veteran-Owned & Indianapolis-Based · Same-Week Scheduling When Available · <a href="tel:+13179030991">Call or Text Now</a>
 </div>
-
 <header class="header">
   <div class="wrap nav">
     <a href="/" class="brand" aria-label="James Property Solutions LLC home">
@@ -139,20 +713,16 @@
         <small>Junk Removal · Cleanouts · Property Cleanup</small>
       </span>
     </a>
-
     <nav class="nav-links" aria-label="Main navigation">
-      <a href="/junk-removal-indianapolis/">Junk Removal</a>
-      <a href="/property-cleanouts-indianapolis/">Cleanouts</a>
-      <a href="/pressure-washing-indianapolis/">Pressure Washing</a>
+      <a href="#services">Services</a>
+      <a href="#cleanouts">Cleanouts</a>
       <a href="#pricing">Pricing</a>
+      <a href="#area">Service Area</a>
     </nav>
-
     <a class="btn btn-primary nav-cta" href="tel:+13179030991">Call or Text</a>
   </div>
 </header>
-
 <main>
-
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -161,35 +731,29 @@
       <p class="hero-text">
         Text a photo, get a clear quote, and let a local veteran-owned company handle the lifting, hauling, disposal, and cleanup.
       </p>
-
       <div class="hero-actions">
         <a class="btn btn-primary" href="sms:+13179030991?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text a Photo for a Quote</a>
         <a class="btn btn-secondary" href="tel:+13179030991">Call (317) 903-0991</a>
       </div>
-
       <div class="trust-row">
         <span>Veteran-Owned</span>
         <span>Upfront Quotes</span>
         <span>Indianapolis Local</span>
       </div>
     </div>
-
     <aside class="quote-card">
       <h2>Get a fast quote</h2>
       <p>Send a photo plus your ZIP code. Tell us if items are curbside, inside, upstairs, basement, garage, or outside.</p>
-
-      <ol class="quote-steps">
-        <li><strong>1. Send photos</strong><span>Show the items or area.</span></li>
-        <li><strong>2. Get a clear quote</strong><span>Price confirmed before work starts.</span></li>
-        <li><strong>3. We haul it away</strong><span>You point. We load. It is gone.</span></li>
-      </ol>
-
+      <ul class="quote-steps">
+        <li><strong>Send photos</strong><span>Show the items or area.</span></li>
+        <li><strong>Get a clear quote</strong><span>Price confirmed before work starts.</span></li>
+        <li><strong>We haul it away</strong><span>You point. We load. It is gone.</span></li>
+      </ul>
       <a class="btn btn-primary full" href="sms:+13179030991?body=Hi%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text Photos Now</a>
       <a class="btn btn-dark full" href="mailto:contact@jamespropertysolution.com?subject=Junk%20Removal%20Quote%20Request">Email Quote Request</a>
     </aside>
   </div>
 </section>
-
 <section class="section services" id="services">
   <div class="wrap">
     <p class="section-label">Services</p>
@@ -197,39 +761,33 @@
     <p class="section-intro">
       Built for homeowners, renters, landlords, investors, and property managers who need the job handled clearly and quickly.
     </p>
-
     <div class="card-grid">
-      <a class="service-card" href="/junk-removal-indianapolis/">
+      <a class="service-card" href="#contact">
         <span>01</span>
         <h3>Junk Removal</h3>
         <p>Household junk, garage clutter, unwanted items, and bulky debris removed from your property.</p>
       </a>
-
-      <a class="service-card" href="/property-cleanouts-indianapolis/">
+      <a class="service-card" href="#cleanouts">
         <span>02</span>
         <h3>Property Cleanouts</h3>
         <p>Move-out, rental, estate, storage, garage, basement, and turnover cleanouts.</p>
       </a>
-
-      <a class="service-card" href="/furniture-removal-indianapolis/">
+      <a class="service-card" href="#contact">
         <span>03</span>
         <h3>Furniture Removal</h3>
         <p>Couches, mattresses, recliners, desks, dressers, tables, and other bulky items.</p>
       </a>
-
-      <a class="service-card" href="/appliance-removal-indianapolis/">
+      <a class="service-card" href="#contact">
         <span>04</span>
         <h3>Appliance Removal</h3>
         <p>Washers, dryers, stoves, water heaters, and large appliances with quote-first pricing.</p>
       </a>
-
-      <a class="service-card" href="/yard-debris-removal-indianapolis/">
+      <a class="service-card" href="#contact">
         <span>05</span>
         <h3>Yard Debris Removal</h3>
         <p>Branches, brush, storm debris, outdoor clutter, and landscaping waste.</p>
       </a>
-
-      <a class="service-card" href="/pressure-washing-indianapolis/">
+      <a class="service-card" href="#contact">
         <span>06</span>
         <h3>Pressure Washing</h3>
         <p>Driveways, sidewalks, patios, entryways, siding, and exterior surface cleaning.</p>
@@ -237,8 +795,7 @@
     </div>
   </div>
 </section>
-
-<section class="section split-section">
+<section class="section split-section" id="cleanouts">
   <div class="wrap split">
     <div>
       <p class="section-label">For Property Managers & Investors</p>
@@ -254,7 +811,6 @@
         <li>Pressure washing add-ons</li>
       </ul>
     </div>
-
     <div class="visual-panel">
       <div class="photo-placeholder">
         Add a real before/after property photo here.
@@ -262,12 +818,10 @@
     </div>
   </div>
 </section>
-
 <section class="section how">
   <div class="wrap">
     <p class="section-label center">How It Works</p>
     <h2 class="center">Simple, direct, and quote-first.</h2>
-
     <div class="steps">
       <div>
         <span>1</span>
@@ -287,7 +841,6 @@
     </div>
   </div>
 </section>
-
 <section class="section about">
   <div class="wrap split">
     <div>
@@ -300,7 +853,6 @@
         No call center. No middleman. No vague pricing games. If I can do the job, I will quote it clearly. If I cannot, I will tell you upfront.
       </p>
     </div>
-
     <div class="proof-box">
       <h3>Why customers call us</h3>
       <ul class="check-list">
@@ -313,7 +865,6 @@
     </div>
   </div>
 </section>
-
 <section class="section pricing" id="pricing">
   <div class="wrap">
     <p class="section-label">Pricing</p>
@@ -321,33 +872,28 @@
     <p class="section-intro">
       Pricing depends on load size, item weight, stairs, access, disposal fees, and whether items are curbside or inside.
     </p>
-
     <div class="price-grid">
       <div class="price-card">
         <h3>Single Item</h3>
         <strong>$75 – $150</strong>
         <p>Best for curbside or easy-access pickups.</p>
       </div>
-
       <div class="price-card featured">
         <h3>Partial Load</h3>
         <strong>$175 – $350</strong>
         <p>Best for several items, garage clearing, or small cleanouts.</p>
       </div>
-
       <div class="price-card">
         <h3>Full Load / Cleanout</h3>
         <strong>$400+</strong>
         <p>Best for rental turns, estate cleanouts, and larger property jobs.</p>
       </div>
     </div>
-
     <p class="pricing-note">
       Heavy items, stairs, long carries, appliances, disposal fees, and hazardous or restricted materials may affect the final quote.
     </p>
   </div>
 </section>
-
 <section class="section warning">
   <div class="wrap split">
     <div>
@@ -357,7 +903,6 @@
         We handle most household junk, cleanout debris, furniture, appliances, yard debris, and outdoor clutter. Some items require special disposal or cannot be accepted.
       </p>
     </div>
-
     <div class="proof-box">
       <h3>Items we do not take</h3>
       <ul class="check-list">
@@ -371,15 +916,13 @@
     </div>
   </div>
 </section>
-
-<section class="section area">
+<section class="section area" id="area">
   <div class="wrap">
     <p class="section-label">Service Area</p>
     <h2>Serving Indianapolis and nearby communities.</h2>
     <p class="section-intro">
       Based near the 46254 ZIP code. Serving Indianapolis, Marion County, and nearby communities depending on distance, schedule, and job size.
     </p>
-
     <div class="chips">
       <span>Indianapolis</span>
       <span>Speedway</span>
@@ -396,8 +939,7 @@
     </div>
   </div>
 </section>
-
-<section class="final-cta">
+<section class="final-cta" id="contact">
   <div class="wrap">
     <h2>Ready to clear it out?</h2>
     <p>Text a photo, your ZIP code, and whether the items are curbside or inside.</p>
@@ -405,9 +947,7 @@
     <a class="btn btn-secondary" href="tel:+13179030991">Call (317) 903-0991</a>
   </div>
 </section>
-
 </main>
-
 <footer class="footer">
   <div class="wrap footer-grid">
     <div>
@@ -415,17 +955,15 @@
       <p>Veteran-owned junk removal and property cleanout services in Indianapolis.</p>
       <p><a href="mailto:contact@jamespropertysolution.com">contact@jamespropertysolution.com</a></p>
     </div>
-
     <div>
       <strong>Services</strong>
-      <a href="/junk-removal-indianapolis/">Junk Removal</a>
-      <a href="/property-cleanouts-indianapolis/">Property Cleanouts</a>
-      <a href="/furniture-removal-indianapolis/">Furniture Removal</a>
-      <a href="/appliance-removal-indianapolis/">Appliance Removal</a>
-      <a href="/yard-debris-removal-indianapolis/">Yard Debris</a>
-      <a href="/pressure-washing-indianapolis/">Pressure Washing</a>
+      <a href="#services">Junk Removal</a>
+      <a href="#cleanouts">Property Cleanouts</a>
+      <a href="#services">Furniture Removal</a>
+      <a href="#services">Appliance Removal</a>
+      <a href="#services">Yard Debris</a>
+      <a href="#services">Pressure Washing</a>
     </div>
-
     <div>
       <strong>Contact</strong>
       <a href="tel:+13179030991">(317) 903-0991</a>
@@ -433,17 +971,14 @@
       <a href="mailto:contact@jamespropertysolution.com">Email Us</a>
     </div>
   </div>
-
   <div class="wrap footer-bottom">
     <span>&copy; 2026 James Property Solutions LLC. All rights reserved.</span>
     <span>Indianapolis, IN 46254</span>
   </div>
 </footer>
-
 <div class="mobile-sticky">
   <a href="sms:+13179030991?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text Photo</a>
   <a href="tel:+13179030991">Call Now</a>
 </div>
-
 </body>
 </html>
