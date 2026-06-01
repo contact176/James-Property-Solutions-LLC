@@ -500,6 +500,15 @@ a {
   font-weight: 700;
   margin-right: 8px;
 }
+.service-link {
+  margin-top: 12px;
+  font-size: 0.88rem;
+}
+.service-link a {
+  color: var(--marine);
+  text-decoration: underline;
+  font-weight: 700;
+}
 .split {
   margin-top: 24px;
   display: grid;
@@ -560,7 +569,8 @@ a {
   flex-wrap: wrap;
   gap: 8px;
 }
-.chips span {
+.chips span,
+.chips a {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--paper);
@@ -568,6 +578,9 @@ a {
   font-size: 0.84rem;
   color: var(--marine);
   font-weight: 700;
+}
+.chips a:hover {
+  background: var(--mist);
 }
 .market-card .btn {
   margin-top: 10px;
@@ -708,6 +721,7 @@ a {
       <a href="#cleanouts">How It Works</a>
       <a href="#pricing">Pricing</a>
       <a href="#area">Service Area</a>
+      <a href="#local-markets">Nearby Markets</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn-primary nav-cta" href="tel:+14633249549" data-placement="header-nav">Call or Text</a>
@@ -811,6 +825,7 @@ a {
             <li>Appliances</li>
             <li>Garage and basement clutter</li>
           </ul>
+          <p class="service-link"><a href="#local-markets">See nearby market routes</a></p>
         </article>
         <article class="card">
           <h3>Property Cleanouts</h3>
@@ -819,6 +834,7 @@ a {
             <li>Rental turnover debris</li>
             <li>Multi-room cleanout scope</li>
           </ul>
+          <p class="service-link"><a href="#local-markets">See nearby market routes</a></p>
         </article>
         <article class="card">
           <h3>Exterior and Add-On Work</h3>
@@ -827,6 +843,7 @@ a {
             <li>Curbside overflow</li>
             <li>Pressure washing add-on when quoted</li>
           </ul>
+          <p class="service-link"><a href="#local-markets">See nearby market routes</a></p>
         </article>
       </div>
     </div>
@@ -895,13 +912,13 @@ a {
       <h2>Indianapolis first, nearby markets on route.</h2>
       <p class="section-intro">Core coverage includes Indianapolis and Marion County, with nearby communities scheduled by route timing and project scope.</p>
       <div class="chips">
-        <span>Indianapolis</span>
-        <span>Marion County</span>
-        <span>Speedway</span>
-        <span>Brownsburg</span>
-        <span>Avon</span>
-        <span>Carmel</span>
-        <span>Greenwood</span>
+        <a href="#local-markets">Indianapolis</a>
+        <a href="#local-markets">Marion County</a>
+        <a href="#market-speedway">Speedway</a>
+        <a href="#market-brownsburg">Brownsburg</a>
+        <a href="#market-avon">Avon</a>
+        <a href="#market-carmel">Carmel</a>
+        <a href="#market-greenwood">Greenwood</a>
       </div>
     </div>
   </section>
@@ -912,31 +929,31 @@ a {
       <div class="market-grid">
         <article class="card market-card" id="market-speedway">
           <h3>Speedway</h3>
-          <p>Typical jobs: garage cleanouts and move-out debris. Share parking notes for faster routing.</p>
+          <p>Best for homeowners and renters needing fast garage cleanouts or move-out debris pickup. Share parking notes for faster routing.</p>
           <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Speedway%20junk%20removal%20quote." data-placement="market-speedway-primary">Text for Speedway Quote</a>
           <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-speedway-secondary">Call About Speedway Service</a>
         </article>
         <article class="card market-card" id="market-brownsburg">
           <h3>Brownsburg</h3>
-          <p>Typical jobs: estate cleanouts and full-load turnover projects. Include room count and access details.</p>
+          <p>Best for landlords, investors, and estate coordinators handling full-load turnover cleanouts. Include room count and access details.</p>
           <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Brownsburg%20cleanout%20quote." data-placement="market-brownsburg-primary">Text for Brownsburg Quote</a>
           <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-brownsburg-secondary">Call About Brownsburg Service</a>
         </article>
         <article class="card market-card" id="market-avon">
           <h3>Avon</h3>
-          <p>Typical jobs: furniture and appliance pickup. Note curbside versus inside placement to speed scheduling.</p>
+          <p>Best for homeowners needing furniture and appliance removal with clear pickup logistics. Note curbside versus inside placement to speed scheduling.</p>
           <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20an%20Avon%20junk%20removal%20quote." data-placement="market-avon-primary">Text for Avon Quote</a>
           <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-avon-secondary">Call About Avon Service</a>
         </article>
         <article class="card market-card" id="market-carmel">
           <h3>Carmel</h3>
-          <p>Typical jobs: move-out cleanup and listing prep. Building access details help hold time windows.</p>
+          <p>Best for sellers, agents, and move-out projects needing listing-prep cleanup. Building access details help hold time windows.</p>
           <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Carmel%20cleanout%20quote." data-placement="market-carmel-primary">Text for Carmel Quote</a>
           <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-carmel-secondary">Call About Carmel Service</a>
         </article>
         <article class="card market-card" id="market-greenwood">
           <h3>Greenwood</h3>
-          <p>Typical jobs: basement cleanouts and post-project debris. Include timing constraints for route matching.</p>
+          <p>Best for families and property managers with basement cleanouts or post-project debris. Include timing constraints for route matching.</p>
           <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Greenwood%20junk%20removal%20quote." data-placement="market-greenwood-primary">Text for Greenwood Quote</a>
           <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-greenwood-secondary">Call About Greenwood Service</a>
         </article>
