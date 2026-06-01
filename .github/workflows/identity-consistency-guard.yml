@@ -1,0 +1,22 @@
+name: Identity Consistency Guard
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  identity-consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run identity consistency guard
+        run: node scripts/identity-consistency-guard.mjs
