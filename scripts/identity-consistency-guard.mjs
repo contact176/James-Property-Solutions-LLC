@@ -2,6 +2,9 @@
 import { readFile } from "node:fs/promises";
 
 const STRICT_MODE = process.argv.includes("--strict");
+const LOCAL_ONLY_MODE =
+  process.argv.includes("--local-only") ||
+  process.env.IDENTITY_GUARD_SKIP_LIVE === "1";
 
 const EXPECTED = {
   businessName: "James Property Solutions LLC",
@@ -268,19 +271,21 @@ async function main() {
   errors.push(...validateSignals("local:index.html", localSignals));
 
   const liveResults = [];
-  for (const url of EXPECTED.urls) {
-    try {
-      const live = await fetchLiveWithRetry(url);
-      const signals = collectSignals(live.html);
-      liveResults.push({ url, signals, live });
-      errors.push(...validateSignals(`live:${url}`, signals));
-      if (STRICT_MODE && live.finalStatus !== 200) {
-        errors.push(
-          `[live:${url}] Strict mode requires HTTP 200 final status, got ${live.finalStatus}`
-        );
+  if (!LOCAL_ONLY_MODE) {
+    for (const url of EXPECTED.urls) {
+      try {
+        const live = await fetchLiveWithRetry(url);
+        const signals = collectSignals(live.html);
+        liveResults.push({ url, signals, live });
+        errors.push(...validateSignals(`live:${url}`, signals));
+        if (STRICT_MODE && live.finalStatus !== 200) {
+          errors.push(
+            `[live:${url}] Strict mode requires HTTP 200 final status, got ${live.finalStatus}`
+          );
+        }
+      } catch (error) {
+        errors.push(`[live:${url}] Fetch failed: ${error.message}`);
       }
-    } catch (error) {
-      errors.push(`[live:${url}] Fetch failed: ${error.message}`);
     }
   }
 
@@ -322,9 +327,16 @@ async function main() {
   console.log(`- Canonical phone: ${EXPECTED.canonicalPhone}`);
   console.log(`- Visible phone: ${EXPECTED.visiblePhone}`);
   console.log(`- Mailto: ${EXPECTED.mailto}`);
-  console.log(`- Mode: ${STRICT_MODE ? "strict" : "default"}`);
+  const modeName = `${STRICT_MODE ? "strict" : "default"}${
+    LOCAL_ONLY_MODE ? "+local-only" : ""
+  }`;
+  console.log(`- Mode: ${modeName}`);
   console.log(`- Checked local file: index.html`);
-  console.log(`- Checked live URLs: ${EXPECTED.urls.join(", ")}`);
+  if (LOCAL_ONLY_MODE) {
+    console.log(`- Live URL checks: skipped`);
+  } else {
+    console.log(`- Checked live URLs: ${EXPECTED.urls.join(", ")}`);
+  }
 }
 
 await main();

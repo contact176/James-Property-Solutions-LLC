@@ -19,4 +19,4 @@ jobs:
           node-version: "20"
 
       - name: Run identity consistency guard
-        run: node scripts/identity-consistency-guard.mjs
+        run: node scripts/identity-consistency-guard.mjs --strict --local-only
