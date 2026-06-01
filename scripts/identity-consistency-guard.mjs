@@ -234,6 +234,25 @@ async function fetchLive(url) {
   throw new Error(`Too many redirects (>${maxRedirects})`);
 }
 
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchLiveWithRetry(url, attempts = 3) {
+  let lastError = null;
+  for (let i = 1; i <= attempts; i += 1) {
+    try {
+      return await fetchLive(url);
+    } catch (error) {
+      lastError = error;
+      if (i < attempts) {
+        await delay(500 * i);
+      }
+    }
+  }
+  throw lastError;
+}
+
 async function main() {
   const errors = [];
 
@@ -251,7 +270,7 @@ async function main() {
   const liveResults = [];
   for (const url of EXPECTED.urls) {
     try {
-      const live = await fetchLive(url);
+      const live = await fetchLiveWithRetry(url);
       const signals = collectSignals(live.html);
       liveResults.push({ url, signals, live });
       errors.push(...validateSignals(`live:${url}`, signals));
