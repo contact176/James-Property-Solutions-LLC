@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Indianapolis Junk Removal & Property Cleanouts | James Property Solutions LLC</title>
-<meta name="description" content="Veteran-owned Indianapolis service-area junk removal and property cleanout services. Text photos for a fast quote. Furniture, appliances, yard debris, and garage cleanouts.">
+<meta name="description" content="Veteran-owned Indianapolis and Marion County service-area junk removal and property cleanout services. Text photos for a fast quote, get clear next steps, and schedule reliable removal.">
 <link rel="canonical" href="https://jamespropertysolution.com/">
 <meta property="og:title" content="Indianapolis Junk Removal & Property Cleanouts | James Property Solutions LLC">
-<meta property="og:description" content="Text a photo. Get a clear quote. We show up, load it, and leave the space clean. Veteran-owned and Indianapolis-based.">
+<meta property="og:description" content="Text photos for a fast quote. Clear pricing expectations, reliable scheduling, and professional junk removal and cleanouts across Indianapolis and Marion County.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jamespropertysolution.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
   "url": "https://jamespropertysolution.com/",
   "telephone": "+14633249549",
   "email": "contact@jamespropertysolution.com",
-  "description": "Veteran-owned Indianapolis service-area junk removal and property cleanout services. Pressure washing add-on available when quoted.",
+  "description": "Veteran-owned service-area junk removal and property cleanout services across Indianapolis and Marion County. Pressure washing add-on available when quoted.",
   "priceRange": "$75+",
   "founder": {
     "@type": "Person",
@@ -108,7 +108,51 @@
         }
       }
     ]
+  },
+  "serviceArea": {
+    "@type": "AdministrativeArea",
+    "name": "Marion County, Indiana"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does pricing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pricing is based on load size, item weight, access, stairs, and disposal conditions. You receive a clear quote based on photos and job details before work starts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do quotes work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Text photos, your ZIP code, and access details. You receive quote details and next-step options by text or phone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "James Property Solutions LLC serves Indianapolis, Marion County, and nearby communities based on schedule and job type."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you handle large items and cleanout projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Typical projects include furniture removal, appliance removal, garage cleanouts, move-out cleanouts, and property turnover jobs."
+      }
+    }
+  ]
 }
 </script>
 <style>
@@ -441,6 +485,9 @@ a {
   gap: 22px;
   margin-top: 34px;
 }
+.steps.five {
+  grid-template-columns: repeat(5, 1fr);
+}
 .steps div {
   background: var(--stone);
   border: 1px solid var(--line);
@@ -486,6 +533,20 @@ a {
 .proof-box {
   border-radius: 30px;
   padding: 32px;
+}
+.faq-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.faq-item h3 {
+  font-size: 1.05rem;
+  color: var(--forest-dark);
+}
+.faq-item p {
+  margin-top: 8px;
+  color: var(--muted);
 }
 .about .proof-box {
   background: rgba(255, 255, 255, 0.08);
@@ -636,8 +697,10 @@ a {
   }
   .card-grid,
   .steps,
+  .steps.five,
   .price-grid,
-  .footer-grid {
+  .footer-grid,
+  .faq-grid {
     grid-template-columns: 1fr;
   }
   .hero {
@@ -677,6 +740,7 @@ a {
     color: var(--white);
     text-align: center;
     border-radius: 999px;
+    min-height: 50px;
     padding: 13px 10px;
     font-weight: 900;
   }
@@ -725,7 +789,7 @@ a {
       <div class="trust-row">
         <span>Veteran-Owned</span>
         <span>Upfront Quotes</span>
-        <span>Indianapolis Local</span>
+        <span>Indianapolis & Marion County</span>
       </div>
     </div>
     <aside class="quote-card">
@@ -735,7 +799,7 @@ a {
       <ul class="quote-steps">
         <li><strong>Send photos</strong><span>Show the items or area.</span></li>
         <li><strong>Get a clear quote</strong><span>Quote based on photos and job details.</span></li>
-        <li><strong>We haul it away</strong><span>You point. We load. It is gone.</span></li>
+        <li><strong>Know what happens next</strong><span>You get response and scheduling expectations before booking.</span></li>
       </ul>
       <a class="btn btn-primary full" href="sms:+14633249549?body=Hi%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text Photos Now</a>
       <a class="btn btn-dark full" href="mailto:contact@jamespropertysolution.com?subject=Junk%20Removal%20Quote%20Request">Email Quote Request</a>
@@ -827,8 +891,11 @@ a {
 <section class="section how">
   <div class="wrap">
     <p class="section-label center">How It Works</p>
-    <h2 class="center">Simple, direct, and quote-first.</h2>
-    <div class="steps">
+    <h2 class="center">Simple process from first text to clean property.</h2>
+    <p class="section-intro center">
+      Most customers start by text. You get clear next steps so you can decide if timing and scope fit your project.
+    </p>
+    <div class="steps five">
       <div>
         <span>1</span>
         <h3>Text Photos</h3>
@@ -836,14 +903,47 @@ a {
       </div>
       <div>
         <span>2</span>
-        <h3>Approve Quote</h3>
-        <p>You get a clear price before work starts.</p>
+        <h3>Receive Quote</h3>
+        <p>You get a clear quote based on the job details provided.</p>
       </div>
       <div>
         <span>3</span>
-        <h3>We Haul</h3>
-        <p>We load, haul, dispose, and do basic cleanup.</p>
+        <h3>Schedule Service</h3>
+        <p>Choose a time window that works for your property and access needs.</p>
       </div>
+      <div>
+        <span>4</span>
+        <h3>Items Removed</h3>
+        <p>We load and remove the agreed items from the location.</p>
+      </div>
+      <div>
+        <span>5</span>
+        <h3>Property Left Clean</h3>
+        <p>We complete basic sweep-up so the space is ready for what comes next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap warning-grid">
+    <div>
+      <p class="section-label">Service Expectations</p>
+      <h2>What to expect after you request a quote.</h2>
+      <p>
+        After you text photos, you receive quote details and scheduling options based on workload and route planning. Response speed can vary by time of day, job complexity, and current service volume.
+      </p>
+      <p>
+        For cleanouts, include room count, item volume, and access notes up front. Better details help improve quote accuracy and reduce scheduling friction.
+      </p>
+    </div>
+    <div class="proof-box">
+      <h3>Best-fit customers</h3>
+      <ul class="check-list">
+        <li>Homeowners and renters with bulky-item removal needs</li>
+        <li>Landlords and investors handling move-out and turnover cleanouts</li>
+        <li>Property managers coordinating multi-room or multi-item projects</li>
+        <li>Customers who can text photos and access details upfront</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -951,12 +1051,63 @@ a {
     </div>
   </div>
 </section>
+<section class="section" id="faq">
+  <div class="wrap">
+    <p class="section-label">FAQ</p>
+    <h2>Common questions before booking junk removal or cleanout service.</h2>
+    <div class="faq-grid">
+      <article class="service-card faq-item">
+        <h3>How does pricing work?</h3>
+        <p>Pricing depends on load size, item weight, access, stairs, and disposal conditions. You receive a clear quote before work starts.</p>
+      </article>
+      <article class="service-card faq-item">
+        <h3>How do quotes work?</h3>
+        <p>Text photos, ZIP code, and location details. You receive quote details and next-step options by text or phone.</p>
+      </article>
+      <article class="service-card faq-item">
+        <h3>Do you serve all of Marion County?</h3>
+        <p>Indianapolis and Marion County are core service areas. Nearby communities are scheduled based on distance, timing, and project scope.</p>
+      </article>
+      <article class="service-card faq-item">
+        <h3>Can you remove large or heavy items?</h3>
+        <p>Yes. Furniture, appliances, and multi-item cleanout projects are common. Include photos and access notes for the most accurate quote.</p>
+      </article>
+      <article class="service-card faq-item">
+        <h3>Do you handle cleanout projects for rentals and turnovers?</h3>
+        <p>Yes. Rental cleanouts, move-out debris, and property turnover projects are part of core service offerings.</p>
+      </article>
+      <article class="service-card faq-item">
+        <h3>What happens after I approve a quote?</h3>
+        <p>You receive scheduling coordination, service details, and arrival expectations based on the confirmed job scope.</p>
+      </article>
+    </div>
+  </div>
+</section>
 <section class="final-cta" id="contact">
   <div class="wrap">
     <h2>Ready to clear it out?</h2>
     <p>Text a photo, your ZIP code, and whether the items are curbside or inside.</p>
     <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text a Photo Now</a>
     <a class="btn btn-secondary" href="tel:+14633249549">Call (463) 324-9549</a>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap warning-grid">
+    <div>
+      <p class="section-label">Customer Feedback</p>
+      <h2>Your feedback helps improve local service quality.</h2>
+      <p>
+        We appreciate feedback from our customers and encourage honest reviews based on your experience.
+      </p>
+    </div>
+    <div class="proof-box">
+      <h3>After service</h3>
+      <ul class="check-list">
+        <li>Share what went well and what could improve</li>
+        <li>Mention job type and service area for useful context</li>
+        <li>Provide accurate details that help future local customers</li>
+      </ul>
+    </div>
   </div>
 </section>
 </main>
