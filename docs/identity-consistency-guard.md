@@ -13,10 +13,15 @@ Use this guard before finalizing contact/SEO/schema edits.
 - Live identity signals match between:
   - `https://jamespropertysolution.com/`
   - `https://www.jamespropertysolution.com/`
+- In `--strict` mode:
+  - `canonical` and `og:url` both exist and match
+  - each live URL must end with HTTP `200`
+  - redirect chains for `www` and non-`www` must match exactly (status + location sequence)
 
 ## Run
 ```powershell
 node .\scripts\identity-consistency-guard.mjs
+node .\scripts\identity-consistency-guard.mjs --strict
 ```
 
 ## Result Behavior
@@ -27,4 +32,5 @@ node .\scripts\identity-consistency-guard.mjs
 ```powershell
 git diff -- index.html
 node .\scripts\identity-consistency-guard.mjs
+node .\scripts\identity-consistency-guard.mjs --strict
 ```

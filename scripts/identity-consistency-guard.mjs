@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { readFile } from "node:fs/promises";
 
+const STRICT_MODE = process.argv.includes("--strict");
+
 const EXPECTED = {
   businessName: "James Property Solutions LLC",
   visiblePhone: "(463) 324-9549",
@@ -26,10 +28,38 @@ function extractTargets(html, scheme) {
   return matches.map((target) => target.split("?")[0]);
 }
 
+function extractCanonicalUrl(html) {
+  const match = html.match(
+    /<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/i
+  );
+  return match ? match[1].trim() : null;
+}
+
+function extractOgUrl(html) {
+  const match = html.match(
+    /<meta[^>]+property=["']og:url["'][^>]*content=["']([^"']+)["'][^>]*>/i
+  );
+  return match ? match[1].trim() : null;
+}
+
+function normalizeUrlForCompare(url) {
+  if (!url) return null;
+  try {
+    const u = new URL(url);
+    const pathname = u.pathname || "/";
+    const normalizedPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
+    return `${u.protocol}//${u.host}${normalizedPath}${u.search}${u.hash}`;
+  } catch {
+    return String(url).trim();
+  }
+}
+
 function collectSignals(html) {
   const telTargets = extractTargets(html, "tel");
   const smsTargets = extractTargets(html, "sms");
   const mailtoTargets = extractTargets(html, "mailto").map((s) => s.toLowerCase());
+  const canonicalUrl = extractCanonicalUrl(html);
+  const ogUrl = extractOgUrl(html);
 
   const oldPhoneHits = OLD_PHONE_PATTERNS.map((pattern) => {
     const hits = html.match(pattern);
@@ -45,6 +75,8 @@ function collectSignals(html) {
     telTargets,
     smsTargets,
     mailtoTargets,
+    canonicalUrl,
+    ogUrl,
     oldPhoneHits,
     nonLlcNameHits: nonLlcNameHits.length,
   };
@@ -107,6 +139,22 @@ function validateSignals(label, signals) {
     }
   }
 
+  if (STRICT_MODE) {
+    if (!signals.canonicalUrl) {
+      errors.push(`[${label}] Missing canonical URL link`);
+    }
+    if (!signals.ogUrl) {
+      errors.push(`[${label}] Missing og:url meta tag`);
+    }
+    const canonicalNormalized = normalizeUrlForCompare(signals.canonicalUrl);
+    const ogNormalized = normalizeUrlForCompare(signals.ogUrl);
+    if (canonicalNormalized && ogNormalized && canonicalNormalized !== ogNormalized) {
+      errors.push(
+        `[${label}] canonical/og:url mismatch: canonical="${signals.canonicalUrl}" og:url="${signals.ogUrl}"`
+      );
+    }
+  }
+
   return errors;
 }
 
@@ -121,12 +169,69 @@ function liveFingerprint(signals) {
   });
 }
 
-async function fetchText(url) {
-  const response = await fetch(url, { redirect: "follow" });
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} ${response.statusText}`);
+function isRedirectStatus(status) {
+  return status >= 300 && status < 400;
+}
+
+function redirectChainSignature(chain) {
+  return JSON.stringify(
+    chain.map((hop) => ({
+      status: hop.status,
+      location: hop.location ? normalizeUrlForCompare(hop.location) : null,
+    }))
+  );
+}
+
+async function fetchLive(url) {
+  if (!STRICT_MODE) {
+    const response = await fetch(url, { redirect: "follow" });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} ${response.statusText}`);
+    }
+    const html = await response.text();
+    return {
+      html,
+      finalStatus: response.status,
+      finalUrl: response.url || url,
+      redirectChain: [{ status: response.status, location: null }],
+    };
   }
-  return response.text();
+
+  const redirectChain = [];
+  const maxRedirects = 10;
+  let currentUrl = url;
+
+  for (let i = 0; i <= maxRedirects; i += 1) {
+    const response = await fetch(currentUrl, { redirect: "manual" });
+    const status = response.status;
+    const locationHeader = response.headers.get("location");
+    const nextLocation = locationHeader
+      ? new URL(locationHeader, currentUrl).toString()
+      : null;
+
+    redirectChain.push({
+      status,
+      location: nextLocation,
+    });
+
+    if (isRedirectStatus(status)) {
+      if (!nextLocation) {
+        throw new Error(`Redirect status ${status} without Location header`);
+      }
+      currentUrl = nextLocation;
+      continue;
+    }
+
+    const html = await response.text();
+    return {
+      html,
+      finalStatus: status,
+      finalUrl: currentUrl,
+      redirectChain,
+    };
+  }
+
+  throw new Error(`Too many redirects (>${maxRedirects})`);
 }
 
 async function main() {
@@ -146,10 +251,15 @@ async function main() {
   const liveResults = [];
   for (const url of EXPECTED.urls) {
     try {
-      const html = await fetchText(url);
-      const signals = collectSignals(html);
-      liveResults.push({ url, signals });
+      const live = await fetchLive(url);
+      const signals = collectSignals(live.html);
+      liveResults.push({ url, signals, live });
       errors.push(...validateSignals(`live:${url}`, signals));
+      if (STRICT_MODE && live.finalStatus !== 200) {
+        errors.push(
+          `[live:${url}] Strict mode requires HTTP 200 final status, got ${live.finalStatus}`
+        );
+      }
     } catch (error) {
       errors.push(`[live:${url}] Fetch failed: ${error.message}`);
     }
@@ -166,6 +276,18 @@ async function main() {
       errors.push(`[live] ${a.url} fingerprint: ${fpA}`);
       errors.push(`[live] ${b.url} fingerprint: ${fpB}`);
     }
+
+    if (STRICT_MODE) {
+      const chainA = redirectChainSignature(a.live.redirectChain);
+      const chainB = redirectChainSignature(b.live.redirectChain);
+      if (chainA !== chainB) {
+        errors.push(
+          `[live] Redirect chain mismatch between domains: ${a.url} vs ${b.url}`
+        );
+        errors.push(`[live] ${a.url} redirect chain: ${chainA}`);
+        errors.push(`[live] ${b.url} redirect chain: ${chainB}`);
+      }
+    }
   }
 
   if (errors.length > 0) {
@@ -181,6 +303,7 @@ async function main() {
   console.log(`- Canonical phone: ${EXPECTED.canonicalPhone}`);
   console.log(`- Visible phone: ${EXPECTED.visiblePhone}`);
   console.log(`- Mailto: ${EXPECTED.mailto}`);
+  console.log(`- Mode: ${STRICT_MODE ? "strict" : "default"}`);
   console.log(`- Checked local file: index.html`);
   console.log(`- Checked live URLs: ${EXPECTED.urls.join(", ")}`);
 }
