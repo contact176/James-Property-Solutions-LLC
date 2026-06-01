@@ -186,8 +186,21 @@ function redirectChainSignature(chain) {
 }
 
 async function fetchLive(url) {
+  const requestHeaders = {
+    "user-agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+    accept:
+      "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "accept-language": "en-US,en;q=0.9",
+    "cache-control": "no-cache",
+    pragma: "no-cache",
+  };
+
   if (!STRICT_MODE) {
-    const response = await fetch(url, { redirect: "follow" });
+    const response = await fetch(url, {
+      redirect: "follow",
+      headers: requestHeaders,
+    });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status} ${response.statusText}`);
     }
@@ -205,7 +218,10 @@ async function fetchLive(url) {
   let currentUrl = url;
 
   for (let i = 0; i <= maxRedirects; i += 1) {
-    const response = await fetch(currentUrl, { redirect: "manual" });
+    const response = await fetch(currentUrl, {
+      redirect: "manual",
+      headers: requestHeaders,
+    });
     const status = response.status;
     const locationHeader = response.headers.get("location");
     const nextLocation = locationHeader
