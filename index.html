@@ -151,6 +151,22 @@
         "@type": "Answer",
         "text": "Yes. Typical projects include furniture removal, appliance removal, garage cleanouts, move-out cleanouts, and property turnover jobs."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you serve nearby markets like Speedway, Brownsburg, Avon, Carmel, and Greenwood?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Indianapolis and Marion County are the core service area, with nearby communities scheduled based on route timing, project size, and access details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are items handled after pickup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Items are sorted by condition and local disposal requirements. Reusable items may be directed to donation channels when accepted, and recyclable materials are separated when facilities allow."
+      }
     }
   ]
 }
@@ -608,6 +624,78 @@ a {
   font-weight: 900;
   color: var(--forest);
 }
+.inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.inline-links a {
+  color: var(--forest);
+  font-weight: 800;
+  text-decoration: underline;
+}
+.result-grid,
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+}
+.result-card,
+.market-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.result-card h3,
+.market-card h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.media-placeholder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0 16px;
+}
+.media-placeholder div {
+  border: 1px dashed var(--moss);
+  border-radius: 14px;
+  background: var(--stone);
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.84rem;
+  font-weight: 800;
+  padding: 18px 10px;
+}
+.result-meta {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.result-meta li {
+  color: var(--muted);
+}
+.result-meta strong {
+  color: var(--ink);
+}
+.placeholder-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.market-card p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+.market-card .btn {
+  margin-top: 14px;
+}
 .final-cta {
   background:
     radial-gradient(circle at 15% 20%, rgba(195, 106, 61, 0.18), transparent 30%),
@@ -700,7 +788,9 @@ a {
   .steps.five,
   .price-grid,
   .footer-grid,
-  .faq-grid {
+  .faq-grid,
+  .result-grid,
+  .market-grid {
     grid-template-columns: 1fr;
   }
   .hero {
@@ -753,7 +843,7 @@ a {
 </head>
 <body>
 <div class="topbar">
-  Veteran-Owned & Indianapolis-Based · Same-Week Scheduling When Available · <a href="tel:+14633249549">Call or Text Now</a>
+  Veteran-Owned & Indianapolis-Based · Same-Week Scheduling When Available · <a href="tel:+14633249549" data-placement="topbar">Call or Text Now</a>
 </div>
 <header class="header">
   <div class="wrap nav">
@@ -769,8 +859,9 @@ a {
       <a href="#cleanouts">Cleanouts</a>
       <a href="#pricing">Pricing</a>
       <a href="#area">Service Area</a>
+      <a href="#local-markets">Local Markets</a>
     </nav>
-    <a class="btn btn-primary nav-cta" href="tel:+14633249549">Call or Text</a>
+    <a class="btn btn-primary nav-cta" href="tel:+14633249549" data-placement="header-nav">Call or Text</a>
   </div>
 </header>
 <main>
@@ -783,8 +874,8 @@ a {
         Text a photo, get a clear quote, and let a local veteran-owned company handle the lifting, hauling, disposal, and cleanup.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text a Photo for a Quote</a>
-        <a class="btn btn-secondary" href="tel:+14633249549">Call (463) 324-9549</a>
+        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="hero-primary">Text a Photo for a Quote</a>
+        <a class="btn btn-secondary" href="tel:+14633249549" data-placement="hero-secondary">Call (463) 324-9549</a>
       </div>
       <div class="trust-row">
         <span>Veteran-Owned</span>
@@ -801,8 +892,8 @@ a {
         <li><strong>Get a clear quote</strong><span>Quote based on photos and job details.</span></li>
         <li><strong>Know what happens next</strong><span>You get response and scheduling expectations before booking.</span></li>
       </ul>
-      <a class="btn btn-primary full" href="sms:+14633249549?body=Hi%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text Photos Now</a>
-      <a class="btn btn-dark full" href="mailto:contact@jamespropertysolution.com?subject=Junk%20Removal%20Quote%20Request">Email Quote Request</a>
+      <a class="btn btn-primary full" href="sms:+14633249549?body=Hi%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="hero-quote-card-primary">Text Photos Now</a>
+      <a class="btn btn-dark full" href="mailto:contact@jamespropertysolution.com?subject=Junk%20Removal%20Quote%20Request" data-placement="hero-quote-card-secondary">Email Quote Request</a>
     </aside>
   </div>
 </section>
@@ -813,6 +904,13 @@ a {
     <p class="section-intro">
       Built for homeowners, renters, landlords, investors, and property managers who need the job handled clearly and quickly.
     </p>
+    <div class="inline-links" aria-label="Nearby market quick links">
+      <a href="#market-speedway">Speedway cleanout expectations</a>
+      <a href="#market-brownsburg">Brownsburg property jobs</a>
+      <a href="#market-avon">Avon bulky pickup guide</a>
+      <a href="#market-carmel">Carmel move-out scope</a>
+      <a href="#market-greenwood">Greenwood scheduling notes</a>
+    </div>
     <div class="card-grid">
       <a class="service-card" href="#contact">
         <span>01</span>
@@ -843,6 +941,23 @@ a {
         <span>06</span>
         <h3>Pressure Washing Add-On</h3>
         <p>Pressure washing add-on available when quoted.</p>
+      </a>
+    </div>
+    <div class="card-grid">
+      <a class="service-card" href="#market-speedway">
+        <span>Speedway</span>
+        <h3>Rental Turn & Garage Jobs</h3>
+        <p>Typical local scope and scheduling expectations for Speedway projects.</p>
+      </a>
+      <a class="service-card" href="#market-brownsburg">
+        <span>Brownsburg</span>
+        <h3>Estate & Move-Out Support</h3>
+        <p>Common job types and access planning for Brownsburg cleanouts.</p>
+      </a>
+      <a class="service-card" href="#market-avon">
+        <span>Avon</span>
+        <h3>Furniture & Appliance Removal</h3>
+        <p>Typical Avon pickup workflow for bulky items and interior carries.</p>
       </a>
     </div>
   </div>
@@ -921,6 +1036,63 @@ a {
         <h3>Property Left Clean</h3>
         <p>We complete basic sweep-up so the space is ready for what comes next.</p>
       </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="results">
+  <div class="wrap">
+    <p class="section-label">Before/After Results</p>
+    <h2>Project snapshots from Indianapolis and nearby service areas.</h2>
+    <p class="section-intro">
+      These are first-party result placeholders for upcoming customer-approved media. No stock photos, no fabricated outcomes, and no guarantee claims.
+    </p>
+    <div class="result-grid">
+      <article class="result-card">
+        <h3>Garage Cleanout Placeholder</h3>
+        <div class="media-placeholder">
+          <div>Before Media Slot</div>
+          <div>After Media Slot</div>
+        </div>
+        <ul class="result-meta">
+          <li><strong>Job type:</strong> Garage cleanout</li>
+          <li><strong>Neighborhood:</strong> Indianapolis west side</li>
+          <li><strong>Scope:</strong> Bulky items, bagged trash, general sweep-up</li>
+        </ul>
+        <p class="placeholder-note">Placeholder only. Real media and timeline notes pending customer approval.</p>
+      </article>
+      <article class="result-card">
+        <h3>Move-Out Turnover Placeholder</h3>
+        <div class="media-placeholder">
+          <div>Before Media Slot</div>
+          <div>After Media Slot</div>
+        </div>
+        <ul class="result-meta">
+          <li><strong>Job type:</strong> Rental turnover cleanout</li>
+          <li><strong>Neighborhood:</strong> Marion County service area</li>
+          <li><strong>Scope:</strong> Furniture removal, appliance pickup, debris haul-away</li>
+        </ul>
+        <p class="placeholder-note">Placeholder only. Final assets will be posted after permission and identity-safe review.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section warning">
+  <div class="wrap warning-grid">
+    <div>
+      <p class="section-label">Service Checklist</p>
+      <h2>Clear intake and on-site steps before every job.</h2>
+      <ul class="check-list">
+        <li>Confirm item photos, ZIP code, and access details before scheduling</li>
+        <li>Verify stairs, carries, and entry points before arrival</li>
+        <li>Review quoted scope with customer before loading starts</li>
+        <li>Complete sweep-up in cleared areas included in agreed scope</li>
+      </ul>
+    </div>
+    <div class="proof-box">
+      <p class="section-label">Disposal Practices</p>
+      <h3>How material handling is documented.</h3>
+      <p>Items are sorted by condition and local disposal requirements. Reusable items may be directed to donation channels when accepted. Recyclable materials are separated when facilities allow. Restricted items are declined or redirected to approved disposal options.</p>
+      <p>Final routing depends on item type, contamination, and facility availability at the time of service.</p>
     </div>
   </div>
 </section>
@@ -1049,6 +1221,64 @@ a {
       <span>Beech Grove</span>
       <span>Greenwood</span>
     </div>
+    <div class="inline-links" aria-label="Local market detail links">
+      <a href="#market-speedway">Speedway</a>
+      <a href="#market-brownsburg">Brownsburg</a>
+      <a href="#market-avon">Avon</a>
+      <a href="#market-carmel">Carmel</a>
+      <a href="#market-greenwood">Greenwood</a>
+    </div>
+  </div>
+</section>
+<section class="section" id="local-markets">
+  <div class="wrap">
+    <p class="section-label">Nearby Markets</p>
+    <h2>Local service expectations around Indianapolis and Marion County.</h2>
+    <p class="section-intro">
+      These sections explain common project types and scheduling context for nearby markets often served from the Indianapolis core route.
+    </p>
+    <div class="market-grid">
+      <article class="market-card" id="market-speedway">
+        <h3>Speedway</h3>
+        <p><strong>Typical jobs:</strong> Garage cleanouts, move-out debris, and curbside bulky pickups near older lot layouts.</p>
+        <p><strong>Who this is for:</strong> Homeowners, renters, and landlords preparing for turnover or inspections.</p>
+        <p><strong>Service expectations:</strong> Share parking/access notes and item photos to reduce scheduling friction around event traffic windows.</p>
+        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Speedway%20junk%20removal%20quote." data-placement="market-speedway-primary">Text for Speedway Quote</a>
+        <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-speedway-secondary">Call About Speedway Service</a>
+      </article>
+      <article class="market-card" id="market-brownsburg">
+        <h3>Brownsburg</h3>
+        <p><strong>Typical jobs:</strong> Estate cleanouts, furniture hauling, and full-load property reset projects.</p>
+        <p><strong>Who this is for:</strong> Families, property managers, and investors coordinating multi-room removals.</p>
+        <p><strong>Service expectations:</strong> Larger jobs are easier to quote when room count, stairs, and access constraints are sent up front.</p>
+        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Brownsburg%20cleanout%20quote." data-placement="market-brownsburg-primary">Text for Brownsburg Quote</a>
+        <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-brownsburg-secondary">Call About Brownsburg Service</a>
+      </article>
+      <article class="market-card" id="market-avon">
+        <h3>Avon</h3>
+        <p><strong>Typical jobs:</strong> Appliance removal, furniture pickup, and garage overflow cleanup.</p>
+        <p><strong>Who this is for:</strong> Homeowners and renters needing straightforward quote-first pickup support.</p>
+        <p><strong>Service expectations:</strong> Include whether items are curbside or inside so loading time and route planning can be estimated.</p>
+        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20an%20Avon%20junk%20removal%20quote." data-placement="market-avon-primary">Text for Avon Quote</a>
+        <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-avon-secondary">Call About Avon Service</a>
+      </article>
+      <article class="market-card" id="market-carmel">
+        <h3>Carmel</h3>
+        <p><strong>Typical jobs:</strong> Move-out cleanups, donation-ready item separation, and scheduled interior removals.</p>
+        <p><strong>Who this is for:</strong> Homeowners, real-estate teams, and households preparing listings or transitions.</p>
+        <p><strong>Service expectations:</strong> Building access details, loading zone rules, and item photos help keep appointment windows clear.</p>
+        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Carmel%20cleanout%20quote." data-placement="market-carmel-primary">Text for Carmel Quote</a>
+        <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-carmel-secondary">Call About Carmel Service</a>
+      </article>
+      <article class="market-card" id="market-greenwood">
+        <h3>Greenwood</h3>
+        <p><strong>Typical jobs:</strong> Basement cleanouts, bulky item haul-away, and post-renovation debris removal.</p>
+        <p><strong>Who this is for:</strong> Property owners, contractors, and landlords preparing units for next-step use.</p>
+        <p><strong>Service expectations:</strong> Job-size details and timing constraints help route assignments from Indianapolis efficiently.</p>
+        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Greenwood%20junk%20removal%20quote." data-placement="market-greenwood-primary">Text for Greenwood Quote</a>
+        <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-greenwood-secondary">Call About Greenwood Service</a>
+      </article>
+    </div>
   </div>
 </section>
 <section class="section" id="faq">
@@ -1087,8 +1317,8 @@ a {
   <div class="wrap">
     <h2>Ready to clear it out?</h2>
     <p>Text a photo, your ZIP code, and whether the items are curbside or inside.</p>
-    <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text a Photo Now</a>
-    <a class="btn btn-secondary" href="tel:+14633249549">Call (463) 324-9549</a>
+    <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="final-cta-primary">Text a Photo Now</a>
+    <a class="btn btn-secondary" href="tel:+14633249549" data-placement="final-cta-secondary">Call (463) 324-9549</a>
   </div>
 </section>
 <section class="section">
@@ -1129,9 +1359,9 @@ a {
     </div>
     <div>
       <strong>Contact</strong>
-      <a href="tel:+14633249549">(463) 324-9549</a>
-      <a href="sms:+14633249549">Text Us</a>
-      <a href="mailto:contact@jamespropertysolution.com">Email Us</a>
+      <a href="tel:+14633249549" data-placement="footer-contact-phone">(463) 324-9549</a>
+      <a href="sms:+14633249549" data-placement="footer-contact-text">Text Us</a>
+      <a href="mailto:contact@jamespropertysolution.com" data-placement="footer-contact-email">Email Us</a>
     </div>
   </div>
   <div class="wrap footer-bottom">
@@ -1140,8 +1370,63 @@ a {
   </div>
 </footer>
 <div class="mobile-sticky">
-  <a href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A">Text Photo</a>
-  <a href="tel:+14633249549">Call Now</a>
+  <a href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="mobile-sticky-primary">Text Photo</a>
+  <a href="tel:+14633249549" data-placement="mobile-sticky-secondary">Call Now</a>
 </div>
+<script>
+(() => {
+  const CTA_PATTERN = /^(sms|tel|mailto):/i;
+
+  function normalizeText(text) {
+    return (text || "").replace(/\s+/g, " ").trim();
+  }
+
+  function getSectionId(node) {
+    const section = node.closest("section[id], header[id], footer[id]");
+    return section ? section.id : "global";
+  }
+
+  function getPlacement(node, sectionId) {
+    if (node.dataset.placement) return node.dataset.placement;
+    if (node.closest(".mobile-sticky")) return "mobile-sticky";
+    if (node.closest(".hero")) return "hero";
+    if (node.closest(".footer")) return "footer";
+    return sectionId || "global";
+  }
+
+  function emitCtaEvent(payload) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "cta_click", ...payload });
+    try {
+      window.dispatchEvent(new CustomEvent("jps:cta_click", { detail: payload }));
+    } catch (_) {}
+  }
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!target || typeof target.closest !== "function") return;
+    const link = target.closest("a[href]");
+    if (!link) return;
+
+    const href = link.getAttribute("href") || "";
+    if (!CTA_PATTERN.test(href)) return;
+
+    const ctaType = href.split(":")[0].toLowerCase();
+    const section = getSectionId(link);
+    const placement = getPlacement(link, section);
+    const destination = href.split("?")[0];
+    const ctaLabel = normalizeText(link.dataset.ctaLabel || link.textContent) || ctaType;
+
+    emitCtaEvent({
+      cta_type: ctaType,
+      cta_label: ctaLabel,
+      placement,
+      section,
+      destination,
+      page_path: window.location.pathname || "/"
+    });
+  });
+})();
+</script>
 </body>
 </html>
