@@ -95,18 +95,18 @@
     },
     {
       "@type": "Question",
-      "name": "What affects pricing?",
+      "name": "What should I text for a quote?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Pricing is based on volume, item weight, stairs, access, carry distance, and disposal conditions. You receive a quote before work starts."
+        "text": "Send item photos, ZIP code, access details such as stairs or alley access, and your preferred pickup window so quote expectations can be shared quickly."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you serve nearby markets outside Indianapolis?",
+      "name": "Do you handle full-load cleanouts?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Indianapolis and Marion County are core routes, with nearby markets like Speedway, Brownsburg, Avon, Carmel, and Greenwood scheduled by route and scope."
+        "text": "Yes. Full-load and whole-home cleanouts are quoted by scope and typically start at 400 dollars depending on volume, access, and disposal conditions."
       }
     },
     {
@@ -416,11 +416,13 @@ a {
   color: var(--slate);
   font-size: 0.94rem;
 }
-.results,
 .area,
 .faq,
 .local,
-.cleanout {
+.cleanout,
+.owner,
+.trust,
+.no-judgment {
   background: var(--white);
 }
 .result-grid,
@@ -433,9 +435,11 @@ a {
   gap: 14px;
 }
 .result-grid,
-.market-grid,
-.price-grid {
+.market-grid {
   grid-template-columns: repeat(2, 1fr);
+}
+.price-grid {
+  grid-template-columns: repeat(3, 1fr);
 }
 .service-grid {
   grid-template-columns: repeat(3, 1fr);
@@ -563,6 +567,72 @@ a {
   color: var(--slate);
   border-radius: 10px;
 }
+.owner-grid,
+.text-guide-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 16px;
+}
+.owner-voice {
+  margin-top: 10px;
+  color: var(--slate);
+}
+.owner-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.veteran-badge {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #0D2E43, #143E58);
+  color: var(--white);
+  padding: 18px;
+  box-shadow: var(--glow);
+}
+.veteran-badge strong {
+  display: block;
+  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.veteran-badge p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.88);
+}
+.veteran-badge .badge-note {
+  margin-top: 10px;
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+.text-guide-list {
+  margin-top: 12px;
+}
+.text-guide-list li {
+  margin-top: 8px;
+}
+.no-judgment-panel {
+  border: 1px solid #E7CDBF;
+  border-radius: 18px;
+  background: #FFF7F2;
+  padding: 22px;
+}
+.no-judgment-panel h2 {
+  margin-top: 0;
+}
+.no-judgment-panel p {
+  margin-top: 10px;
+  color: var(--slate);
+}
+.proof-queue {
+  margin-top: 14px;
+}
+.proof-queue li {
+  margin-top: 8px;
+}
 .chips {
   margin-top: 18px;
   display: flex;
@@ -657,6 +727,8 @@ a {
   .result-grid,
   .service-grid,
   .price-grid,
+  .owner-grid,
+  .text-guide-grid,
   .market-grid,
   .faq-grid,
   .step-row {
@@ -761,53 +833,62 @@ a {
       </aside>
     </div>
   </section>
-  <section class="proof-strip">
-    <div class="wrap proof-grid">
-      <article class="proof-item">
-        <strong>Direct Operator Contact</strong>
-        <p>Patrick responds to requests, sends quotes, and confirms scope.</p>
-      </article>
-      <article class="proof-item">
-        <strong>Clear Job Expectations</strong>
-        <p>Stairs, access, and load details are reviewed before scheduling.</p>
-      </article>
-      <article class="proof-item">
-        <strong>Indianapolis + Nearby Routes</strong>
-        <p>Core coverage in Indianapolis with nearby-market scheduling by route.</p>
-      </article>
-    </div>
-  </section>
-  <section class="section results" id="results">
+  <section class="section cleanout" id="cleanouts">
     <div class="wrap">
-      <p class="section-label">Before/After Results</p>
-      <h2>Customer-approved project snapshots.</h2>
-      <p class="section-intro">Placeholder slots are used until customer-approved media is available. No fabricated assets and no inflated claims.</p>
-      <div class="result-grid">
+      <p class="section-label">How It Works</p>
+      <h2>Send photos. Review quote. Schedule service.</h2>
+      <div class="step-row">
+        <article class="step">
+          <span>1</span>
+          <h3>Send photos</h3>
+          <p>Include item photos, ZIP code, and access notes.</p>
+        </article>
+        <article class="step">
+          <span>2</span>
+          <h3>Review quote</h3>
+          <p>Receive quote expectations before work starts.</p>
+        </article>
+        <article class="step">
+          <span>3</span>
+          <h3>Schedule service</h3>
+          <p>Confirm a time window and agreed removal scope.</p>
+        </article>
+      </div>
+      <div class="split">
         <article class="card">
-          <h3>Garage Cleanout Placeholder</h3>
-          <div class="media-slot">
-            <span>Before Slot</span>
-            <span>After Slot</span>
-          </div>
-          <ul class="meta-list">
-            <li><strong>Job type:</strong> Garage cleanout</li>
-            <li><strong>Neighborhood:</strong> Indianapolis west side</li>
-            <li><strong>Scope:</strong> Bulky items, mixed debris, sweep-up</li>
+          <h3>Service Checklist</h3>
+          <ul class="checklist">
+            <li>Confirm photos, ZIP code, and access details</li>
+            <li>Review stairs and carry distance before arrival</li>
+            <li>Confirm scope before loading begins</li>
+            <li>Complete sweep-up in agreed service areas</li>
           </ul>
-          <p class="note">Real media pending permission.</p>
         </article>
         <article class="card">
-          <h3>Turnover Cleanout Placeholder</h3>
-          <div class="media-slot">
-            <span>Before Slot</span>
-            <span>After Slot</span>
+          <h3>Disposal Practices</h3>
+          <p>Items are sorted by condition and local disposal requirements. Reusable items may be directed to donation channels when accepted. Recyclable materials are separated when facilities allow. Restricted items are declined or routed to approved disposal options.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section owner" id="owner">
+    <div class="wrap">
+      <p class="section-label">Local Owner</p>
+      <h2>A Local Owner, Not a Call Center.</h2>
+      <div class="owner-grid">
+        <article class="card">
+          <h3>Meet Patrick, Owner of James Property Solutions LLC</h3>
+          <p class="owner-voice">I run this business myself because I believe cleanup work should be straightforward, respectful, and honest. When you text, you reach me directly. I review your photos, explain scope, and give clear next steps before any job starts.</p>
+          <p class="owner-voice">My mission is simple: show up, communicate clearly, and leave your property in better shape than I found it.</p>
+          <div class="owner-actions">
+            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="owner-primary">Text Patrick Directly</a>
+            <a class="btn btn-secondary" href="tel:+14633249549" data-placement="owner-secondary">Call (463) 324-9549</a>
           </div>
-          <ul class="meta-list">
-            <li><strong>Job type:</strong> Rental turnover cleanout</li>
-            <li><strong>Neighborhood:</strong> Marion County route</li>
-            <li><strong>Scope:</strong> Furniture and appliance haul-away</li>
-          </ul>
-          <p class="note">Real media pending permission.</p>
+        </article>
+        <article class="veteran-badge" aria-label="Veteran-owned service badge">
+          <strong>Veteran-Owned Service</strong>
+          <p>Service, discipline, and accountability are built into how every job is handled.</p>
+          <p class="badge-note">Any service-credential graphics are intentionally cropped or redacted to protect sensitive details.</p>
         </article>
       </div>
     </div>
@@ -848,44 +929,6 @@ a {
       </div>
     </div>
   </section>
-  <section class="section cleanout" id="cleanouts">
-    <div class="wrap">
-      <p class="section-label">How It Works</p>
-      <h2>Three steps from message to cleared space.</h2>
-      <div class="step-row">
-        <article class="step">
-          <span>1</span>
-          <h3>Send photos</h3>
-          <p>Include item photos, ZIP code, and access notes.</p>
-        </article>
-        <article class="step">
-          <span>2</span>
-          <h3>Review quote</h3>
-          <p>Receive quote expectations before work starts.</p>
-        </article>
-        <article class="step">
-          <span>3</span>
-          <h3>Schedule service</h3>
-          <p>Confirm a time window and agreed removal scope.</p>
-        </article>
-      </div>
-      <div class="split">
-        <article class="card">
-          <h3>Service Checklist</h3>
-          <ul class="checklist">
-            <li>Confirm photos, ZIP code, and access details</li>
-            <li>Review stairs and carry distance before arrival</li>
-            <li>Confirm scope before loading begins</li>
-            <li>Complete sweep-up in agreed service areas</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Disposal Practices</h3>
-          <p>Items are sorted by condition and local disposal requirements. Reusable items may be directed to donation channels when accepted. Recyclable materials are separated when facilities allow. Restricted items are declined or routed to approved disposal options.</p>
-        </article>
-      </div>
-    </div>
-  </section>
   <section class="section" id="pricing">
     <div class="wrap">
       <p class="section-label">Pricing</p>
@@ -902,8 +945,64 @@ a {
           <strong>$175 - $350</strong>
           <p>Best for several items or garage cleanup.</p>
         </article>
+        <article class="card price-card">
+          <h3>Full Load / Cleanout</h3>
+          <strong>$400+</strong>
+          <p>Quoted by scope for estate cleanouts, rental turnovers, and multi-room jobs.</p>
+        </article>
       </div>
       <p class="price-note">Heavy items, long carries, appliance handling, and disposal fees can affect final quote details.</p>
+    </div>
+  </section>
+  <section class="section" id="what-to-text">
+    <div class="wrap">
+      <p class="section-label">What To Text Us</p>
+      <h2>Send these details for a faster, more accurate quote.</h2>
+      <div class="text-guide-grid">
+        <article class="card">
+          <h3>Helpful details to include</h3>
+          <ul class="checklist text-guide-list">
+            <li>Photos of the items (interior and exterior views when relevant)</li>
+            <li>ZIP code for scheduling and travel estimation</li>
+            <li>Access details: stairs, curbside pickup, narrow alleyways, or gate codes</li>
+            <li>Preferred pickup window and urgency level</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Direct quote message</h3>
+          <p>Text photos and notes directly to Patrick to get scope guidance and next-step options.</p>
+          <div class="owner-actions">
+            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20here%20are%20photos%2C%20my%20ZIP%20code%2C%20access%20details%2C%20and%20preferred%20pickup%20window%3A" data-placement="what-to-text-primary">Text Photos + Details</a>
+            <a class="btn btn-secondary" href="tel:+14633249549" data-placement="what-to-text-secondary">Call (463) 324-9549</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section no-judgment" id="no-judgment">
+    <div class="wrap">
+      <div class="no-judgment-panel">
+        <p class="section-label">No Judgment Cleanup</p>
+        <h2>No shame. No judgment. Just cleared space.</h2>
+        <p>Whether it is one couch or a whole garage, you will be treated with respect. Jobs are handled professionally and discreetly from first text to final sweep-up.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section trust" id="trust">
+    <div class="wrap">
+      <p class="section-label">Proof And Social Validation</p>
+      <h2>Real proof only, published as it is earned.</h2>
+      <p class="section-intro">You will never see fake photos, fake reviews, or inflated claims here. Real job photos are added only when customer-approved assets are available.</p>
+      <article class="card">
+        <h3>Proof points we are actively publishing</h3>
+        <ul class="checklist proof-queue">
+          <li>Authentic before/after photos from completed jobs</li>
+          <li>First verified customer review/testimonial</li>
+          <li>Google Business Profile link once reinstated</li>
+          <li>Truck and equipment photos from active job sites</li>
+          <li>Real text-message quote examples with private details redacted</li>
+        </ul>
+      </article>
     </div>
   </section>
   <section class="section area" id="area">
