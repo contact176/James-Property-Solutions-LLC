@@ -221,6 +221,19 @@ body {
 }
 .btn-copy:hover { background: var(--marine); }
 .btn-copy.copied { background: #155724; }
+.lookup-row {
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  margin-top: 2px;
+}
+.lookup-label { font-size: 0.78rem; color: var(--slate); font-weight: 700; margin-right: 2px; }
+.btn-lookup {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; border-radius: 999px;
+  font-size: 0.78rem; font-weight: 700;
+  border: 1px solid var(--line); background: var(--white); color: var(--marine);
+  text-decoration: none; transition: 0.15s;
+}
+.btn-lookup:hover { background: var(--mist); }
 .btn-download {
   display: inline-flex; align-items: center; gap: 5px;
   padding: 9px 16px; border-radius: 999px;
@@ -377,6 +390,20 @@ footer a { color: var(--marine); font-weight: 700; }
     { key: "skip",      label: "Skip" },
   ];
 
+  function buildLookupLinks(lead) {
+    if (!lead.owner_name) return "";
+    var city = lead.city || "Indianapolis";
+    var state = lead.state || "IN";
+    var ownerQ = encodeURIComponent(lead.owner_name + " " + city + " " + state + " phone");
+    var wpQ = encodeURIComponent(lead.owner_name);
+    return '<div class="lookup-row">' +
+      '<span class="lookup-label">Find contact:</span>' +
+      '<a class="btn-lookup" href="https://www.google.com/search?q=' + ownerQ + '" target="_blank" rel="noopener">Google</a>' +
+      '<a class="btn-lookup" href="https://www.whitepages.com/name/' + wpQ + '" target="_blank" rel="noopener">Whitepages</a>' +
+      '<a class="btn-lookup" href="https://public.courts.in.gov/mycase/#/vw/Search" target="_blank" rel="noopener">IN Courts</a>' +
+    '</div>';
+  }
+
   function buildCard(lead) {
     var score = lead.cleanout_opportunity_score || 0;
     var cls = scoreClass(score);
@@ -401,6 +428,7 @@ footer a { color: var(--marine); font-weight: 700; }
         '<span class="score-badge ' + cls + '">' + score + ' / 100</span>' +
       '</div>' +
       '<p class="pitch-box">' + esc(rawPitch) + '</p>' +
+      buildLookupLinks(lead) +
       '<div class="lead-actions">' +
         '<a class="btn-text" href="sms:?body=' + smsBody + '">Open SMS Draft</a>' +
         '<button class="btn-copy" type="button" data-raw="' + esc(rawPitch) + '">Copy Script</button>' +
