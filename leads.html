@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleanout Lead Finder | James Property Solutions LLC</title>
+<style>
+:root {
+  --midnight: #0A1A26;
+  --marine: #123247;
+  --teal: #1F5F78;
+  --mist: #EAF2F6;
+  --paper: #FDFCF9;
+  --slate: #5B6875;
+  --line: #D8E1E8;
+  --accent: #C46232;
+  --accent-dark: #A44E25;
+  --white: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Verdana", "Trebuchet MS", sans-serif;
+  background: var(--paper);
+  color: var(--midnight);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
+}
+.wrap { width: min(920px, calc(100% - 32px)); margin: 0 auto; }
+.topbar {
+  background: var(--midnight);
+  color: rgba(255,255,255,0.9);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 9px 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.topbar a { color: var(--white); text-decoration: underline; }
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.brand-mark {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(140deg, var(--marine), var(--teal));
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.78rem;
+  font-family: "Franklin Gothic Medium", sans-serif;
+}
+.brand strong { display: block; font-size: 0.96rem; line-height: 1.1; }
+.brand small { display: block; font-size: 0.7rem; color: var(--slate); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+.hero {
+  background: linear-gradient(130deg, var(--midnight), var(--marine));
+  color: var(--white);
+  padding: 36px 0 28px;
+}
+.kicker {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 700; color: #F3B18E;
+}
+.hero h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); margin-top: 8px; font-family: "Franklin Gothic Medium", sans-serif; }
+.hero p { color: rgba(255,255,255,0.82); margin-top: 8px; max-width: 560px; font-size: 0.96rem; }
+.server-notice {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: #664d03;
+  margin-top: 16px;
+}
+.server-notice strong { color: #664d03; }
+.search-section { padding: 24px 0 0; }
+.search-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.search-bar label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--slate);
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.search-bar input {
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.94rem;
+  width: 130px;
+  background: var(--white);
+}
+.search-bar input:focus { outline: 2px solid var(--teal); border-color: var(--teal); }
+.btn-search {
+  padding: 11px 22px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: "Franklin Gothic Medium", sans-serif;
+  transition: 0.15s;
+}
+.btn-search:hover { background: var(--accent-dark); }
+.btn-search:disabled { opacity: 0.55; cursor: not-allowed; }
+.zip-presets {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.zip-chip {
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--marine);
+  cursor: pointer;
+  background: var(--white);
+  transition: 0.15s;
+}
+.zip-chip:hover { background: var(--mist); }
+#statusMsg {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: var(--slate);
+  min-height: 22px;
+}
+.loading { color: var(--teal); font-weight: 700; }
+.summary-bar {
+  display: none;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--mist);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+.lead-list { margin-top: 16px; display: grid; gap: 12px; }
+.lead-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--teal);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: grid;
+  gap: 8px;
+}
+.lead-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.lead-address { font-weight: 700; font-size: 0.96rem; color: var(--midnight); }
+.lead-owner { font-size: 0.86rem; color: var(--slate); margin-top: 2px; }
+.lead-violation { font-size: 0.83rem; color: var(--slate); margin-top: 2px; }
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.score-high { background: #d4edda; color: #155724; }
+.score-mid  { background: #fff3cd; color: #856404; }
+.score-low  { background: #e9ecef; color: #495057; }
+.pitch-box {
+  font-size: 0.86rem;
+  color: #344047;
+  background: var(--mist);
+  border-radius: 8px;
+  padding: 10px 12px;
+  line-height: 1.45;
+}
+.lead-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.btn-text {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 9px 16px; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700;
+  background: var(--accent); color: var(--white);
+  text-decoration: none; border: none; cursor: pointer;
+  font-family: "Franklin Gothic Medium", sans-serif;
+  transition: 0.15s;
+}
+.btn-text:hover { background: var(--accent-dark); }
+.btn-copy {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 9px 16px; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700;
+  background: var(--teal); color: var(--white);
+  border: none; cursor: pointer;
+  font-family: "Franklin Gothic Medium", sans-serif;
+  transition: 0.15s;
+}
+.btn-copy:hover { background: var(--marine); }
+.btn-copy.copied { background: #155724; }
+.empty-state { padding: 20px 0; color: var(--slate); font-size: 0.92rem; }
+footer {
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+  font-size: 0.82rem;
+  color: var(--slate);
+  text-align: center;
+}
+footer a { color: var(--marine); font-weight: 700; }
+@media (max-width: 600px) {
+  .search-bar { flex-direction: column; align-items: stretch; }
+  .search-bar input { width: 100%; }
+  .btn-search { width: 100%; }
+  .lead-top { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  Patrick's Private Lead Tool &mdash; <a href="index.html">Back to JPS Site</a> &mdash; <a href="tel:+14633249549">(463) 324-9549</a>
+</div>
+<header class="header">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="James Property Solutions LLC">
+      <span class="brand-mark">JPS</span>
+      <span>
+        <strong>James Property Solutions LLC</strong>
+        <small>Cleanout Lead Finder</small>
+      </span>
+    </a>
+  </div>
+</header>
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Private Tool &mdash; Patrick Only</p>
+    <h1>Find Properties That Need a Cleanout</h1>
+    <p>Indianapolis code-enforcement violations sorted by cleanout opportunity. Text the owner directly from each card.</p>
+    <div class="server-notice">
+      <strong>Requires local server:</strong> Run <code>node server.js</code> in the distressed-finder folder first. This page connects to <code>localhost:3000</code>.
+    </div>
+  </div>
+</section>
+<main>
+  <div class="wrap">
+    <section class="search-section">
+      <form id="searchForm" class="search-bar" autocomplete="off">
+        <div>
+          <label for="zipInput">ZIP Code</label>
+          <input id="zipInput" name="zip" inputmode="numeric" maxlength="5" value="46203" placeholder="46203" />
+        </div>
+        <button class="btn-search" type="submit" id="searchBtn">Find Cleanout Leads</button>
+      </form>
+      <div class="zip-presets">
+        <span class="zip-chip" data-zip="46203">46203</span>
+        <span class="zip-chip" data-zip="46218">46218</span>
+        <span class="zip-chip" data-zip="46222">46222</span>
+        <span class="zip-chip" data-zip="46224">46224</span>
+        <span class="zip-chip" data-zip="46228">46228</span>
+        <span class="zip-chip" data-zip="46241">46241</span>
+      </div>
+      <p id="statusMsg">Enter a ZIP code to find cleanout leads.</p>
+      <div class="summary-bar" id="summaryBar"></div>
+    </section>
+    <div class="lead-list" id="leadList"></div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <a href="index.html">jamespropertysolution.com</a> &mdash; Internal tool. Not for public use.
+  </div>
+</footer>
+<script>
+(function () {
+  const API_BASE = "http://localhost:3000";
+  const form = document.getElementById("searchForm");
+  const zipInput = document.getElementById("zipInput");
+  const searchBtn = document.getElementById("searchBtn");
+  const statusMsg = document.getElementById("statusMsg");
+  const summaryBar = document.getElementById("summaryBar");
+  const leadList = document.getElementById("leadList");
+
+  document.querySelectorAll(".zip-chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      zipInput.value = chip.dataset.zip;
+      form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    });
+  });
+
+  function scoreClass(n) {
+    if (n >= 80) return "score-high";
+    if (n >= 50) return "score-mid";
+    return "score-low";
+  }
+
+  function esc(val) {
+    return String(val == null ? "" : val)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function buildCard(lead) {
+    var score = lead.cleanout_opportunity_score || 0;
+    var cls = scoreClass(score);
+    var address = esc(lead.address || "");
+    var owner = lead.owner_name ? esc(lead.owner_name) : "Owner unknown";
+    var violation = esc(lead.case_types || "Code violation");
+    var pitch = esc(lead.text_script || lead.cleanout_pitch || "");
+    var rawPitch = lead.text_script || lead.cleanout_pitch || "";
+    var smsBody = encodeURIComponent(rawPitch);
+
+    return '<article class="lead-card">' +
+      '<div class="lead-top">' +
+        '<div>' +
+          '<p class="lead-address">' + address + '</p>' +
+          '<p class="lead-owner">' + owner + '</p>' +
+          '<p class="lead-violation">' + violation + '</p>' +
+        '</div>' +
+        '<span class="score-badge ' + cls + '">' + score + ' / 100</span>' +
+      '</div>' +
+      '<p class="pitch-box">' + pitch + '</p>' +
+      '<div class="lead-actions">' +
+        '<a class="btn-text" href="sms:+14633249549?body=' + smsBody + '">Text Owner</a>' +
+        '<button class="btn-copy" type="button" data-raw="' + esc(rawPitch) + '">Copy Script</button>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function attachCopyHandlers() {
+    leadList.querySelectorAll(".btn-copy").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-raw") || "";
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = "Copied!";
+          btn.classList.add("copied");
+          setTimeout(function () {
+            btn.textContent = "Copy Script";
+            btn.classList.remove("copied");
+          }, 2000);
+        }).catch(function () {
+          btn.textContent = "Copy failed";
+        });
+      });
+    });
+  }
+
+  async function search(zip) {
+    statusMsg.textContent = "Searching " + zip + " for cleanout leads...";
+    statusMsg.className = "loading";
+    summaryBar.style.display = "none";
+    leadList.innerHTML = "";
+    searchBtn.disabled = true;
+    zipInput.disabled = true;
+
+    try {
+      var resp = await fetch(API_BASE + "/api/jps-leads?zip=" + encodeURIComponent(zip));
+      var data = await resp.json();
+
+      searchBtn.disabled = false;
+      zipInput.disabled = false;
+      statusMsg.className = "";
+
+      if (data.error) {
+        statusMsg.textContent = data.error;
+        return;
+      }
+
+      if (!data.supported) {
+        statusMsg.textContent = data.message || "No connected source for this ZIP.";
+        return;
+      }
+
+      var leads = data.leads || [];
+      statusMsg.textContent = data.message || (leads.length + " cleanout lead(s) found for " + zip + ".");
+
+      if (leads.length > 0) {
+        summaryBar.textContent = leads.length + " cleanout lead" + (leads.length !== 1 ? "s" : "") + " found for ZIP " + zip;
+        summaryBar.style.display = "block";
+        leadList.innerHTML = leads.map(buildCard).join("");
+        attachCopyHandlers();
+      } else {
+        leadList.innerHTML = '<p class="empty-state">No cleanout leads found for ZIP ' + esc(zip) + '. Try a nearby Indianapolis ZIP.</p>';
+      }
+    } catch (err) {
+      searchBtn.disabled = false;
+      zipInput.disabled = false;
+      statusMsg.className = "";
+      statusMsg.textContent = "Could not connect to the distressed-finder server. Make sure it is running on localhost:3000.";
+    }
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var zip = zipInput.value.trim();
+    if (!/^\d{5}$/.test(zip)) {
+      statusMsg.textContent = "Enter a valid 5-digit ZIP code.";
+      return;
+    }
+    search(zip);
+  });
+})();
+</script>
+</body>
+</html>
