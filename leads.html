@@ -221,6 +221,36 @@ body {
 }
 .btn-copy:hover { background: var(--marine); }
 .btn-copy.copied { background: #155724; }
+.btn-download {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 9px 16px; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700;
+  background: var(--marine); color: var(--white);
+  border: none; cursor: pointer;
+  font-family: "Franklin Gothic Medium", sans-serif;
+  transition: 0.15s; text-decoration: none;
+}
+.btn-download:hover { background: var(--midnight); }
+.outreach-row {
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  margin-top: 4px; padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.outreach-label { font-size: 0.78rem; color: var(--slate); font-weight: 700; margin-right: 2px; }
+.status-btn {
+  padding: 4px 10px; border-radius: 999px;
+  font-size: 0.78rem; font-weight: 700;
+  border: 1px solid var(--line); background: var(--white); color: var(--slate);
+  cursor: pointer; transition: 0.15s;
+}
+.status-btn:hover { background: var(--mist); }
+.status-btn.active-new    { background: #e9ecef; color: #495057; border-color: #adb5bd; }
+.status-btn.active-contacted { background: #cfe2ff; color: #084298; border-color: #b6d4fe; }
+.status-btn.active-scheduled  { background: #d4edda; color: #155724; border-color: #c3e6cb; }
+.status-btn.active-skip   { background: #f8d7da; color: #842029; border-color: #f5c6cb; }
+.lead-card.status-contacted { border-left-color: #084298; opacity: 0.85; }
+.lead-card.status-scheduled  { border-left-color: #155724; }
+.lead-card.status-skip   { border-left-color: #842029; opacity: 0.65; }
 .empty-state { padding: 20px 0; color: var(--slate); font-size: 0.92rem; }
 footer {
   margin-top: 48px;
@@ -283,7 +313,10 @@ footer a { color: var(--marine); font-weight: 700; }
         <span class="zip-chip" data-zip="46241">46241</span>
       </div>
       <p id="statusMsg">Enter a ZIP code to find cleanout leads.</p>
-      <div class="summary-bar" id="summaryBar"></div>
+      <div class="summary-bar" id="summaryBar" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <span id="summaryText"></span>
+        <button class="btn-download" id="downloadBtn" style="display:none">Download CSV</button>
+      </div>
     </section>
     <div class="lead-list" id="leadList"></div>
   </div>
@@ -295,21 +328,36 @@ footer a { color: var(--marine); font-weight: 700; }
 </footer>
 <script>
 (function () {
-  const API_BASE = "http://localhost:3000";
-  const form = document.getElementById("searchForm");
-  const zipInput = document.getElementById("zipInput");
-  const searchBtn = document.getElementById("searchBtn");
-  const statusMsg = document.getElementById("statusMsg");
-  const summaryBar = document.getElementById("summaryBar");
-  const leadList = document.getElementById("leadList");
+  var API_BASE = "http://localhost:3000";
+  var STORAGE_KEY = "jps-outreach-v1";
+  var currentLeads = [];
 
-  document.querySelectorAll(".zip-chip").forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      zipInput.value = chip.dataset.zip;
-      form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
-    });
-  });
+  var form = document.getElementById("searchForm");
+  var zipInput = document.getElementById("zipInput");
+  var searchBtn = document.getElementById("searchBtn");
+  var statusMsg = document.getElementById("statusMsg");
+  var summaryBar = document.getElementById("summaryBar");
+  var summaryText = document.getElementById("summaryText");
+  var downloadBtn = document.getElementById("downloadBtn");
+  var leadList = document.getElementById("leadList");
 
+  // ── Outreach status persistence ───────────────────────────────────────────
+  function loadStatuses() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+    catch (_) { return {}; }
+  }
+
+  function saveStatus(address, status) {
+    var all = loadStatuses();
+    all[address] = status;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(all)); } catch (_) {}
+  }
+
+  function getStatus(address) {
+    return loadStatuses()[address] || "new";
+  }
+
+  // ── Helpers ───────────────────────────────────────────────────────────────
   function scoreClass(n) {
     if (n >= 80) return "score-high";
     if (n >= 50) return "score-mid";
@@ -318,62 +366,132 @@ footer a { color: var(--marine); font-weight: 700; }
 
   function esc(val) {
     return String(val == null ? "" : val)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
+
+  var STATUSES = [
+    { key: "new",       label: "New" },
+    { key: "contacted", label: "Contacted" },
+    { key: "scheduled", label: "Scheduled" },
+    { key: "skip",      label: "Skip" },
+  ];
 
   function buildCard(lead) {
     var score = lead.cleanout_opportunity_score || 0;
     var cls = scoreClass(score);
-    var address = esc(lead.address || "");
-    var owner = lead.owner_name ? esc(lead.owner_name) : "Owner unknown";
-    var violation = esc(lead.case_types || "Code violation");
-    var pitch = esc(lead.text_script || lead.cleanout_pitch || "");
+    var address = lead.address || "";
+    var currentStatus = getStatus(address);
     var rawPitch = lead.text_script || lead.cleanout_pitch || "";
     var smsBody = encodeURIComponent(rawPitch);
 
-    return '<article class="lead-card">' +
+    var statusBtns = STATUSES.map(function (s) {
+      var activeCls = currentStatus === s.key ? " active-" + s.key : "";
+      return '<button class="status-btn' + activeCls + '" type="button" data-address="' +
+        esc(address) + '" data-status="' + s.key + '">' + s.label + '</button>';
+    }).join("");
+
+    return '<article class="lead-card status-' + esc(currentStatus) + '" data-address="' + esc(address) + '">' +
       '<div class="lead-top">' +
         '<div>' +
-          '<p class="lead-address">' + address + '</p>' +
-          '<p class="lead-owner">' + owner + '</p>' +
-          '<p class="lead-violation">' + violation + '</p>' +
+          '<p class="lead-address">' + esc(address) + '</p>' +
+          '<p class="lead-owner">' + (lead.owner_name ? esc(lead.owner_name) : "Owner unknown") + '</p>' +
+          '<p class="lead-violation">' + esc(lead.case_types || "Code violation") + '</p>' +
         '</div>' +
         '<span class="score-badge ' + cls + '">' + score + ' / 100</span>' +
       '</div>' +
-      '<p class="pitch-box">' + pitch + '</p>' +
+      '<p class="pitch-box">' + esc(rawPitch) + '</p>' +
       '<div class="lead-actions">' +
-        '<a class="btn-text" href="sms:+14633249549?body=' + smsBody + '">Text Owner</a>' +
+        '<a class="btn-text" href="sms:?body=' + smsBody + '">Open SMS Draft</a>' +
         '<button class="btn-copy" type="button" data-raw="' + esc(rawPitch) + '">Copy Script</button>' +
+      '</div>' +
+      '<div class="outreach-row">' +
+        '<span class="outreach-label">Status:</span>' +
+        statusBtns +
       '</div>' +
     '</article>';
   }
 
-  function attachCopyHandlers() {
+  function attachCardHandlers() {
+    // Copy script
     leadList.querySelectorAll(".btn-copy").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var text = btn.getAttribute("data-raw") || "";
         navigator.clipboard.writeText(text).then(function () {
           btn.textContent = "Copied!";
           btn.classList.add("copied");
-          setTimeout(function () {
-            btn.textContent = "Copy Script";
-            btn.classList.remove("copied");
-          }, 2000);
-        }).catch(function () {
-          btn.textContent = "Copy failed";
+          setTimeout(function () { btn.textContent = "Copy Script"; btn.classList.remove("copied"); }, 2000);
+        }).catch(function () { btn.textContent = "Copy failed"; });
+      });
+    });
+
+    // Outreach status buttons
+    leadList.querySelectorAll(".status-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var address = btn.getAttribute("data-address");
+        var status = btn.getAttribute("data-status");
+        saveStatus(address, status);
+
+        // Update card class
+        var card = btn.closest(".lead-card");
+        card.className = "lead-card status-" + status;
+
+        // Update button active states
+        card.querySelectorAll(".status-btn").forEach(function (b) {
+          STATUSES.forEach(function (s) { b.classList.remove("active-" + s.key); });
+          if (b.getAttribute("data-status") === status) {
+            b.classList.add("active-" + status);
+          }
         });
       });
     });
   }
 
+  // ── CSV export ────────────────────────────────────────────────────────────
+  function leadsToCSV(leads) {
+    var statuses = loadStatuses();
+    var cols = ["rank","address","city","state","zip","owner_name","case_types","case_count","cleanout_opportunity_score","outreach_status"];
+    var esc2 = function (v) { var s = String(v == null ? "" : v); return '"' + s.replace(/"/g, '""') + '"'; };
+    var rows = [cols.join(",")];
+    leads.forEach(function (l) {
+      rows.push([
+        l.rank, l.address, l.city, l.state, l.zip, l.owner_name,
+        l.case_types, l.case_count, l.cleanout_opportunity_score,
+        statuses[l.address] || "new"
+      ].map(esc2).join(","));
+    });
+    return rows.join("\n");
+  }
+
+  downloadBtn.addEventListener("click", function () {
+    if (!currentLeads.length) return;
+    var csv = leadsToCSV(currentLeads);
+    var blob = new Blob([csv], { type: "text/csv" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "jps-cleanout-leads-" + (zipInput.value.trim() || "export") + ".csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  // ── Search ────────────────────────────────────────────────────────────────
+  document.querySelectorAll(".zip-chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      zipInput.value = chip.dataset.zip;
+      form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    });
+  });
+
   async function search(zip) {
     statusMsg.textContent = "Searching " + zip + " for cleanout leads...";
     statusMsg.className = "loading";
     summaryBar.style.display = "none";
+    downloadBtn.style.display = "none";
     leadList.innerHTML = "";
+    currentLeads = [];
     searchBtn.disabled = true;
     zipInput.disabled = true;
 
@@ -385,24 +503,18 @@ footer a { color: var(--marine); font-weight: 700; }
       zipInput.disabled = false;
       statusMsg.className = "";
 
-      if (data.error) {
-        statusMsg.textContent = data.error;
-        return;
-      }
+      if (data.error) { statusMsg.textContent = data.error; return; }
+      if (!data.supported) { statusMsg.textContent = data.message || "No connected source for this ZIP."; return; }
 
-      if (!data.supported) {
-        statusMsg.textContent = data.message || "No connected source for this ZIP.";
-        return;
-      }
+      currentLeads = data.leads || [];
+      statusMsg.textContent = data.message || (currentLeads.length + " cleanout lead(s) found for " + zip + ".");
 
-      var leads = data.leads || [];
-      statusMsg.textContent = data.message || (leads.length + " cleanout lead(s) found for " + zip + ".");
-
-      if (leads.length > 0) {
-        summaryBar.textContent = leads.length + " cleanout lead" + (leads.length !== 1 ? "s" : "") + " found for ZIP " + zip;
-        summaryBar.style.display = "block";
-        leadList.innerHTML = leads.map(buildCard).join("");
-        attachCopyHandlers();
+      if (currentLeads.length > 0) {
+        summaryText.textContent = currentLeads.length + " cleanout lead" + (currentLeads.length !== 1 ? "s" : "") + " found for ZIP " + zip;
+        summaryBar.style.display = "flex";
+        downloadBtn.style.display = "";
+        leadList.innerHTML = currentLeads.map(buildCard).join("");
+        attachCardHandlers();
       } else {
         leadList.innerHTML = '<p class="empty-state">No cleanout leads found for ZIP ' + esc(zip) + '. Try a nearby Indianapolis ZIP.</p>';
       }
@@ -417,10 +529,7 @@ footer a { color: var(--marine); font-weight: 700; }
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var zip = zipInput.value.trim();
-    if (!/^\d{5}$/.test(zip)) {
-      statusMsg.textContent = "Enter a valid 5-digit ZIP code.";
-      return;
-    }
+    if (!/^\d{5}$/.test(zip)) { statusMsg.textContent = "Enter a valid 5-digit ZIP code."; return; }
     search(zip);
   });
 })();
