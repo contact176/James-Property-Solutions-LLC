@@ -279,11 +279,8 @@ a {
   background: linear-gradient(130deg, var(--midnight), var(--marine));
   color: var(--white);
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 420px;
-  gap: 44px;
-  align-items: center;
+.hero-single {
+  max-width: 760px;
 }
 .kicker,
 .section-label {
@@ -304,7 +301,7 @@ a {
 .hero h1 {
   margin-top: 12px;
   font-size: clamp(2.35rem, 6vw, 4.3rem);
-  max-width: 700px;
+  max-width: 16ch;
 }
 .hero-sub {
   margin-top: 18px;
@@ -332,65 +329,6 @@ a {
   color: rgba(255, 255, 255, 0.9);
   background: rgba(255, 255, 255, 0.06);
 }
-.hero-points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-.hero-points span {
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 999px;
-  padding: 7px 12px;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.88);
-}
-.quote-panel {
-  background: var(--white);
-  color: var(--midnight);
-  border-radius: 24px;
-  border: 1px solid var(--line);
-  box-shadow: var(--glow);
-  padding: 26px;
-}
-.quote-panel h2 {
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
-  font-size: 1.54rem;
-  line-height: 1.1;
-}
-.quote-panel p {
-  margin-top: 10px;
-  color: var(--slate);
-}
-.quick-steps {
-  list-style: none;
-  margin-top: 16px;
-  display: grid;
-  gap: 10px;
-}
-.quick-steps li {
-  border: 1px solid var(--line);
-  background: var(--mist);
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-size: 0.92rem;
-}
-.quick-steps strong {
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--marine);
-  margin-right: 5px;
-}
-.panel-actions {
-  margin-top: 16px;
-  display: grid;
-  gap: 9px;
-}
-.panel-actions .btn {
-  width: 100%;
-}
 .section {
   padding: 72px 0;
 }
@@ -403,10 +341,6 @@ a {
   max-width: 720px;
   color: var(--slate);
   font-size: 1.04rem;
-}
-.proof-strip {
-  margin-top: -10px;
-  padding-bottom: 28px;
 }
 .proof-grid {
   display: grid;
@@ -435,14 +369,12 @@ a {
 .local,
 .cleanout,
 .owner,
-.trust,
-.no-judgment {
+.trust {
   background: var(--white);
 }
 .result-grid,
 .market-grid,
 .service-grid,
-.price-grid,
 .faq-grid {
   margin-top: 24px;
   display: grid;
@@ -452,20 +384,11 @@ a {
 .market-grid {
   grid-template-columns: repeat(2, 1fr);
 }
-.price-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
 .service-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
 }
 .faq-grid {
   grid-template-columns: repeat(2, 1fr);
-}
-.trust-grid {
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 14px;
 }
 .card {
   background: var(--paper);
@@ -533,12 +456,6 @@ a {
   text-decoration: underline;
   font-weight: 700;
 }
-.split {
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 16px;
-}
 .step-row {
   margin-top: 22px;
   display: grid;
@@ -572,30 +489,19 @@ a {
   color: var(--slate);
   font-size: 0.94rem;
 }
-.price-card strong {
-  margin-top: 8px;
-  display: block;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
-  font-size: 1.65rem;
-  color: var(--marine);
-}
-.price-note {
-  margin-top: 16px;
-  padding: 12px 14px;
-  border-left: 4px solid var(--accent);
-  background: var(--mist);
-  color: var(--slate);
-  border-radius: 10px;
-}
-.owner-grid,
-.text-guide-grid {
+.owner-grid {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 .owner-voice {
   margin-top: 10px;
+  color: var(--slate);
+}
+.badge-note {
+  margin-top: 10px;
+  font-size: 0.86rem;
   color: var(--slate);
 }
 .owner-actions {
@@ -603,74 +509,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-.veteran-badge {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(145deg, #0D2E43, #143E58);
-  color: var(--white);
-  padding: 18px;
-  box-shadow: var(--glow);
-}
-.veteran-badge strong {
-  display: block;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-.veteran-badge p {
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.88);
-}
-.veteran-badge .badge-note {
-  margin-top: 10px;
-  font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.78);
-}
-.text-guide-list {
-  margin-top: 12px;
-}
-.text-guide-list li {
-  margin-top: 8px;
-}
-.no-judgment-panel {
-  border: 1px solid #E7CDBF;
-  border-radius: 18px;
-  background: #FFF7F2;
-  padding: 22px;
-}
-.no-judgment-panel h2 {
-  margin-top: 0;
-}
-.no-judgment-panel p {
-  margin-top: 10px;
-  color: var(--slate);
-}
-.proof-queue {
-  margin-top: 14px;
-}
-.proof-queue li {
-  margin-top: 8px;
-}
-.chips {
-  margin-top: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.chips span,
-.chips a {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--paper);
-  padding: 8px 12px;
-  font-size: 0.84rem;
-  color: var(--marine);
-  font-weight: 700;
-}
-.chips a:hover {
-  background: var(--mist);
 }
 .market-card .btn {
   margin-top: 10px;
@@ -740,16 +578,11 @@ a {
   .hero {
     padding-top: 56px;
   }
-  .hero-grid,
-  .split,
   .footer-grid,
   .proof-grid,
   .result-grid,
   .service-grid,
-  .price-grid,
-  .trust-grid,
   .owner-grid,
-  .text-guide-grid,
   .market-grid,
   .faq-grid,
   .step-row {
@@ -812,7 +645,6 @@ a {
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#services">Services</a>
       <a href="#cleanouts">How It Works</a>
-      <a href="#pricing">Pricing</a>
       <a href="#area">Service Area</a>
       <a href="#local-markets">Nearby Markets</a>
       <a href="#contact">Contact</a>
@@ -822,47 +654,27 @@ a {
 </header>
 <main>
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="kicker">Indianapolis Junk Removal</p>
-        <h1>Text photos for a fast, honest quote.</h1>
-        <p class="hero-sub">
-          Send photos, ZIP code, and access details to get clear quote expectations from Patrick before work starts.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="hero-primary">Text Photos for Quote</a>
-          <a class="btn btn-secondary" href="tel:+14633249549" data-placement="hero-secondary">Call for a Quote</a>
-        </div>
-        <div class="trust-strip">
-          <span>Owner answers directly</span>
-          <span>Quote before work starts</span>
-          <span>Indianapolis + nearby routes</span>
-        </div>
-        <div class="hero-points">
-          <span>Veteran-Owned</span>
-          <span>Indianapolis-Based</span>
-          <span>Quote-First Scheduling</span>
-        </div>
+    <div class="wrap hero-single">
+      <p class="kicker">Indianapolis Junk Removal</p>
+      <h1>Direct junk removal in Indianapolis.</h1>
+      <p class="hero-sub">
+        One-man service. Patrick answers directly by call or text before work starts.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+14633249549" data-placement="hero-primary">Tap to Call</a>
+        <a class="btn btn-secondary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="hero-secondary">Text Photos</a>
       </div>
-      <aside class="quote-panel">
-        <h2>Fast quote path, no form.</h2>
-        <p>Send photos and access details to get a clear scope and the next step quickly from Patrick.</p>
-        <ul class="quick-steps">
-          <li><strong>1</strong> Send item photos + ZIP code</li>
-          <li><strong>2</strong> Receive quote expectations</li>
-          <li><strong>3</strong> Confirm schedule window</li>
-        </ul>
-        <div class="panel-actions">
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="hero-quote-card-primary">Text Photos Now</a>
-          <a class="btn btn-dark" href="mailto:contact@jamespropertysolution.com?subject=Junk%20Removal%20Quote%20Request" data-placement="hero-quote-card-secondary">Email Details</a>
-        </div>
-      </aside>
+      <div class="trust-strip">
+        <span>Owner answers directly</span>
+        <span>Quote before work starts</span>
+        <span>Indianapolis + nearby routes</span>
+      </div>
     </div>
   </section>
   <section class="section cleanout" id="cleanouts">
     <div class="wrap">
       <p class="section-label">How It Works</p>
-      <h2>Send photos. Review quote. Schedule service.</h2>
+      <h2>Text photos. Review scope. Schedule service.</h2>
       <div class="step-row">
         <article class="step">
           <span>1</span>
@@ -880,19 +692,25 @@ a {
           <p>Confirm a time window and agreed removal scope.</p>
         </article>
       </div>
-      <div class="split">
+      <p class="section-intro">One text with photos, ZIP code, and access notes is usually enough to get Patrick moving.</p>
+    </div>
+  </section>
+  <section class="section" id="services">
+    <div class="wrap">
+      <p class="section-label">Services</p>
+      <h2>Built for fast, practical property cleanup.</h2>
+      <p class="section-intro">A short list keeps the page easy to skim on mobile. Final quote still depends on volume, access, stairs, and disposal conditions.</p>
+      <div class="service-grid">
         <article class="card">
-          <h3>Service Checklist</h3>
+          <h3>Common pickup jobs</h3>
           <ul class="checklist">
-            <li>Confirm photos, ZIP code, and access details</li>
-            <li>Review stairs and carry distance before arrival</li>
-            <li>Confirm scope before loading begins</li>
-            <li>Complete sweep-up in agreed service areas</li>
+            <li>Furniture, appliances, and bulky-item pickup</li>
+            <li>Garage, basement, and attic cleanouts</li>
+            <li>Move-out debris, rental turns, and estate cleanouts</li>
+            <li>Yard debris, brush, and curbside overflow</li>
+            <li>Light add-on pressure washing when quoted</li>
           </ul>
-        </article>
-        <article class="card">
-          <h3>Disposal Practices</h3>
-          <p>Items are sorted by condition and local disposal requirements. Reusable items may be directed to donation channels when accepted. Recyclable materials are separated when facilities allow. Restricted items are declined or routed to approved disposal options.</p>
+          <p class="service-link"><a href="#area">Check the service area</a></p>
         </article>
       </div>
     </div>
@@ -900,149 +718,51 @@ a {
   <section class="section owner" id="owner">
     <div class="wrap">
       <p class="section-label">Local Owner</p>
-      <h2>A Local Owner, Not a Call Center.</h2>
+      <h2>Patrick handles the job personally.</h2>
       <div class="owner-grid">
         <article class="card">
-          <h3>Meet Patrick, Owner of James Property Solutions LLC</h3>
-          <p class="owner-voice">I run this business myself because I believe cleanup work should be straightforward, respectful, and honest. When you text, you reach me directly. I review your photos, explain scope, and give clear next steps before any job starts.</p>
-          <p class="owner-voice">My mission is simple: show up, communicate clearly, and leave your property in better shape than I found it.</p>
+          <h3>One owner, one point of contact.</h3>
+          <p class="owner-voice">You text Patrick directly, he reviews the photos, confirms scope, and gives clear next steps before anything starts.</p>
+          <p class="owner-voice">The work stays straightforward, respectful, and discreet from first message to final sweep-up.</p>
+          <p class="badge-note">Veteran-owned service. Credential graphics are intentionally cropped or redacted to protect sensitive details.</p>
           <div class="owner-actions">
             <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="owner-primary">Text Patrick Directly</a>
             <a class="btn btn-secondary" href="tel:+14633249549" data-placement="owner-secondary">Call (463) 324-9549</a>
           </div>
         </article>
-        <article class="veteran-badge" aria-label="Veteran-owned service badge">
-          <strong>Veteran-Owned Service</strong>
-          <p>Service, discipline, and accountability are built into how every job is handled.</p>
-          <p class="badge-note">Any service-credential graphics are intentionally cropped or redacted to protect sensitive details.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="services">
-    <div class="wrap">
-      <p class="section-label">Services</p>
-      <h2>Built for fast, practical property cleanup.</h2>
-      <p class="section-intro">Use the same quote flow for single-item pickups, full cleanouts, and turnover prep.</p>
-      <div class="service-grid">
-        <article class="card">
-          <h3>Junk + Bulky Item Removal</h3>
-          <ul class="checklist">
-            <li>Furniture</li>
-            <li>Appliances</li>
-            <li>Garage and basement clutter</li>
-          </ul>
-          <p class="service-link"><a href="#local-markets">See nearby market routes</a></p>
-        </article>
-        <article class="card">
-          <h3>Property Cleanouts</h3>
-          <ul class="checklist">
-            <li>Move-out leftovers</li>
-            <li>Rental turnover debris</li>
-            <li>Multi-room cleanout scope</li>
-          </ul>
-          <p class="service-link"><a href="#local-markets">See nearby market routes</a></p>
-        </article>
-        <article class="card">
-          <h3>Exterior and Add-On Work</h3>
-          <ul class="checklist">
-            <li>Yard debris and brush</li>
-            <li>Curbside overflow</li>
-            <li>Pressure washing add-on when quoted</li>
-          </ul>
-          <p class="service-link"><a href="#local-markets">See nearby market routes</a></p>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="pricing">
-    <div class="wrap">
-      <p class="section-label">Pricing</p>
-      <h2>Simple ranges before final scope confirmation.</h2>
-      <p class="section-intro">Final quote depends on volume, weight, access, stairs, and disposal conditions.</p>
-      <div class="price-grid">
-        <article class="card price-card">
-          <h3>Single Item</h3>
-          <strong>$75 - $150</strong>
-          <p>Best for easy-access single pickups.</p>
-        </article>
-        <article class="card price-card">
-          <h3>Partial Load</h3>
-          <strong>$175 - $350</strong>
-          <p>Best for several items or garage cleanup.</p>
-        </article>
-        <article class="card price-card">
-          <h3>Full Load / Cleanout</h3>
-          <strong>$400+</strong>
-          <p>Quoted by scope for estate cleanouts, rental turnovers, and multi-room jobs.</p>
-        </article>
-      </div>
-      <p class="price-note">Heavy items, long carries, appliance handling, and disposal fees can affect final quote details.</p>
-    </div>
-  </section>
-  <section class="section" id="what-to-text">
-    <div class="wrap">
-      <p class="section-label">What To Text Us</p>
-      <h2>Send these details for a faster, more accurate quote.</h2>
-      <div class="text-guide-grid">
-        <article class="card">
-          <h3>Helpful details to include</h3>
-          <ul class="checklist text-guide-list">
-            <li>Photos of the items (interior and exterior views when relevant)</li>
-            <li>ZIP code for scheduling and travel estimation</li>
-            <li>Access details: stairs, curbside pickup, narrow alleyways, or gate codes</li>
-            <li>Preferred pickup window and urgency level</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>What happens next</h3>
-          <p>Text photos and notes directly to Patrick so he can confirm scope, answer one missing question if needed, and send the next step without extra back-and-forth.</p>
-          <ul class="checklist text-guide-list">
-            <li>Confirm scope or request one missing detail</li>
-            <li>Share quote expectations and timing</li>
-            <li>Move to booking once the scope is clear</li>
-          </ul>
-          <div class="owner-actions">
-            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20here%20are%20photos%2C%20my%20ZIP%20code%2C%20access%20details%2C%20and%20preferred%20pickup%20window%3A" data-placement="what-to-text-primary">Text Photos + Details</a>
-            <a class="btn btn-secondary" href="tel:+14633249549" data-placement="what-to-text-secondary">Call (463) 324-9549</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section no-judgment" id="no-judgment">
-    <div class="wrap">
-      <div class="no-judgment-panel">
-        <p class="section-label">No Judgment Cleanup</p>
-        <h2>No shame. No judgment. Just cleared space.</h2>
-        <p>Whether it is one couch or a whole garage, you will be treated with respect. Jobs are handled professionally and discreetly from first text to final sweep-up.</p>
       </div>
     </div>
   </section>
   <section class="section trust" id="trust">
     <div class="wrap">
-      <p class="section-label">Proof And Social Validation</p>
-      <h2>Real proof only, published as it is earned.</h2>
-      <p class="section-intro">This page currently publishes process, pricing, and direct contact details. Verified photos and reviews are added only when customer-approved assets are available.</p>
-      <div class="trust-grid">
-        <article class="card">
-          <h3>First proof checklist</h3>
-          <ul class="checklist proof-queue">
-            <li>Before and after photos with customer approval</li>
-            <li>Customer review or testimonial text when available</li>
-            <li>Google Business Profile link when live</li>
-            <li>Truck or equipment photo from the completed job when appropriate</li>
-            <li>Redacted quote example showing scope without private details</li>
-          </ul>
+      <p class="section-label">Proof</p>
+      <h2>Proof belongs to real jobs.</h2>
+      <p class="section-intro">These slots stay reserved for the first verified job, the first verified review, and live business details only after they exist.</p>
+      <div class="proof-grid">
+        <article class="proof-item">
+          <strong>Completed jobs</strong>
+          <div class="media-slot">
+            <span>Before photo slot</span>
+            <span>After photo slot</span>
+          </div>
+          <p>Use the first customer-approved job here after it is complete.</p>
         </article>
-        <article class="card">
-          <h3>Publish only after verification</h3>
-          <ul class="checklist">
-            <li>Customer permission is confirmed before any photo is posted</li>
-            <li>Names, addresses, phone numbers, and license plates are removed</li>
-            <li>Review text is copied from the real customer or profile source</li>
-            <li>Google Business Profile link is added only after it is live</li>
+        <article class="proof-item">
+          <strong>First review</strong>
+          <div class="media-slot">
+            <span>Review text</span>
+            <span>Source link</span>
+          </div>
+          <p>Publish only when the review can be traced to the real customer or profile source.</p>
+        </article>
+        <article class="proof-item">
+          <strong>Business details</strong>
+          <ul class="meta-list">
+            <li><strong>Owner:</strong> Patrick James</li>
+            <li><strong>Base:</strong> Indianapolis, IN 46254</li>
+            <li><strong>Contact:</strong> Text or call the number above</li>
           </ul>
+          <p class="note">Future proof belongs in these slots, not in the headline or service copy.</p>
         </article>
       </div>
     </div>
@@ -1050,23 +770,35 @@ a {
   <section class="section area" id="area">
     <div class="wrap">
       <p class="section-label">Service Area</p>
-      <h2>Indianapolis first, nearby markets on route.</h2>
-      <p class="section-intro">Core coverage includes Indianapolis and Marion County, with nearby communities scheduled by route timing and project scope.</p>
-      <div class="chips">
-        <a href="#local-markets">Indianapolis</a>
-        <a href="#local-markets">Marion County</a>
-        <a href="#market-speedway">Speedway</a>
-        <a href="#market-brownsburg">Brownsburg</a>
-        <a href="#market-avon">Avon</a>
-        <a href="#market-carmel">Carmel</a>
-        <a href="#market-greenwood">Greenwood</a>
+      <h2>Indianapolis base, nearby routes listed.</h2>
+      <p class="section-intro">Core coverage starts in Indianapolis and Marion County. Nearby communities are accepted when route timing and project scope line up.</p>
+      <div class="result-grid">
+        <article class="card">
+          <h3>Core coverage</h3>
+          <ul class="meta-list">
+            <li><strong>Indianapolis</strong></li>
+            <li><strong>Marion County</strong></li>
+            <li><strong>Base ZIP:</strong> 46254</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Nearby route areas</h3>
+          <ul class="meta-list">
+            <li><strong>Speedway</strong></li>
+            <li><strong>Brownsburg</strong></li>
+            <li><strong>Avon</strong></li>
+            <li><strong>Carmel</strong></li>
+            <li><strong>Greenwood</strong></li>
+          </ul>
+          <p class="note">Outside the core area, route timing and scope decide whether the job fits the day.</p>
+        </article>
       </div>
     </div>
   </section>
   <section class="section local" id="local-markets">
     <div class="wrap">
       <p class="section-label">Nearby Markets</p>
-      <h2>Local expectations for high-volume nearby routes.</h2>
+      <h2>Nearby routes at a glance.</h2>
       <div class="market-grid">
         <article class="card market-card" id="market-speedway">
           <h3>Speedway</h3>
@@ -1128,8 +860,8 @@ a {
   <section class="final-cta" id="contact">
     <div class="wrap">
       <h2>Ready to clear the property?</h2>
-      <p>Send photos and access details now. Patrick will confirm scope, share quote expectations, and send the next booking step.</p>
-      <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="final-cta-primary">Text a Photo Now</a>
+      <p>Text photos, ZIP code, and access notes. Patrick will confirm scope and send the next booking step.</p>
+      <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="final-cta-primary">Text Photos Now</a>
       <a class="btn btn-secondary" href="tel:+14633249549" data-placement="final-cta-secondary">Call (463) 324-9549</a>
     </div>
   </section>
@@ -1145,9 +877,9 @@ a {
       <strong>Quick Links</strong>
       <a href="#services">Services</a>
       <a href="#cleanouts">How It Works</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#trust">Proof</a>
       <a href="#area">Service Area</a>
-      <a href="#local-markets">Nearby Markets</a>
+      <a href="#contact">Contact</a>
     </div>
     <div>
       <strong>Contact</strong>
