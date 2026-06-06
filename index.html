@@ -318,11 +318,25 @@ a {
   gap: 12px;
   margin-top: 28px;
 }
-.hero-points {
+.trust-strip {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 18px;
+}
+.trust-strip span {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+}
+.hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
 }
 .hero-points span {
   border: 1px solid rgba(255, 255, 255, 0.24);
@@ -446,6 +460,12 @@ a {
 }
 .faq-grid {
   grid-template-columns: repeat(2, 1fr);
+}
+.trust-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 14px;
 }
 .card {
   background: var(--paper);
@@ -727,6 +747,7 @@ a {
   .result-grid,
   .service-grid,
   .price-grid,
+  .trust-grid,
   .owner-grid,
   .text-guide-grid,
   .market-grid,
@@ -804,13 +825,18 @@ a {
     <div class="wrap hero-grid">
       <div>
         <p class="kicker">Indianapolis Junk Removal</p>
-        <h1>Text photos. Get a real quote in minutes.</h1>
+        <h1>Text photos for a fast, honest quote.</h1>
         <p class="hero-sub">
-          James Property Solutions LLC handles junk removal and property cleanouts across Indianapolis and nearby markets with clear scope, clear pricing, and direct communication.
+          Send photos, ZIP code, and access details to get clear quote expectations from Patrick before work starts.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="hero-primary">Text a Photo for a Quote</a>
-          <a class="btn btn-secondary" href="tel:+14633249549" data-placement="hero-secondary">Call (463) 324-9549</a>
+          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="hero-primary">Text Photos for Quote</a>
+          <a class="btn btn-secondary" href="tel:+14633249549" data-placement="hero-secondary">Call for a Quote</a>
+        </div>
+        <div class="trust-strip">
+          <span>Owner answers directly</span>
+          <span>Quote before work starts</span>
+          <span>Indianapolis + nearby routes</span>
         </div>
         <div class="hero-points">
           <span>Veteran-Owned</span>
@@ -819,8 +845,8 @@ a {
         </div>
       </div>
       <aside class="quote-panel">
-        <h2>Fast quote path</h2>
-        <p>No call center and no long form. Send photos and access details to get next-step options quickly.</p>
+        <h2>Fast quote path, no form.</h2>
+        <p>Send photos and access details to get a clear scope and the next step quickly from Patrick.</p>
         <ul class="quick-steps">
           <li><strong>1</strong> Send item photos + ZIP code</li>
           <li><strong>2</strong> Receive quote expectations</li>
@@ -828,7 +854,7 @@ a {
         </ul>
         <div class="panel-actions">
           <a class="btn btn-primary" href="sms:+14633249549?body=Hi%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="hero-quote-card-primary">Text Photos Now</a>
-          <a class="btn btn-dark" href="mailto:contact@jamespropertysolution.com?subject=Junk%20Removal%20Quote%20Request" data-placement="hero-quote-card-secondary">Email Quote Request</a>
+          <a class="btn btn-dark" href="mailto:contact@jamespropertysolution.com?subject=Junk%20Removal%20Quote%20Request" data-placement="hero-quote-card-secondary">Email Details</a>
         </div>
       </aside>
     </div>
@@ -969,8 +995,13 @@ a {
           </ul>
         </article>
         <article class="card">
-          <h3>Direct quote message</h3>
-          <p>Text photos and notes directly to Patrick to get scope guidance and next-step options.</p>
+          <h3>What happens next</h3>
+          <p>Text photos and notes directly to Patrick so he can confirm scope, answer one missing question if needed, and send the next step without extra back-and-forth.</p>
+          <ul class="checklist text-guide-list">
+            <li>Confirm scope or request one missing detail</li>
+            <li>Share quote expectations and timing</li>
+            <li>Move to booking once the scope is clear</li>
+          </ul>
           <div class="owner-actions">
             <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20here%20are%20photos%2C%20my%20ZIP%20code%2C%20access%20details%2C%20and%20preferred%20pickup%20window%3A" data-placement="what-to-text-primary">Text Photos + Details</a>
             <a class="btn btn-secondary" href="tel:+14633249549" data-placement="what-to-text-secondary">Call (463) 324-9549</a>
@@ -992,17 +1023,28 @@ a {
     <div class="wrap">
       <p class="section-label">Proof And Social Validation</p>
       <h2>Real proof only, published as it is earned.</h2>
-      <p class="section-intro">You will never see fake photos, fake reviews, or inflated claims here. Real job photos are added only when customer-approved assets are available.</p>
-      <article class="card">
-        <h3>Proof points we are actively publishing</h3>
-        <ul class="checklist proof-queue">
-          <li>Authentic before/after photos from completed jobs</li>
-          <li>First verified customer review/testimonial</li>
-          <li>Google Business Profile link once reinstated</li>
-          <li>Truck and equipment photos from active job sites</li>
-          <li>Real text-message quote examples with private details redacted</li>
-        </ul>
-      </article>
+      <p class="section-intro">This page currently publishes process, pricing, and direct contact details. Verified photos and reviews are added only when customer-approved assets are available.</p>
+      <div class="trust-grid">
+        <article class="card">
+          <h3>First proof checklist</h3>
+          <ul class="checklist proof-queue">
+            <li>Before and after photos with customer approval</li>
+            <li>Customer review or testimonial text when available</li>
+            <li>Google Business Profile link when live</li>
+            <li>Truck or equipment photo from the completed job when appropriate</li>
+            <li>Redacted quote example showing scope without private details</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Publish only after verification</h3>
+          <ul class="checklist">
+            <li>Customer permission is confirmed before any photo is posted</li>
+            <li>Names, addresses, phone numbers, and license plates are removed</li>
+            <li>Review text is copied from the real customer or profile source</li>
+            <li>Google Business Profile link is added only after it is live</li>
+          </ul>
+        </article>
+      </div>
     </div>
   </section>
   <section class="section area" id="area">
@@ -1065,8 +1107,8 @@ a {
       <h2>Fast answers before you book.</h2>
       <div class="faq-grid">
         <article class="card">
-          <h3>How do quotes work?</h3>
-          <p>Text photos, ZIP code, and access details. Quote expectations are shared before work starts.</p>
+          <h3>What happens after I text?</h3>
+          <p>Patrick confirms the scope, asks only for the missing detail if needed, then sends quote expectations and the next booking step.</p>
         </article>
         <article class="card">
           <h3>What can change pricing?</h3>
@@ -1086,7 +1128,7 @@ a {
   <section class="final-cta" id="contact">
     <div class="wrap">
       <h2>Ready to clear the property?</h2>
-      <p>Send photos and access details now to get quote expectations and next-step options.</p>
+      <p>Send photos and access details now. Patrick will confirm scope, share quote expectations, and send the next booking step.</p>
       <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="final-cta-primary">Text a Photo Now</a>
       <a class="btn btn-secondary" href="tel:+14633249549" data-placement="final-cta-secondary">Call (463) 324-9549</a>
     </div>
@@ -1120,7 +1162,7 @@ a {
   </div>
 </footer>
 <div class="mobile-sticky">
-  <a href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="mobile-sticky-primary">Text Photo</a>
+  <a href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="mobile-sticky-primary">Text Photos</a>
   <a href="tel:+14633249549" data-placement="mobile-sticky-secondary">Call Now</a>
 </div>
 <script>
