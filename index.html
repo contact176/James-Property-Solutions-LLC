@@ -29,6 +29,25 @@
     "postalCode": "46254",
     "addressCountry": "US"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.8228,
+    "longitude": -86.2954
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "15:00"
+    }
+  ],
   "areaServed": ["Indianapolis","Marion County","Speedway","Brownsburg","Avon","Carmel","Greenwood"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -172,6 +191,20 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.02em;
   line-height: 1.6;
 }
+/* ── Pricing row ──────────────────────────────────────── */
+.pricing-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 20px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--slate);
+}
+.pricing-row strong { color: var(--midnight); }
+.pricing-sep { color: var(--line); user-select: none; }
 .section { padding: 72px 0; }
 .section h2 { margin-top: 10px; font-size: clamp(1.8rem, 4vw, 2.9rem); }
 .section-intro { margin-top: 14px; max-width: 720px; color: var(--slate); font-size: 1.04rem; }
@@ -418,6 +451,8 @@ a { color: inherit; text-decoration: none; }
   .coverage-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: clamp(2.2rem, 13vw, 3.5rem); }
   .hero-actions .btn { width: 100%; }
+  .pricing-row { gap: 4px 16px; }
+  .pricing-sep { display: none; }
   .market-row {
     flex-direction: column;
     align-items: flex-start;
@@ -478,7 +513,7 @@ a { color: inherit; text-decoration: none; }
         <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="hero-primary">Text Photos for a Quote</a>
       </div>
       <p class="hero-call-line"><a class="hero-call" href="tel:+14633249549" data-placement="hero-secondary">or call Patrick directly at (463) 324-9549</a></p>
-      <p class="hero-trust">Veteran-owned &middot; Owner answers directly &middot; Quote before work starts</p>
+      <p class="hero-trust">Veteran-owned &middot; Responds directly &middot; Same-week scheduling</p>
     </div>
   </section>
 
@@ -516,6 +551,13 @@ a { color: inherit; text-decoration: none; }
           </ul>
         </article>
       </div>
+      <div class="pricing-row">
+        <span>Single items from <strong>$75</strong></span>
+        <span class="pricing-sep">&middot;</span>
+        <span>Full loads from <strong>$400</strong></span>
+        <span class="pricing-sep">&middot;</span>
+        <span>All pricing confirmed before work starts</span>
+      </div>
     </div>
   </section>
 
@@ -527,7 +569,7 @@ a { color: inherit; text-decoration: none; }
         <article class="step">
           <span>1</span>
           <h3>Send photos</h3>
-          <p>Photos, ZIP code, and access notes &mdash; that&rsquo;s usually enough to get started.</p>
+          <p>Photos, ZIP code, and access notes. Patrick responds directly &mdash; typically within a few hours during the day.</p>
         </article>
         <article class="step">
           <span>2</span>
