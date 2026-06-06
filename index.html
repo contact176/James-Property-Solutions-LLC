@@ -37,8 +37,8 @@
       { "@type": "Offer", "name": "Junk Removal", "itemOffered": { "@type": "Service", "name": "Junk Removal", "areaServed": "Indianapolis, Indiana" } },
       { "@type": "Offer", "name": "Property Cleanouts", "itemOffered": { "@type": "Service", "name": "Property Cleanouts", "areaServed": "Indianapolis, Indiana" } },
       { "@type": "Offer", "name": "Furniture and Appliance Removal", "itemOffered": { "@type": "Service", "name": "Furniture and Appliance Removal", "areaServed": "Indianapolis, Indiana" } },
-      { "@type": "Offer", "name": "Vacant Property Cleanout", "itemOffered": { "@type": "Service", "name": "Vacant Property Cleanout", "description": "Full haul-away for vacant, abandoned, fire-damaged, or code-violation properties. Quote-first, no judgment.", "areaServed": "Indianapolis, Indiana" } },
-      { "@type": "Offer", "name": "Estate and Probate Cleanout", "itemOffered": { "@type": "Service", "name": "Estate and Probate Cleanout", "description": "Respectful whole-home cleanout for estate, probate, and inherited properties across Indianapolis and Marion County.", "areaServed": "Indianapolis, Indiana" } }
+      { "@type": "Offer", "name": "Vacant Property Cleanout", "itemOffered": { "@type": "Service", "name": "Vacant Property Cleanout", "description": "Full haul-away for vacant, abandoned, fire-damaged, or code-violation properties.", "areaServed": "Indianapolis, Indiana" } },
+      { "@type": "Offer", "name": "Estate and Probate Cleanout", "itemOffered": { "@type": "Service", "name": "Estate and Probate Cleanout", "description": "Respectful whole-home cleanout for estate, probate, and inherited properties.", "areaServed": "Indianapolis, Indiana" } }
     ]
   },
   "serviceArea": { "@type": "AdministrativeArea", "name": "Marion County, Indiana" }
@@ -87,10 +87,8 @@ a { color: inherit; text-decoration: none; }
   background: var(--midnight);
   color: rgba(255,255,255,0.9);
   text-align: center;
-  font-size: 0.84rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 10px 16px;
+  font-size: 0.84rem; font-weight: 600;
+  letter-spacing: 0.02em; padding: 10px 16px;
 }
 .topbar a { color: var(--white); text-decoration: underline; }
 .header {
@@ -125,18 +123,17 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; gap: 16px;
   font-size: 0.91rem; font-weight: 700; color: var(--marine);
 }
-.nav-links a {
-  padding: 6px 0; border-bottom: 2px solid transparent; transition: 0.2s ease;
-}
+.nav-links a { padding: 6px 0; border-bottom: 2px solid transparent; transition: 0.2s ease; }
 .nav-links a:hover { border-bottom-color: var(--accent); color: var(--accent-dark); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
-  gap: 8px; border-radius: 999px; padding: 12px 20px;
+  gap: 8px; border-radius: 999px; padding: 12px 22px;
   border: 2px solid transparent;
   font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
   font-size: 0.88rem; font-weight: 700; transition: 0.2s ease; cursor: pointer;
+  white-space: nowrap;
 }
-.btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 10px 28px rgba(196,98,50,0.26); }
+.btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 10px 28px rgba(196,98,50,0.22); }
 .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
 .btn-secondary { border-color: rgba(255,255,255,0.45); color: var(--white); }
 .btn-secondary:hover { background: rgba(255,255,255,0.14); }
@@ -171,16 +168,10 @@ a { color: inherit; text-decoration: none; }
 .section-intro { margin-top: 14px; max-width: 720px; color: var(--slate); font-size: 1.04rem; }
 .area, .faq, .local, .cleanout, .owner { background: var(--white); }
 .services-grid {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  margin-top: 28px; display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: 16px;
 }
-.market-grid, .faq-grid {
-  margin-top: 24px; display: grid; gap: 14px;
-}
-.market-grid { grid-template-columns: repeat(2, 1fr); }
-.faq-grid { grid-template-columns: repeat(2, 1fr); }
+.faq-grid { margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .card {
   background: var(--paper); border: 1px solid var(--line);
   border-radius: 18px; padding: 20px;
@@ -217,21 +208,133 @@ a { color: inherit; text-decoration: none; }
 .step p { margin-top: 5px; color: var(--slate); font-size: 0.94rem; }
 .owner-grid { margin-top: 24px; display: grid; grid-template-columns: 1fr; gap: 16px; }
 .owner-voice { margin-top: 10px; color: var(--slate); }
-.badge-note { margin-top: 10px; font-size: 0.86rem; color: var(--slate); }
 .owner-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; }
-.market-card .btn { margin-top: 10px; margin-right: 8px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.chips a {
-  background: var(--mist); border: 1px solid var(--line);
-  border-radius: 999px; padding: 8px 16px;
-  font-size: 0.88rem; font-weight: 700; color: var(--marine);
+/* ── Coverage / Service Area ─────────────────────────────── */
+.coverage-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
 }
+.coverage-primary {
+  background: var(--marine);
+  border-radius: 20px;
+  padding: 32px;
+  color: var(--white);
+}
+.coverage-primary h3 {
+  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-size: 1.7rem;
+  line-height: 1.05;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+.coverage-primary p {
+  margin-top: 12px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.coverage-zip {
+  display: inline-block;
+  margin-top: 18px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  letter-spacing: 0.04em;
+}
+.coverage-secondary {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px 28px 20px;
+}
+.coverage-secondary h3 {
+  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 4px;
+}
+.drive-list { list-style: none; }
+.drive-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--midnight);
+}
+.drive-item:last-child { border-bottom: none; }
+.drive-item a { color: var(--midnight); transition: color 0.15s; }
+.drive-item a:hover { color: var(--teal); }
+.drive-badge {
+  font-size: 0.76rem;
+  color: var(--slate);
+  font-weight: 400;
+  background: var(--mist);
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+/* ── Nearby Markets list ─────────────────────────────────── */
+.market-list {
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.market-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+.market-info { flex: 1; min-width: 0; }
+.market-name {
+  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-size: 1.3rem;
+  color: var(--midnight);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.market-meta {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: var(--slate);
+  line-height: 1.4;
+}
+.market-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.market-call {
+  font-size: 0.8rem;
+  color: var(--slate);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.market-call:hover { color: var(--midnight); }
+/* ── Final CTA ───────────────────────────────────────────── */
 .final-cta {
   background: linear-gradient(130deg, var(--midnight), var(--marine));
   color: var(--white); text-align: center; padding: 78px 0;
 }
 .final-cta p { margin: 12px auto 24px; max-width: 640px; color: rgba(255,255,255,0.82); }
 .final-cta .btn { margin: 4px; }
+/* ── Footer ──────────────────────────────────────────────── */
 .footer { background: #08131B; color: rgba(255,255,255,0.72); padding: 42px 0 24px; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
 .footer strong {
@@ -246,8 +349,8 @@ a { color: inherit; text-decoration: none; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   margin-top: 20px; padding-top: 14px; font-size: 0.82rem;
-  display: flex; justify-content: space-between; gap: 10px;
-  flex-wrap: wrap; color: rgba(255,255,255,0.42);
+  display: flex; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap; color: rgba(255,255,255,0.42);
 }
 .mobile-sticky { display: none; }
 @media (max-width: 980px) {
@@ -255,11 +358,19 @@ a { color: inherit; text-decoration: none; }
   .wrap { width: min(100% - 28px, 1140px); }
   .nav-links, .nav-cta { display: none; }
   .hero { padding-top: 56px; }
-  .footer-grid, .services-grid, .owner-grid, .market-grid, .faq-grid, .step-row {
-    grid-template-columns: 1fr;
-  }
+  .footer-grid, .services-grid, .owner-grid, .faq-grid, .step-row,
+  .coverage-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: clamp(2.2rem, 13vw, 3.5rem); }
-  .hero-actions .btn, .market-card .btn { width: 100%; margin-right: 0; }
+  .hero-actions .btn { width: 100%; }
+  .market-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 0;
+  }
+  .market-actions { align-items: flex-start; width: 100%; }
+  .market-actions .btn { width: 100%; justify-content: center; }
+  .market-call { margin-left: 4px; }
   .mobile-sticky {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 120;
     display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
@@ -365,7 +476,7 @@ a { color: inherit; text-decoration: none; }
         <article class="step">
           <span>1</span>
           <h3>Send photos</h3>
-          <p>Photos, ZIP code, and access notes — that's usually enough to get started.</p>
+          <p>Photos, ZIP code, and access notes — that’s usually enough to get started.</p>
         </article>
         <article class="step">
           <span>2</span>
@@ -383,13 +494,13 @@ a { color: inherit; text-decoration: none; }
 
   <section class="section owner" id="owner">
     <div class="wrap">
-      <p class="section-label">Who You're Calling</p>
+      <p class="section-label">Who You’re Calling</p>
       <h2>Patrick James — owner and operator.</h2>
       <div class="owner-grid">
         <article class="card">
           <h3>One person. No middlemen.</h3>
           <p class="owner-voice">When you call or text, you reach Patrick directly. He reviews the photos, confirms the scope, and handles the job himself.</p>
-          <p class="owner-voice">Veteran-owned and operated. The work stays straightforward, discreet, and respectful from first message to final sweep-up.</p>
+          <p class="owner-voice" style="margin-top:8px;">Veteran-owned and operated. The work stays straightforward, discreet, and respectful from first message to final sweep-up.</p>
           <div class="owner-actions">
             <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="owner-primary">Text Patrick Directly</a>
             <a class="btn btn-dark" href="tel:+14633249549" data-placement="owner-secondary">Call (463) 324-9549</a>
@@ -436,58 +547,103 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
+  <!-- ── SERVICE AREA ───────────────────────────────────────── -->
   <section class="section area" id="area">
     <div class="wrap">
       <p class="section-label">Service Area</p>
-      <h2>Indianapolis first, nearby markets on route.</h2>
-      <p class="section-intro">Core coverage is Indianapolis and Marion County. Nearby communities are scheduled by route timing and project scope.</p>
-      <div class="chips">
-        <a href="#local-markets">Indianapolis</a>
-        <a href="#local-markets">Marion County</a>
-        <a href="#market-speedway">Speedway</a>
-        <a href="#market-brownsburg">Brownsburg</a>
-        <a href="#market-avon">Avon</a>
-        <a href="#market-carmel">Carmel</a>
-        <a href="#market-greenwood">Greenwood</a>
+      <h2>Based in Indianapolis. Serving the metro.</h2>
+      <p class="section-intro">Patrick is Indianapolis-based. Nearby markets are scheduled by route timing and project scope — text or call to confirm availability for your area.</p>
+      <div class="coverage-grid">
+        <div class="coverage-primary">
+          <h3>Indianapolis<br>Marion County</h3>
+          <p>Primary coverage. Most jobs in this area can be scheduled within the week.</p>
+          <span class="coverage-zip">Base ZIP &middot; 46254</span>
+        </div>
+        <div class="coverage-secondary">
+          <h3>On-route markets</h3>
+          <ul class="drive-list">
+            <li class="drive-item">
+              <a href="#market-speedway">Speedway</a>
+              <span class="drive-badge">~10 min from Indy</span>
+            </li>
+            <li class="drive-item">
+              <a href="#market-avon">Avon</a>
+              <span class="drive-badge">~20 min from Indy</span>
+            </li>
+            <li class="drive-item">
+              <a href="#market-brownsburg">Brownsburg</a>
+              <span class="drive-badge">~25 min from Indy</span>
+            </li>
+            <li class="drive-item">
+              <a href="#market-carmel">Carmel</a>
+              <span class="drive-badge">~25 min from Indy</span>
+            </li>
+            <li class="drive-item">
+              <a href="#market-greenwood">Greenwood</a>
+              <span class="drive-badge">~20 min from Indy</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ── NEARBY MARKETS ─────────────────────────────────────── -->
   <section class="section local" id="local-markets">
     <div class="wrap">
       <p class="section-label">Nearby Markets</p>
       <h2>Nearby routes at a glance.</h2>
-      <div class="market-grid">
-        <article class="card market-card" id="market-speedway">
-          <h3>Speedway</h3>
-          <p>Best for homeowners and renters needing fast garage cleanouts or move-out debris pickup.</p>
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Speedway%20junk%20removal%20quote." data-placement="market-speedway-primary">Text for Speedway Quote</a>
-          <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-speedway-secondary">Call About Speedway Service</a>
-        </article>
-        <article class="card market-card" id="market-brownsburg">
-          <h3>Brownsburg</h3>
-          <p>Best for landlords, investors, and estate coordinators handling full-load turnover cleanouts.</p>
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Brownsburg%20cleanout%20quote." data-placement="market-brownsburg-primary">Text for Brownsburg Quote</a>
-          <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-brownsburg-secondary">Call About Brownsburg Service</a>
-        </article>
-        <article class="card market-card" id="market-avon">
-          <h3>Avon</h3>
-          <p>Best for homeowners needing furniture and appliance removal with clear pickup logistics.</p>
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20an%20Avon%20junk%20removal%20quote." data-placement="market-avon-primary">Text for Avon Quote</a>
-          <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-avon-secondary">Call About Avon Service</a>
-        </article>
-        <article class="card market-card" id="market-carmel">
-          <h3>Carmel</h3>
-          <p>Best for sellers, agents, and move-out projects needing listing-prep cleanup.</p>
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Carmel%20cleanout%20quote." data-placement="market-carmel-primary">Text for Carmel Quote</a>
-          <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-carmel-secondary">Call About Carmel Service</a>
-        </article>
-        <article class="card market-card" id="market-greenwood">
-          <h3>Greenwood</h3>
-          <p>Best for families and property managers with basement cleanouts or post-project debris.</p>
-          <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Greenwood%20junk%20removal%20quote." data-placement="market-greenwood-primary">Text for Greenwood Quote</a>
-          <a class="btn btn-dark" href="tel:+14633249549" data-placement="market-greenwood-secondary">Call About Greenwood Service</a>
-        </article>
+      <div class="market-list">
+        <div class="market-row" id="market-speedway">
+          <div class="market-info">
+            <p class="market-name">Speedway</p>
+            <p class="market-meta">~10 min from Indy &middot; Garage cleanouts, move-out debris, homeowner pickups</p>
+          </div>
+          <div class="market-actions">
+            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Speedway%20junk%20removal%20quote." data-placement="market-speedway-primary">Text for Quote</a>
+            <a class="market-call" href="tel:+14633249549" data-placement="market-speedway-secondary">or call (463) 324-9549</a>
+          </div>
+        </div>
+        <div class="market-row" id="market-avon">
+          <div class="market-info">
+            <p class="market-name">Avon</p>
+            <p class="market-meta">~20 min from Indy &middot; Furniture removal, appliance pickup, move-out cleanouts</p>
+          </div>
+          <div class="market-actions">
+            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20an%20Avon%20junk%20removal%20quote." data-placement="market-avon-primary">Text for Quote</a>
+            <a class="market-call" href="tel:+14633249549" data-placement="market-avon-secondary">or call (463) 324-9549</a>
+          </div>
+        </div>
+        <div class="market-row" id="market-brownsburg">
+          <div class="market-info">
+            <p class="market-name">Brownsburg</p>
+            <p class="market-meta">~25 min from Indy &middot; Landlord turnover, estate cleanouts, full-load haul-away</p>
+          </div>
+          <div class="market-actions">
+            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Brownsburg%20cleanout%20quote." data-placement="market-brownsburg-primary">Text for Quote</a>
+            <a class="market-call" href="tel:+14633249549" data-placement="market-brownsburg-secondary">or call (463) 324-9549</a>
+          </div>
+        </div>
+        <div class="market-row" id="market-carmel">
+          <div class="market-info">
+            <p class="market-name">Carmel</p>
+            <p class="market-meta">~25 min from Indy &middot; Listing-prep cleanup, seller move-outs, agent referrals</p>
+          </div>
+          <div class="market-actions">
+            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Carmel%20cleanout%20quote." data-placement="market-carmel-primary">Text for Quote</a>
+            <a class="market-call" href="tel:+14633249549" data-placement="market-carmel-secondary">or call (463) 324-9549</a>
+          </div>
+        </div>
+        <div class="market-row" id="market-greenwood">
+          <div class="market-info">
+            <p class="market-name">Greenwood</p>
+            <p class="market-meta">~20 min from Indy &middot; Basement cleanouts, property manager debris, post-project haul-away</p>
+          </div>
+          <div class="market-actions">
+            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20Greenwood%20junk%20removal%20quote." data-placement="market-greenwood-primary">Text for Quote</a>
+            <a class="market-call" href="tel:+14633249549" data-placement="market-greenwood-secondary">or call (463) 324-9549</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
