@@ -135,12 +135,11 @@ a { color: inherit; text-decoration: none; }
 }
 .btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 10px 28px rgba(196,98,50,0.22); }
 .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
-.btn-secondary { border-color: rgba(255,255,255,0.45); color: var(--white); }
-.btn-secondary:hover { background: rgba(255,255,255,0.14); }
 .btn-dark { background: var(--marine); color: var(--white); }
 .btn-dark:hover { background: var(--midnight); }
+/* ── Hero ─────────────────────────────────────────────── */
 .hero {
-  padding: 74px 0 48px;
+  padding: 88px 0 68px;
   background: linear-gradient(130deg, var(--midnight), var(--marine));
   color: var(--white);
 }
@@ -155,13 +154,23 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.02em; line-height: 1.03;
 }
 .hero h1 { margin-top: 12px; font-size: clamp(2.35rem, 6vw, 4.3rem); max-width: 16ch; }
-.hero-sub { margin-top: 18px; color: rgba(255,255,255,0.84); max-width: 620px; font-size: 1.08rem; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.trust-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.trust-strip span {
-  border: 1px solid rgba(255,255,255,0.24); border-radius: 999px;
-  padding: 7px 12px; font-size: 0.8rem;
-  color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.06);
+.hero-sub { margin-top: 20px; color: rgba(255,255,255,0.82); max-width: 600px; font-size: 1.08rem; line-height: 1.6; }
+.hero-actions { margin-top: 32px; }
+.hero-call-line { margin-top: 14px; }
+.hero-call {
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.65);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.hero-call:hover { color: var(--white); }
+.hero-trust {
+  margin-top: 28px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
 }
 .section { padding: 72px 0; }
 .section h2 { margin-top: 10px; font-size: clamp(1.8rem, 4vw, 2.9rem); }
@@ -404,7 +413,7 @@ a { color: inherit; text-decoration: none; }
   body { padding-bottom: 76px; }
   .wrap { width: min(100% - 28px, 1140px); }
   .nav-links, .nav-cta { display: none; }
-  .hero { padding-top: 56px; }
+  .hero { padding-top: 64px; padding-bottom: 52px; }
   .footer-grid, .services-grid, .owner-grid, .step-row,
   .coverage-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: clamp(2.2rem, 13vw, 3.5rem); }
@@ -466,15 +475,10 @@ a { color: inherit; text-decoration: none; }
       <h1>Direct junk removal in Indianapolis.</h1>
       <p class="hero-sub">One-man operation. Patrick answers calls and texts directly, confirms scope before anything starts, and handles the job personally.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="tel:+14633249549" data-placement="hero-primary">Tap to Call</a>
-        <a class="btn btn-secondary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="hero-secondary">Text Photos</a>
+        <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="hero-primary">Text Photos for a Quote</a>
       </div>
-      <div class="trust-strip">
-        <span>Owner answers directly</span>
-        <span>Quote before work starts</span>
-        <span>Veteran-owned</span>
-        <span>Indianapolis + nearby routes</span>
-      </div>
+      <p class="hero-call-line"><a class="hero-call" href="tel:+14633249549" data-placement="hero-secondary">or call Patrick directly at (463) 324-9549</a></p>
+      <p class="hero-trust">Veteran-owned &middot; Owner answers directly &middot; Quote before work starts</p>
     </div>
   </section>
 
@@ -575,7 +579,7 @@ a { color: inherit; text-decoration: none; }
           </ul>
           <div class="owner-actions">
             <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20have%20a%20distressed%20or%20vacant%20property%20that%20needs%20a%20cleanout.%20Here%20are%20photos%20and%20details%3A" data-placement="distressed-primary">Text Photos for a Quote</a>
-            <a class="btn btn-secondary" href="tel:+14633249549" data-placement="distressed-secondary">Call (463) 324-9549</a>
+            <a class="btn btn-dark" href="tel:+14633249549" data-placement="distressed-secondary">Call (463) 324-9549</a>
           </div>
         </article>
         <article class="card">
@@ -725,7 +729,7 @@ a { color: inherit; text-decoration: none; }
       <h2>Ready to clear it out?</h2>
       <p>Text photos, ZIP code, and access notes. Patrick confirms scope and sends the next step.</p>
       <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="final-cta-primary">Text Photos Now</a>
-      <a class="btn btn-secondary" href="tel:+14633249549" data-placement="final-cta-secondary">Call (463) 324-9549</a>
+      <a class="btn btn-dark" href="tel:+14633249549" data-placement="final-cta-secondary">Call (463) 324-9549</a>
     </div>
   </section>
 </main>
