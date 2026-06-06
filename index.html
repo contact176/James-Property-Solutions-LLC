@@ -362,34 +362,11 @@ a {
   color: var(--slate);
   font-size: 1.04rem;
 }
-.proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-.proof-item {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 16px;
-}
-.proof-item strong {
-  display: block;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
-  font-size: 0.93rem;
-  color: var(--marine);
-}
-.proof-item p {
-  margin-top: 4px;
-  color: var(--slate);
-  font-size: 0.94rem;
-}
 .area,
 .faq,
 .local,
 .cleanout,
-.owner,
-.trust {
+.owner {
   background: var(--white);
 }
 .result-grid,
@@ -426,21 +403,6 @@ a {
 .card li {
   color: var(--slate);
 }
-.media-slot {
-  margin-top: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.media-slot span {
-  border: 1px dashed #8DA3B1;
-  background: var(--mist);
-  border-radius: 10px;
-  text-align: center;
-  padding: 12px 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
 .meta-list {
   list-style: none;
   margin-top: 12px;
@@ -462,7 +424,7 @@ a {
   gap: 8px;
 }
 .checklist li::before {
-  content: "✓";
+  content: "\2713";
   color: var(--accent);
   font-weight: 700;
   margin-right: 8px;
@@ -534,6 +496,21 @@ a {
   margin-top: 10px;
   margin-right: 8px;
 }
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.chips a {
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--marine);
+}
 .final-cta {
   background: linear-gradient(130deg, var(--midnight), var(--marine));
   color: var(--white);
@@ -599,7 +576,6 @@ a {
     padding-top: 56px;
   }
   .footer-grid,
-  .proof-grid,
   .result-grid,
   .service-grid,
   .owner-grid,
@@ -666,7 +642,6 @@ a {
       <a href="#services">Services</a>
       <a href="#cleanouts">How It Works</a>
       <a href="#distressed">Distressed Properties</a>
-      <a href="#pricing">Pricing</a>
       <a href="#area">Service Area</a>
       <a href="#local-markets">Nearby Markets</a>
       <a href="#contact">Contact</a>
@@ -755,7 +730,7 @@ a {
       </div>
     </div>
   </section>
-  <section class="section" id="services">
+  <section class="section" id="services-detail">
     <div class="wrap">
       <p class="section-label">Services</p>
       <h2>Built for fast, practical property cleanup.</h2>
@@ -827,72 +802,6 @@ a {
       </div>
     </div>
   </section>
-  <section class="section" id="pricing">
-  <section class="section trust" id="trust">
-    <div class="wrap">
-      <p class="section-label">Proof</p>
-      <h2>Proof belongs to real jobs.</h2>
-      <p class="section-intro">These slots stay reserved for the first verified job, the first verified review, and live business details only after they exist.</p>
-      <div class="proof-grid">
-        <article class="proof-item">
-          <strong>Completed jobs</strong>
-          <div class="media-slot">
-            <span>Before photo slot</span>
-            <span>After photo slot</span>
-          </div>
-          <p>Use the first customer-approved job here after it is complete.</p>
-        </article>
-        <article class="proof-item">
-          <strong>First review</strong>
-          <div class="media-slot">
-            <span>Review text</span>
-            <span>Source link</span>
-          </div>
-          <p>Publish only when the review can be traced to the real customer or profile source.</p>
-        </article>
-        <article class="proof-item">
-          <strong>Business details</strong>
-          <ul class="meta-list">
-            <li><strong>Owner:</strong> Patrick James</li>
-            <li><strong>Base:</strong> Indianapolis, IN 46254</li>
-            <li><strong>Contact:</strong> Text or call the number above</li>
-          </ul>
-          <p class="note">Future proof belongs in these slots, not in the headline or service copy.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  <!-- PROOF SECTION — hidden until first verified job. Uncomment when photos and review are ready.
-  <section class="section trust" id="trust">
-  <section class="section area" id="area">
-    <div class="wrap">
-      <p class="section-label">Service Area</p>
-      <h2>Indianapolis base, nearby routes listed.</h2>
-      <p class="section-intro">Core coverage starts in Indianapolis and Marion County. Nearby communities are accepted when route timing and project scope line up.</p>
-      <div class="result-grid">
-        <article class="card">
-          <h3>Core coverage</h3>
-          <ul class="meta-list">
-            <li><strong>Indianapolis</strong></li>
-            <li><strong>Marion County</strong></li>
-            <li><strong>Base ZIP:</strong> 46254</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Nearby route areas</h3>
-          <ul class="meta-list">
-            <li><strong>Speedway</strong></li>
-            <li><strong>Brownsburg</strong></li>
-            <li><strong>Avon</strong></li>
-            <li><strong>Carmel</strong></li>
-            <li><strong>Greenwood</strong></li>
-          </ul>
-          <p class="note">Outside the core area, route timing and scope decide whether the job fits the day.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  -->
   <section class="section area" id="area">
     <div class="wrap">
       <p class="section-label">Service Area</p>
@@ -992,8 +901,6 @@ a {
       <a href="#services">Services</a>
       <a href="#cleanouts">How It Works</a>
       <a href="#distressed">Distressed Properties</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#trust">Proof</a>
       <a href="#area">Service Area</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1068,4 +975,3 @@ a {
 </script>
 </body>
 </html>
-
