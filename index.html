@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Indianapolis Junk Removal & Property Cleanouts | James Property Solutions LLC</title>
+<title>Indianapolis Junk Removal &amp; Property Cleanouts | James Property Solutions LLC</title>
 <meta name="description" content="Veteran-owned Indianapolis junk removal and property cleanout service. Text photos for a fast quote, get clear pricing expectations, and schedule reliable haul-away.">
 <link rel="canonical" href="https://jamespropertysolution.com/">
-<meta property="og:title" content="Indianapolis Junk Removal & Property Cleanouts | James Property Solutions LLC">
+<meta property="og:title" content="Indianapolis Junk Removal &amp; Property Cleanouts | James Property Solutions LLC">
 <meta property="og:description" content="Text photos for a fast quote from James Property Solutions LLC. Clear pricing expectations and reliable cleanout service across Indianapolis and nearby communities.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jamespropertysolution.com/">
@@ -171,7 +171,6 @@ a { color: inherit; text-decoration: none; }
   margin-top: 28px; display: grid;
   grid-template-columns: repeat(3, 1fr); gap: 16px;
 }
-.faq-grid { margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .card {
   background: var(--paper); border: 1px solid var(--line);
   border-radius: 18px; padding: 20px;
@@ -285,7 +284,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   white-space: nowrap;
 }
-/* ── Nearby Markets list ─────────────────────────────────── */
+/* ── Nearby Markets list ──────────────────────────────── */
 .market-list {
   margin-top: 12px;
   border-top: 1px solid var(--line);
@@ -327,14 +326,62 @@ a { color: inherit; text-decoration: none; }
   transition: color 0.15s;
 }
 .market-call:hover { color: var(--midnight); }
-/* ── Final CTA ───────────────────────────────────────────── */
+/* ── FAQ accordion ────────────────────────────────────── */
+.faq-list {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-size: 1.05rem;
+  color: var(--midnight);
+  user-select: none;
+  gap: 16px;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: "+";
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mist);
+  color: var(--marine);
+  font-size: 1.1rem;
+  font-weight: 400;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.faq-item[open] .faq-q::after {
+  background: var(--marine);
+  color: var(--white);
+  content: "\2212";
+}
+.faq-a {
+  padding: 0 0 22px;
+  color: var(--slate);
+  max-width: 720px;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+/* ── Final CTA ─────────────────────────────────────────── */
 .final-cta {
   background: linear-gradient(130deg, var(--midnight), var(--marine));
   color: var(--white); text-align: center; padding: 78px 0;
 }
 .final-cta p { margin: 12px auto 24px; max-width: 640px; color: rgba(255,255,255,0.82); }
 .final-cta .btn { margin: 4px; }
-/* ── Footer ──────────────────────────────────────────────── */
+/* ── Footer ────────────────────────────────────────────── */
 .footer { background: #08131B; color: rgba(255,255,255,0.72); padding: 42px 0 24px; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
 .footer strong {
@@ -358,7 +405,7 @@ a { color: inherit; text-decoration: none; }
   .wrap { width: min(100% - 28px, 1140px); }
   .nav-links, .nav-cta { display: none; }
   .hero { padding-top: 56px; }
-  .footer-grid, .services-grid, .owner-grid, .faq-grid, .step-row,
+  .footer-grid, .services-grid, .owner-grid, .step-row,
   .coverage-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: clamp(2.2rem, 13vw, 3.5rem); }
   .hero-actions .btn { width: 100%; }
@@ -390,7 +437,7 @@ a { color: inherit; text-decoration: none; }
 </head>
 <body>
 <div class="topbar">
-  Veteran-Owned Indianapolis Service · Quote Before Work Starts · <a href="tel:+14633249549" data-placement="topbar">Call or Text (463) 324-9549</a>
+  Veteran-Owned Indianapolis Service &middot; Quote Before Work Starts &middot; <a href="tel:+14633249549" data-placement="topbar">Call or Text (463) 324-9549</a>
 </div>
 <header class="header" id="top">
   <div class="wrap nav">
@@ -435,7 +482,7 @@ a { color: inherit; text-decoration: none; }
     <div class="wrap">
       <p class="section-label">Services</p>
       <h2>What we haul away.</h2>
-      <p class="section-intro">All jobs start with a quote. Final price depends on volume, access, stairs, and disposal conditions — Patrick confirms scope before work begins.</p>
+      <p class="section-intro">All jobs start with a quote. Final price depends on volume, access, stairs, and disposal conditions &mdash; Patrick confirms scope before work begins.</p>
       <div class="services-grid">
         <article class="card">
           <h3>Junk &amp; Bulky Items</h3>
@@ -476,7 +523,7 @@ a { color: inherit; text-decoration: none; }
         <article class="step">
           <span>1</span>
           <h3>Send photos</h3>
-          <p>Photos, ZIP code, and access notes — that’s usually enough to get started.</p>
+          <p>Photos, ZIP code, and access notes &mdash; that&rsquo;s usually enough to get started.</p>
         </article>
         <article class="step">
           <span>2</span>
@@ -494,8 +541,8 @@ a { color: inherit; text-decoration: none; }
 
   <section class="section owner" id="owner">
     <div class="wrap">
-      <p class="section-label">Who You’re Calling</p>
-      <h2>Patrick James — owner and operator.</h2>
+      <p class="section-label">Who You&rsquo;re Calling</p>
+      <h2>Patrick James &mdash; owner and operator.</h2>
       <div class="owner-grid">
         <article class="card">
           <h3>One person. No middlemen.</h3>
@@ -547,12 +594,12 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
-  <!-- ── SERVICE AREA ───────────────────────────────────────── -->
+  <!-- ── SERVICE AREA ────────────────────────────────────────── -->
   <section class="section area" id="area">
     <div class="wrap">
       <p class="section-label">Service Area</p>
       <h2>Based in Indianapolis. Serving the metro.</h2>
-      <p class="section-intro">Patrick is Indianapolis-based. Nearby markets are scheduled by route timing and project scope — text or call to confirm availability for your area.</p>
+      <p class="section-intro">Patrick is Indianapolis-based. Nearby markets are scheduled by route timing and project scope &mdash; text or call to confirm availability for your area.</p>
       <div class="coverage-grid">
         <div class="coverage-primary">
           <h3>Indianapolis<br>Marion County</h3>
@@ -588,7 +635,7 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
-  <!-- ── NEARBY MARKETS ─────────────────────────────────────── -->
+  <!-- ── NEARBY MARKETS ───────────────────────────────────────── -->
   <section class="section local" id="local-markets">
     <div class="wrap">
       <p class="section-label">Nearby Markets</p>
@@ -652,23 +699,23 @@ a { color: inherit; text-decoration: none; }
     <div class="wrap">
       <p class="section-label">FAQ</p>
       <h2>Common questions.</h2>
-      <div class="faq-grid">
-        <article class="card">
-          <h3>What happens after I text?</h3>
-          <p>Patrick confirms the scope, asks only for the one missing detail if needed, then sends quote expectations and the next step.</p>
-        </article>
-        <article class="card">
-          <h3>What affects the final price?</h3>
-          <p>Volume, weight, stairs, long carries, and disposal conditions. The quote Patrick sends reflects these before work starts.</p>
-        </article>
-        <article class="card">
-          <h3>Do you take restricted items?</h3>
-          <p>No. Hazardous chemicals, fuel, wet paint, medical waste, and unsafe materials are excluded from every job.</p>
-        </article>
-        <article class="card">
-          <h3>Who handles the job?</h3>
-          <p>Patrick handles it personally. This is a one-man operation &mdash; no crews, no subcontractors, no hand-offs.</p>
-        </article>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-q">What happens after I text?</summary>
+          <p class="faq-a">Patrick confirms the scope, asks only for the one missing detail if needed, then sends quote expectations and the next step.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What affects the final price?</summary>
+          <p class="faq-a">Volume, weight, stairs, long carries, and disposal conditions. The quote Patrick sends reflects these before work starts.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Do you take restricted items?</summary>
+          <p class="faq-a">No. Hazardous chemicals, fuel, wet paint, medical waste, and unsafe materials are excluded from every job.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Who handles the job?</summary>
+          <p class="faq-a">Patrick handles it personally. This is a one-man operation &mdash; no crews, no subcontractors, no hand-offs.</p>
+        </details>
       </div>
     </div>
   </section>
