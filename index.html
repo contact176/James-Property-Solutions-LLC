@@ -92,7 +92,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: "Verdana", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   color: var(--midnight);
   background:
     radial-gradient(circle at 8% 10%, rgba(31,95,120,0.08), transparent 32%),
@@ -126,12 +126,12 @@ a { color: inherit; text-decoration: none; }
   width: 46px; height: 46px; border-radius: 13px;
   background: linear-gradient(140deg, var(--marine), var(--teal));
   color: var(--white); display: grid; place-items: center;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-weight: 700; font-size: 0.86rem;
 }
 .brand strong {
   display: block;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 1.03rem; line-height: 1.08;
 }
 .brand small {
@@ -149,14 +149,13 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex; align-items: center; justify-content: center;
   gap: 8px; border-radius: 999px; padding: 12px 22px;
   border: 2px solid transparent;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.88rem; font-weight: 700; transition: 0.2s ease; cursor: pointer;
   white-space: nowrap;
 }
 .btn-primary { background: var(--accent); color: var(--white); box-shadow: 0 10px 28px rgba(196,98,50,0.22); }
 .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
-.btn-dark { background: var(--marine); color: var(--white); }
-.btn-dark:hover { background: var(--midnight); }
+
 /* ── Hero ─────────────────────────────────────────────── */
 .hero {
   padding: 88px 0 68px;
@@ -165,12 +164,12 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-single { max-width: 760px; }
 .kicker, .section-label {
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.75rem; letter-spacing: 0.14em;
   text-transform: uppercase; font-weight: 700; color: #F3B18E;
 }
 .hero h1, .section h2, .final-cta h2 {
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   letter-spacing: -0.02em; line-height: 1.03;
 }
 .hero h1 { margin-top: 12px; font-size: clamp(2.35rem, 6vw, 4.3rem); max-width: 16ch; }
@@ -200,7 +199,7 @@ a { color: inherit; text-decoration: none; }
 .section { padding: 72px 0; }
 .section h2 { margin-top: 10px; font-size: clamp(1.8rem, 4vw, 2.9rem); }
 .section-intro { margin-top: 14px; max-width: 720px; color: var(--slate); font-size: 1.04rem; }
-.area, .faq, .local { background: var(--white); }
+.area, .faq { background: var(--white); }
 .services-grid {
   margin-top: 28px; display: grid;
   grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -210,7 +209,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 18px; padding: 20px;
 }
 .card h3 {
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 1.05rem; line-height: 1.2;
 }
 .card p, .card li { color: var(--slate); }
@@ -229,12 +228,12 @@ a { color: inherit; text-decoration: none; }
   width: 34px; height: 34px; border-radius: 50%;
   background: var(--marine); color: var(--white);
   display: grid; place-items: center;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.82rem;
 }
 .step h3 {
   margin-top: 9px;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 1rem;
 }
 .step p { margin-top: 5px; color: var(--slate); font-size: 0.94rem; }
@@ -248,7 +247,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--white);
 }
 .coverage-primary h3 {
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 1.7rem;
   line-height: 1.05;
   color: var(--white);
@@ -269,7 +268,7 @@ a { color: inherit; text-decoration: none; }
   padding: 6px 14px;
   font-size: 0.8rem;
   color: rgba(255,255,255,0.7);
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   letter-spacing: 0.04em;
 }
 /* ── Nearby Markets list ──────────────────────────────── */
@@ -287,7 +286,7 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--line);
 }
 .market-name {
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 1.05rem;
   color: var(--midnight);
   white-space: nowrap;
@@ -312,7 +311,7 @@ a { color: inherit; text-decoration: none; }
   padding: 22px 0;
   cursor: pointer;
   list-style: none;
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-size: 1.05rem;
   color: var(--midnight);
   user-select: none;
@@ -357,7 +356,7 @@ a { color: inherit; text-decoration: none; }
 .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .footer strong {
   display: block; color: var(--white);
-  font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   margin-bottom: 8px;
 }
 .footer p { font-size: 0.92rem; line-height: 1.55; }
@@ -397,7 +396,7 @@ a { color: inherit; text-decoration: none; }
   .mobile-sticky a {
     min-height: 48px; border-radius: 999px;
     display: grid; place-items: center;
-    font-family: "Franklin Gothic Medium", "Avenir Next", "Trebuchet MS", sans-serif;
+    font-family: system-ui, -apple-system, sans-serif;
     font-size: 0.84rem; font-weight: 700;
   }
   .mobile-sticky a:first-child { background: var(--accent); color: var(--white); }
@@ -407,7 +406,7 @@ a { color: inherit; text-decoration: none; }
 </head>
 <body>
   <div class="topbar">
-    Veteran-Owned Indianapolis Service &middot; Quote Before Work Starts
+    Same-day booking available — <a href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A">text photos now</a>
   </div>
 <header class="header" id="top">
   <div class="wrap nav">
@@ -421,7 +420,6 @@ a { color: inherit; text-decoration: none; }
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#services">Services</a>
       <a href="#area">Service Area</a>
-      <a href="#faq">FAQ</a>
       <a href="#contact">Get a Quote</a>
     </nav>
     <a class="btn btn-primary nav-cta" href="tel:+14633249549" data-placement="header-nav">Call or Text</a>
@@ -443,7 +441,7 @@ a { color: inherit; text-decoration: none; }
   <section class="section" id="services">
     <div class="wrap">
       <p class="section-label">Services</p>
-      <h2>What we haul away — junk hauling &amp; removal.</h2>
+      <h2>You text Patrick. He replies directly.</h2>
       <p class="section-intro">All junk hauling jobs start with a quote. Final price depends on volume, access, stairs, and disposal conditions &mdash; Patrick confirms scope before work begins.</p>
       <div class="services-grid">
         <article class="card">
@@ -511,63 +509,20 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
-  <section class="section owner" id="distressed">
-    <div class="wrap">
-      <p class="section-label">Vacant &amp; Distressed Properties</p>
-      <h2>We handle the hardest cleanouts &mdash; no judgment, quote first.</h2>
-      <p class="section-intro">Investors, property managers, estates, and LLC owners with vacant or distressed properties are among the most common cleanout clients. If a property has a code violation, fire damage, or has been sitting empty, text photos and get a straight scope.</p>
-      <div class="owner-grid">
-        <article class="card">
-          <h3>Situations this covers</h3>
-          <ul class="checklist">
-            <li>Vacant property with accumulated junk or debris</li>
-            <li>Code violation haul-away before reinspection</li>
-            <li>Fire cleanup and post-emergency debris removal</li>
-            <li>Estate or probate property with whole-home contents</li>
-            <li>LLC-owned or investor-owned rental turnover</li>
-            <li>Bank-owned or REO cleanout before listing</li>
-          </ul>
-          <div class="owner-actions">
-            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20have%20a%20distressed%20or%20vacant%20property%20that%20needs%20a%20cleanout.%20Here%20are%20photos%20and%20details%3A" data-placement="distressed-primary">Text Photos for a Quote</a>
-            <a class="btn btn-dark" href="tel:+14633249549" data-placement="distressed-secondary">Call (463) 324-9549</a>
-          </div>
-        </article>
-        <article class="card">
-          <h3>Why JPS for distressed properties</h3>
-          <ul class="checklist">
-            <li>Single point of contact from quote to final sweep</li>
-            <li>Works directly with investors, LLCs, and property managers</li>
-            <li>No questions about how the property got this way</li>
-            <li>Quote before any work starts &mdash; scope confirmed first</li>
-            <li>Full haul-away or targeted removal, depending on scope</li>
-            <li>Veteran-owned &mdash; shows up, communicates clearly, finishes the job</li>
-          </ul>
-          <p class="note" style="margin-top:14px;color:var(--slate);font-size:0.88rem;">Restricted and hazardous materials are excluded. Scope is confirmed before any job starts.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+
 
   <!-- ── SERVICE AREA ────────────────────────────────────────── -->
   <section class="section area" id="area">
     <div class="wrap">
       <p class="section-label">Service Area</p>
       <h2>Indianapolis junk hauling base, serving the metro.</h2>
-      <p class="section-intro">Patrick is Indianapolis-based. Nearby markets are scheduled by route timing and project scope &mdash; text or call to confirm availability for your area.</p>
+      <p class="section-intro">Patrick is Indianapolis-based. Nearby markets are scheduled by route timing and project scope.</p>
       <div class="coverage-primary">
         <h3>Indianapolis<br>Marion County</h3>
         <p>Primary coverage. Most jobs in this area can be scheduled within the week.</p>
         <span class="coverage-zip">Base ZIP &middot; 46142</span>
       </div>
-    </div>
-  </section>
-
-  <!-- ── NEARBY MARKETS ───────────────────────────────────────── -->
-  <section class="section local" id="local-markets">
-    <div class="wrap">
-      <p class="section-label">Nearby Markets</p>
-      <h2>Nearby routes at a glance.</h2>
-      <ul class="market-list">
+      <ul class="market-list" style="margin-top:24px">
         <li class="market-row" id="market-speedway"><span class="market-name">Speedway</span><span class="market-meta">Junk hauling for garage cleanouts, move-out debris, homeowner pickups</span></li>
         <li class="market-row" id="market-avon"><span class="market-name">Avon</span><span class="market-meta">Furniture hauling, appliance pickup, move-out cleanouts</span></li>
         <li class="market-row" id="market-brownsburg"><span class="market-name">Brownsburg</span><span class="market-meta">Landlord turnover, estate cleanouts, full-load junk hauling</span></li>
@@ -607,7 +562,6 @@ a { color: inherit; text-decoration: none; }
       <h2>Ready to clear it out?</h2>
       <p>Text photos, ZIP code, and access notes. Patrick confirms scope and sends the next step.</p>
       <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="final-cta-primary">Text Photos Now</a>
-      <a class="btn btn-dark" href="tel:+14633249549" data-placement="final-cta-secondary">Call (463) 324-9549</a>
     </div>
   </section>
 </main>
