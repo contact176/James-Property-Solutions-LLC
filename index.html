@@ -168,7 +168,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.75rem; letter-spacing: 0.14em;
   text-transform: uppercase; font-weight: 700; color: #F3B18E;
 }
-.hero h1, .section h2, .final-cta h2 {
+.hero h1, .section h2 {
   font-family: system-ui, -apple-system, sans-serif;
   letter-spacing: -0.02em; line-height: 1.03;
 }
@@ -344,13 +344,6 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.96rem;
   line-height: 1.6;
 }
-/* ── Final CTA ─────────────────────────────────────────── */
-.final-cta {
-  background: linear-gradient(130deg, var(--midnight), var(--marine));
-  color: var(--white); text-align: center; padding: 78px 0;
-}
-.final-cta p { margin: 12px auto 24px; max-width: 640px; color: rgba(255,255,255,0.82); }
-.final-cta .btn { margin: 4px; }
 /* ── Footer ────────────────────────────────────────────── */
 .footer { background: #08131B; color: rgba(255,255,255,0.72); padding: 42px 0 24px; }
 .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -419,8 +412,8 @@ a { color: inherit; text-decoration: none; }
     </a>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#services">Services</a>
+      <a href="#quote">Instant Quote</a>
       <a href="#area">Service Area</a>
-      <a href="#contact">Get a Quote</a>
     </nav>
     <a class="btn btn-primary nav-cta" href="tel:+14633249549" data-placement="header-nav">Call or Text</a>
   </div>
@@ -532,6 +525,33 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
+  <section class="section" id="quote" style="background:var(--white)">
+    <div class="wrap">
+      <p class="section-label">Instant Quote</p>
+      <h2>Send photos for an instant quote.</h2>
+      <p class="section-intro">Upload 2-10 photos and describe what needs removed. We'll generate an instant estimate. Patrick reviews and confirms before work starts.</p>
+      <div id="quote-form" style="margin-top:24px;max-width:560px">
+        <div id="quote-fields">
+          <input type="text" id="q-name" placeholder="Your name" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;font-size:0.95rem;margin-bottom:10px;font-family:system-ui;background:var(--paper)">
+          <input type="tel" id="q-phone" placeholder="Phone number" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;font-size:0.95rem;margin-bottom:10px;font-family:system-ui;background:var(--paper)">
+          <input type="text" id="q-address" placeholder="Address (optional)" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;font-size:0.95rem;margin-bottom:10px;font-family:system-ui;background:var(--paper)">
+          <textarea id="q-desc" placeholder="Describe what needs removed — furniture, appliances, yard debris, whole-room cleanout, etc." rows="3" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;font-size:0.95rem;margin-bottom:10px;font-family:system-ui;resize:vertical;background:var(--paper)"></textarea>
+          <div style="margin-bottom:10px">
+            <label for="q-photos" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px dashed var(--line);border-radius:12px;cursor:pointer;font-size:0.9rem;color:var(--slate);background:var(--paper)" id="q-upload-label">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F5F78" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span id="q-upload-text">Upload 2-10 photos</span>
+            </label>
+            <input type="file" id="q-photos" accept="image/*" multiple style="display:none">
+          </div>
+          <div id="q-preview" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"></div>
+          <div id="q-error" style="color:#dc3545;font-size:0.85rem;margin-bottom:8px;display:none"></div>
+          <button id="q-submit" class="btn btn-primary" style="width:100%" disabled>Get Instant Quote</button>
+        </div>
+        <div id="quote-result" style="display:none;background:var(--mist);border-radius:18px;padding:28px;text-align:center"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section faq" id="faq">
     <div class="wrap">
       <p class="section-label">FAQ</p>
@@ -557,13 +577,6 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
-  <section class="final-cta" id="contact">
-    <div class="wrap">
-      <h2>Ready to clear it out?</h2>
-      <p>Text photos, ZIP code, and access notes. Patrick confirms scope and sends the next step.</p>
-      <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20junk%20removed.%20Here%27s%20what%20I%20have%3A" data-placement="final-cta-primary">Text Photos Now</a>
-    </div>
-  </section>
 </main>
 
 <footer class="footer">
@@ -626,6 +639,108 @@ a { color: inherit; text-decoration: none; }
       destination: href.split("?")[0],
       page_path: window.location.pathname || "/"
     });
+  });
+})();
+
+(function() {
+  const formEl = document.getElementById('quote-form');
+  if (!formEl) return;
+
+  const nameEl = document.getElementById('q-name');
+  const phoneEl = document.getElementById('q-phone');
+  const addressEl = document.getElementById('q-address');
+  const descEl = document.getElementById('q-desc');
+  const photosEl = document.getElementById('q-photos');
+  const submitEl = document.getElementById('q-submit');
+  const errorEl = document.getElementById('q-error');
+  const previewEl = document.getElementById('q-preview');
+  const uploadText = document.getElementById('q-upload-text');
+  const resultEl = document.getElementById('quote-result');
+  const fieldsEl = document.getElementById('quote-fields');
+  let chosenFiles = [];
+
+  photosEl.addEventListener('change', function() {
+    chosenFiles = Array.from(this.files).slice(0, 10);
+    previewEl.innerHTML = '';
+    uploadText.textContent = chosenFiles.length > 0 ? chosenFiles.length + ' photo(s) selected' : 'Upload 2-10 photos';
+    chosenFiles.forEach(function(f) {
+      var img = document.createElement('div');
+      img.style.cssText = 'width:80px;height:80px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background-size:cover;background-position:center';
+      img.style.backgroundImage = 'url(' + URL.createObjectURL(f) + ')';
+      previewEl.appendChild(img);
+    });
+    submitEl.disabled = !(nameEl.value.trim() && phoneEl.value.trim() && descEl.value.trim() && chosenFiles.length >= 2);
+  });
+
+  [nameEl, phoneEl, descEl].forEach(function(el) {
+    el.addEventListener('input', function() {
+      submitEl.disabled = !(nameEl.value.trim() && phoneEl.value.trim() && descEl.value.trim() && chosenFiles.length >= 2);
+    });
+  });
+
+  submitEl.addEventListener('click', async function() {
+    if (submitEl.disabled) return;
+    errorEl.style.display = 'none';
+    submitEl.disabled = true;
+    submitEl.textContent = 'Calculating...';
+
+    var formData = new FormData();
+    formData.append('name', nameEl.value.trim());
+    formData.append('phone', phoneEl.value.trim());
+    formData.append('address', addressEl.value.trim());
+    formData.append('description', descEl.value.trim());
+    chosenFiles.forEach(function(f) { formData.append('photos', f); });
+
+    try {
+      var res = await fetch('https://jps-quote-worker.contact-f52.workers.dev/api/quote', {
+        method: 'POST',
+        body: formData
+      });
+      var data = await res.json();
+      if (!res.ok) { throw new Error(data.error || 'Request failed'); }
+
+      fieldsEl.style.display = 'none';
+      resultEl.style.display = 'block';
+
+      if (data.status === 'pending_review') {
+        resultEl.innerHTML = '<h3 style="margin-bottom:8px">Quote Under Review</h3><p style="color:var(--slate);font-size:0.95rem">Your photos and description are being reviewed by Patrick. You\'ll hear back shortly at ' + phoneEl.value.trim() + '.</p>';
+      } else {
+        var items = data.details && data.details.line_items ? data.details.line_items.map(function(i) {
+          return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:0.9rem"><span>' + i.item + '</span><span>$' + i.price + '</span></div>';
+        }).join('') : '';
+
+        resultEl.innerHTML = '<h3 style="margin-bottom:4px">Your Quote: $' + data.total + '</h3><div style="max-width:360px;margin:12px auto">' + items + '</div><p style="color:var(--slate);font-size:0.85rem;margin-bottom:16px">' + (data.checkerNote || '') + '</p><div style="margin:16px 0"><p style="font-size:0.9rem;margin-bottom:8px">How will you pay?</p><label style="display:inline-block;margin:0 12px 8px 0;cursor:pointer"><input type="radio" name="q-payment" value="cash" checked> Cash</label><label style="display:inline-block;cursor:pointer"><input type="radio" name="q-payment" value="check"> Check</label></div><button class="btn btn-primary" id="q-accept" style="margin:0 auto">Ready to Go — Text Patrick</button>';
+
+        document.getElementById('q-accept') && document.getElementById('q-accept').addEventListener('click', async function() {
+          this.disabled = true;
+          this.textContent = 'One moment...';
+          var paymentMethod = document.querySelector('input[name="q-payment"]:checked');
+          if (!paymentMethod) { this.disabled = false; this.textContent = 'Ready to Go — Text Patrick'; return; }
+          try {
+            var confirmRes = await fetch('https://jps-quote-worker.contact-f52.workers.dev/api/quote/confirm', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ quoteId: data.quoteId, payment_method: paymentMethod.value })
+            });
+            var confirmData = await confirmRes.json();
+            if (confirmData.status === 'accepted') {
+              var smsBody = 'Hi Patrick, I want to go ahead with the quote. Name: ' + confirmData.name + ', Address: ' + confirmData.address + ', Total: $' + confirmData.total + ', Pay: ' + confirmData.payment_method;
+              resultEl.innerHTML = '<h3 style="margin-bottom:8px;color:#28a745">You\'re All Set!</h3><p style="color:var(--slate);font-size:0.95rem">Patrick has your info. Text or call him to confirm your appointment.</p><div style="margin:16px 0"><a class="btn btn-primary" href="sms:+14633249549?body=' + encodeURIComponent(smsBody) + '" style="margin:0 auto 10px auto">Text Patrick Now</a><a class="btn btn-primary" href="tel:+14633249549" style="margin:0 auto;background:var(--slate)">Call Patrick</a></div><p style="font-size:0.82rem;color:var(--slate)">(463) 324-9549</p>';
+            } else { throw new Error(confirmData.error || 'Something went wrong'); }
+          } catch(e) {
+            this.disabled = false;
+            this.textContent = 'Ready to Go — Text Patrick';
+            errorEl.innerHTML = 'Text Patrick directly at <a href="tel:+14633249549" style="color:var(--accent)">(463) 324-9549</a>.';
+            errorEl.style.display = 'block';
+          }
+        });
+      }
+    } catch(e) {
+      errorEl.textContent = e.message || 'Something went wrong. Try texting Patrick at (463) 324-9549.';
+      errorEl.style.display = 'block';
+      submitEl.disabled = false;
+      submitEl.textContent = 'Get Instant Quote';
+    }
   });
 })();
 </script>
