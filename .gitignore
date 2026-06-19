@@ -1,3 +1,10 @@
 # Local diagnostic artifacts (do not commit)
 _joblog_*.txt
 _runlogs*.zip
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
