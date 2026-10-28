@@ -17,7 +17,7 @@
   const valid = () => name.value.trim() && validPhone() && description.value.trim() && files.length >= 2;
   function checkForm() { submit.disabled = busy || !valid(); }
   function showError(message) {
-    error.textContent = message + fallback;
+    error.textContent = String(message).replace(/\+?1?\s*\(317\)[-\s]*794[-\s]*3067/g, '(463) 324-9549') + fallback;
     error.style.display = 'block';
   }
   function showResult(html) {
@@ -44,6 +44,35 @@
       throw err;
     } finally { clearTimeout(timeout); }
   }
+  function renderPhotos() {
+    previewUrls.forEach(url => URL.revokeObjectURL(url));
+    previewUrls = [];
+    preview.innerHTML = '';
+    files.forEach((file, index) => {
+      const item = document.createElement('div');
+      item.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:4px';
+      const image = document.createElement('img');
+      const url = URL.createObjectURL(file);
+      previewUrls.push(url);
+      image.src = url;
+      image.alt = file.name;
+      image.style.cssText = 'width:80px;height:80px;border-radius:10px;object-fit:cover;border:1px solid var(--line)';
+      item.appendChild(image);
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.textContent = 'Remove';
+      remove.setAttribute('aria-label', `Remove ${file.name}`);
+      remove.addEventListener('click', () => {
+        files.splice(index, 1);
+        error.style.display = 'none';
+        renderPhotos();
+      });
+      item.appendChild(remove);
+      preview.appendChild(item);
+    });
+    upload.textContent = files.length ? `${files.length} photo(s) selected` : 'Upload 2-10 photos';
+    checkForm();
+  }
   photos.addEventListener('change', () => {
     if (!photos.files.length) return;
     error.style.display = 'none';
@@ -55,27 +84,14 @@
     }
     if (merged.length > 10) showError('You can upload at most 10 photos. Only the first 10 were selected.');
     files = merged.slice(0, 10);
-    previewUrls.forEach(url => URL.revokeObjectURL(url));
-    previewUrls = [];
-    preview.innerHTML = '';
-    files.forEach(file => {
-      const image = document.createElement('img');
-      const url = URL.createObjectURL(file);
-      previewUrls.push(url);
-      image.src = url;
-      image.alt = file.name;
-      image.style.cssText = 'width:80px;height:80px;border-radius:10px;object-fit:cover;border:1px solid var(--line)';
-      preview.appendChild(image);
-    });
     photos.value = '';
-    upload.textContent = files.length ? `${files.length} photo(s) selected` : 'Upload 2-10 photos';
-    checkForm();
+    renderPhotos();
   });
   [name, phone, description].forEach(input => input.addEventListener('input', checkForm));
 
   function showVerification(data) {
     if (!data.quoteId) throw new Error('The quote service returned an incomplete verification request.');
-    showResult(`<h3>Verify Your Phone</h3><p>Enter the 6-digit code sent to the phone ending in ${escape(data.phoneLast4)}.</p>
+    showResult(`<h3>Verify Your Phone</h3><p>Enter the 6-digit code requested for the phone ending in ${escape(data.phoneLast4)}. If it does not arrive, try resending or contact Patrick.</p>
       <label for="q-otp">Verification code</label>
       <input id="q-otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" style="display:block;width:100%;padding:12px;margin:12px 0">
       <button id="q-verify" class="btn btn-primary" type="button">Verify &amp; Get Quote</button>
@@ -106,7 +122,7 @@
       try {
         const sent = await request('/verify/send', { quoteId: data.quoteId });
         if (sent.status !== 'sent') throw new Error(sent.error || 'The code could not be resent.');
-        byId('q-verification-status').textContent = 'Code resent. Please wait 30 seconds before requesting another.';
+        byId('q-verification-status').textContent = 'A new code was requested. Please wait 30 seconds before requesting another.';
         setTimeout(() => { resending = false; resend.disabled = false; }, 30000);
       } catch (err) { showError(err.message); resending = false; resend.disabled = false; }
     });

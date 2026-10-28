@@ -11,8 +11,10 @@ function setup(responses = []) {
     constructor() { this.value = ''; this.style = {}; this.listeners = {}; this.children = []; this.disabled = false; this.checked = false; }
     addEventListener(event, callback) { this.listeners[event] = callback; }
     appendChild(child) { this.children.push(child); }
+    setAttribute(name, value) { this[name] = value; }
     set innerHTML(value) {
       this.markup = value;
+      this.children = [];
       for (const match of value.matchAll(/id="([^"]+)"/g)) elements.set(match[1], new Element());
       if (value.includes('id="q-accept"')) elements.get('q-accept').disabled = true;
     }
@@ -96,6 +98,16 @@ test('photo selections accumulate and duplicates are ignored; obsolete previews 
   assert.equal(app.get('q-upload-text').textContent, '2 photo(s) selected');
   assert.deepEqual(app.revoked, ['blob:1.jpg']);
 });
+test('each photo can be removed and the minimum photo requirement is enforced again', async () => {
+  const app = setup(); await app.ready();
+  assert.equal(app.get('q-submit').disabled, false);
+  const firstPhoto = app.get('q-preview').children[0];
+  assert.equal(firstPhoto.children[1]['aria-label'], 'Remove 1.jpg');
+  await firstPhoto.children[1].emit('click');
+  assert.equal(app.get('q-upload-text').textContent, '1 photo(s) selected');
+  assert.equal(app.get('q-submit').disabled, true);
+  assert.equal(app.get('q-preview').children[0].children[1]['aria-label'], 'Remove 2.jpg');
+});
 test('nonimages are rejected and selections are capped at ten', async () => {
   const app = setup(); await app.choose([{ name: 'bad.txt', type: 'text/plain' }]);
   assert.match(app.get('q-error').textContent, /image files only/);
@@ -124,4 +136,12 @@ test('error message sits outside the hidden input section and inputs have access
   assert.match(html, /<\/div>\s*<div id="q-error" role="alert"/);
   for (const id of ['q-name','q-phone','q-address','q-desc']) assert.match(html, new RegExp(`id="${id}" aria-label=`));
   assert.match(html, /<noscript>/); assert.doesNotMatch(html, /PLACEHOLDER_CID/);
+  assert.match(html, /id="q-photos"[^>]*aria-describedby="q-requirements"/);
+  assert.doesNotMatch(html, /id="q-photos"[^>]*display\s*:\s*none/);
+});
+test('outdated backend contact number is replaced by the current site contact', async () => {
+  const app = setup([{ ok: false, data: { error: 'Text Patrick at +1(317)-794-3067 to verify.' } }]);
+  await app.ready(); await app.get('q-submit').emit('click');
+  assert.doesNotMatch(app.get('q-error').textContent, /317/);
+  assert.match(app.get('q-error').textContent, /\(463\) 324-9549/);
 });

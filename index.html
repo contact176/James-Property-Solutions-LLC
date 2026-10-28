@@ -22,38 +22,12 @@
   "description": "Veteran-owned junk hauling, junk removal, and property cleanout services across Indianapolis and Marion County with quote-first scheduling.",
   "priceRange": "$75+",
   "founder": { "@type": "Person", "name": "Patrick James" },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Indianapolis",
-    "addressRegion": "IN",
-    "postalCode": "46142",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 39.8228,
-    "longitude": -86.2954
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "07:00",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "08:00",
-      "closes": "15:00"
-    }
-  ],
   "areaServed": ["Indianapolis","Marion County","Speedway","Brownsburg","Avon","Carmel","Greenwood"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "James Property Solutions LLC Service Catalog",
     "itemListElement": [
-      { "@type": "Offer", "name": "Junk Hauling &amp; Removal", "itemOffered": { "@type": "Service", "name": "Junk Hauling &amp; Removal", "areaServed": "Indianapolis, Indiana" } },
+      { "@type": "Offer", "name": "Junk Hauling & Removal", "itemOffered": { "@type": "Service", "name": "Junk Hauling & Removal", "areaServed": "Indianapolis, Indiana" } },
       { "@type": "Offer", "name": "Property Cleanouts", "itemOffered": { "@type": "Service", "name": "Property Cleanouts", "areaServed": "Indianapolis, Indiana" } },
       { "@type": "Offer", "name": "Furniture and Appliance Removal", "itemOffered": { "@type": "Service", "name": "Furniture and Appliance Removal", "areaServed": "Indianapolis, Indiana" } },
       { "@type": "Offer", "name": "Vacant Property Cleanout", "itemOffered": { "@type": "Service", "name": "Vacant Property Cleanout", "description": "Full haul-away for vacant, abandoned, fire-damaged, or code-violation properties.", "areaServed": "Indianapolis, Indiana" } },
@@ -398,7 +372,7 @@ a { color: inherit; text-decoration: none; }
 </head>
 <body>
   <div class="topbar">
-    Same-day booking available — <a href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A">text photos now</a>
+    Same-day pickup when the route allows — <a href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A">text photos now</a>
   </div>
 <header class="header" id="top">
   <div class="wrap nav">
@@ -414,7 +388,7 @@ a { color: inherit; text-decoration: none; }
       <a href="#quote">Instant Quote</a>
       <a href="#area">Service Area</a>
     </nav>
-    <a class="btn btn-primary nav-cta" href="tel:+14633249549" data-placement="header-nav">Call or Text</a>
+    <a class="btn btn-primary nav-cta" href="tel:+14633249549" data-placement="header-nav">Call Patrick</a>
   </div>
 </header>
 <main>
@@ -425,6 +399,7 @@ a { color: inherit; text-decoration: none; }
       <p class="hero-sub">One-man junk hauling operation. Patrick answers calls and texts directly, confirms scope before anything starts, and handles the job personally.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="hero-primary">Text Photos for a Quote</a>
+        <a class="btn" href="#quote" style="background:var(--white);color:var(--midnight)" data-placement="hero-online-quote">Get an Online Quote</a>
       </div>
       <p class="hero-trust">Veteran-owned</p>
     </div>
@@ -488,16 +463,6 @@ a { color: inherit; text-decoration: none; }
           <p>Agree on a time window and the job gets done. One point of contact start to finish.</p>
         </article>
       </div>
-      <div class="owner-grid" style="margin-top:32px">
-        <article class="card" style="padding:24px">
-          <h3>One person. No middlemen.</h3>
-          <p class="owner-voice">When you call or text, you reach Patrick directly. He reviews the photos, confirms the scope, and handles the job himself.</p>
-          <p class="owner-voice" style="margin-top:8px;">Veteran-owned and operated. The work stays straightforward, discreet, and respectful from first message to final sweep-up.</p>
-          <div class="owner-actions">
-            <a class="btn btn-primary" href="sms:+14633249549?body=Hi%20Patrick%2C%20I%20need%20a%20quote.%20Here%20are%20my%20photos%20and%20details%3A" data-placement="owner-primary">Text Patrick Directly</a>
-          </div>
-        </article>
-      </div>
     </div>
   </section>
 
@@ -507,12 +472,11 @@ a { color: inherit; text-decoration: none; }
   <section class="section area" id="area">
     <div class="wrap">
       <p class="section-label">Service Area</p>
-      <h2>Indianapolis junk hauling base, serving the metro.</h2>
-      <p class="section-intro">Patrick is Indianapolis-based. Nearby markets are scheduled by route timing and project scope.</p>
+      <h2>Serving Indianapolis and nearby communities.</h2>
+      <p class="section-intro">Jobs are scheduled by route timing and project scope.</p>
       <div class="coverage-primary">
         <h3>Indianapolis<br>Marion County</h3>
         <p>Primary coverage. Most jobs in this area can be scheduled within the week.</p>
-        <span class="coverage-zip">Base ZIP &middot; 46142</span>
       </div>
       <ul class="market-list" style="margin-top:24px">
         <li class="market-row" id="market-speedway"><span class="market-name">Speedway</span><span class="market-meta">Junk hauling for garage cleanouts, move-out debris, homeowner pickups</span></li>
@@ -528,7 +492,7 @@ a { color: inherit; text-decoration: none; }
     <div class="wrap">
       <p class="section-label">Instant Quote</p>
       <h2>Send photos for an instant quote.</h2>
-      <p class="section-intro">Upload 2-10 photos and describe what needs removed. We'll generate an instant estimate. Patrick reviews and confirms before work starts.</p>
+      <p class="section-intro">Upload 2–10 photos and describe what needs removed. Verify your phone by text to see your estimate, then review the cancellation policy before accepting. Patrick confirms before work starts.</p>
       <div id="quote-form" style="margin-top:24px;max-width:560px">
         <div id="quote-fields">
           <input type="text" id="q-name" aria-label="Your name" autocomplete="name" placeholder="Your name" style="width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:12px;font-size:0.95rem;margin-bottom:10px;font-family:system-ui;background:var(--paper)">
@@ -540,9 +504,10 @@ a { color: inherit; text-decoration: none; }
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F5F78" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               <span id="q-upload-text">Upload 2-10 photos</span>
             </label>
-            <input type="file" id="q-photos" accept="image/*" multiple style="display:none">
+            <input type="file" id="q-photos" accept="image/*" multiple aria-describedby="q-requirements" style="display:block;width:100%;margin-top:8px;font:inherit">
           </div>
           <div id="q-preview" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"></div>
+          <p id="q-requirements" style="font-size:0.9rem;color:var(--slate);margin-bottom:12px">Required: name, 10-digit phone number, description, and 2–10 photos. Address is optional.</p>
           <button id="q-submit" class="btn btn-primary" style="width:100%" disabled>Get Instant Quote</button>
         </div>
         <div id="q-error" role="alert" style="color:#b42318;font-size:0.9rem;margin:12px 0;display:none"></div>
@@ -584,7 +549,7 @@ a { color: inherit; text-decoration: none; }
     <div>
       <strong>James Property Solutions LLC</strong>
       <p>Junk hauling and property cleanouts across Indianapolis and Marion County.</p>
-      <p class="footer-meta">Veteran-owned &middot; Indianapolis, IN 46142</p>
+      <p class="footer-meta">Veteran-owned &middot; Serving the Indianapolis metro</p>
     </div>
 
     <div>
