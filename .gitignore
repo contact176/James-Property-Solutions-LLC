@@ -3,6 +3,7 @@ _joblog_*.txt
 _runlogs*.zip
 
 # wrangler files
+dist/
 .wrangler
 .dev.vars*
 !.dev.vars.example
