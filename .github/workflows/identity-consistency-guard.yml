@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - "codex/**"
   pull_request:
   schedule:
     - cron: "0 6 * * *"
@@ -95,3 +96,4 @@ jobs:
                 labels: ["bug", "monitoring"],
               });
             }
+
