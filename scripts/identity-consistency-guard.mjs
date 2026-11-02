@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { readFile } from "node:fs/promises";
+import { normalizeUrlForCompare } from "./url-utils.mjs";
 
 const STRICT_MODE = process.argv.includes("--strict");
 const LOCAL_ONLY_MODE =
@@ -43,18 +44,6 @@ function extractOgUrl(html) {
     /<meta[^>]+property=["']og:url["'][^>]*content=["']([^"']+)["'][^>]*>/i
   );
   return match ? match[1].trim() : null;
-}
-
-function normalizeUrlForCompare(url) {
-  if (!url) return null;
-  try {
-    const u = new URL(url);
-    const pathname = u.pathname || "/";
-    const normalizedPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
-    return `${u.protocol}//${u.host}${normalizedPath}${u.search}${u.hash}`;
-  } catch {
-    return String(url).trim();
-  }
 }
 
 function collectSignals(html) {
