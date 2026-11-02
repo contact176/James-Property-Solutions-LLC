@@ -13,6 +13,7 @@ Use this guard before finalizing contact/SEO/schema edits.
 - Live identity signals match between:
   - `https://jamespropertysolution.com/`
   - `https://www.jamespropertysolution.com/`
+- Redirect-chain comparisons use origin and path only; query strings and fragments are omitted so ephemeral access/session values are not written to CI logs.
 - In `--strict` mode:
   - `canonical` and `og:url` both exist and match
   - each live URL must end with HTTP `200`
@@ -34,3 +35,4 @@ git diff -- index.html
 node .\scripts\identity-consistency-guard.mjs
 node .\scripts\identity-consistency-guard.mjs --strict
 ```
+
